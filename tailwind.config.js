@@ -1,0 +1,177 @@
+/** Ledger design system — Tailwind mirrors the semantic token layer in index.css.
+ *  Utilities resolve to CSS variables so tokens and classes can never drift. */
+export default {content: [
+  './index.html',
+  './src/**/*.{js,ts,jsx,tsx}'
+],
+  darkMode: ['class', '[data-theme="dark"]'],
+  theme: {
+    extend: {
+      colors: {
+        canvas: 'var(--canvas)',
+        surface: {
+          DEFAULT: 'var(--surface)',
+          subtle: 'var(--surface-subtle)',
+          sunken: 'var(--surface-sunken)',
+          raised: 'var(--surface-raised)',
+          inverse: 'var(--surface-inverse)',
+          hover: 'var(--surface-interactive-hover)',
+          active: 'var(--surface-interactive-active)',
+          selected: 'var(--surface-selected)',
+        },
+        fg: {
+          DEFAULT: 'var(--fg-primary)',
+          primary: 'var(--fg-primary)',
+          secondary: 'var(--fg-secondary)',
+          muted: 'var(--fg-muted)',
+          disabled: 'var(--fg-disabled)',
+          accent: 'var(--fg-on-accent)',
+          inverse: 'var(--fg-on-inverse)',
+        },
+        line: {
+          subtle: 'var(--border-subtle)',
+          DEFAULT: 'var(--border-default)',
+          strong: 'var(--border-strong-c)',
+          inverse: 'var(--border-inverse)',
+        },
+        /* Brand accent — non-text roles only (3:1). Never carries a label. */
+        brand: {
+          DEFAULT: 'var(--brand-accent)',
+          hover: 'var(--brand-accent-hover)',
+          subtle: 'var(--brand-accent-subtle)',
+          fg: 'var(--brand-accent-fg)',
+        },
+        /* Primary action — the only accent-family surface that carries text (4.5:1). */
+        action: {
+          DEFAULT: 'var(--action-primary)',
+          hover: 'var(--action-primary-hover)',
+          active: 'var(--action-primary-active)',
+          fg: 'var(--action-primary-fg)',
+        },
+        accent: {
+          DEFAULT: 'var(--accent-solid)',
+          hover: 'var(--accent-solid-hover)',
+          active: 'var(--accent-solid-active)',
+          fg: 'var(--accent-fg)',
+          border: 'var(--accent-border)',
+          bg: 'var(--accent-bg)',
+        },
+        link: {
+          DEFAULT: 'var(--link-fg)',
+          hover: 'var(--link-fg-hover)',
+        },
+        info: {
+          fg: 'var(--info-fg)',
+          bg: 'var(--info-bg)',
+          border: 'var(--info-border)',
+          solid: 'var(--info-solid)',
+        },
+        success: {
+          fg: 'var(--success-fg)',
+          bg: 'var(--success-bg)',
+          border: 'var(--success-border)',
+          solid: 'var(--success-solid)',
+        },
+        warning: {
+          fg: 'var(--warning-fg)',
+          bg: 'var(--warning-bg)',
+          border: 'var(--warning-border)',
+          solid: 'var(--warning-solid)',
+        },
+        danger: {
+          fg: 'var(--danger-fg)',
+          bg: 'var(--danger-bg)',
+          border: 'var(--danger-border)',
+          solid: 'var(--danger-solid)',
+        },
+        ai: {
+          fg: 'var(--ai-fg)',
+          bg: 'var(--ai-bg)',
+          border: 'var(--ai-border)',
+        },
+        human: {
+          fg: 'var(--human-fg)',
+          bg: 'var(--human-bg)',
+          border: 'var(--human-border)',
+        },
+        viz: {
+          1: 'var(--viz-1)',
+          2: 'var(--viz-2)',
+          3: 'var(--viz-3)',
+          4: 'var(--viz-4)',
+          5: 'var(--viz-5)',
+          empty: 'var(--viz-empty)',
+        },
+      },
+      fontFamily: {
+        sans: 'var(--font-sans)',
+        mono: 'var(--font-mono)',
+      },
+      fontSize: {
+        '2xs': ['11px', { lineHeight: '16px' }],
+        xs: ['12px', { lineHeight: '16px' }],
+        '13': ['13px', { lineHeight: '20px' }],
+        sm: ['14px', { lineHeight: '20px' }],
+        base: ['16px', { lineHeight: '26px' }],
+        lg: ['18px', { lineHeight: '28px' }],
+        xl: ['20px', { lineHeight: '28px' }],
+        '2xl': ['24px', { lineHeight: '32px' }],
+        '3xl': ['30px', { lineHeight: '38px' }],
+        '4xl': ['36px', { lineHeight: '44px' }],
+        '5xl': ['48px', { lineHeight: '54px' }],
+      },
+      borderRadius: {
+        none: '0px',
+        xs: '3px',
+        sm: '4px',
+        DEFAULT: '4px',
+        md: '6px',
+        lg: '8px',
+        xl: '10px',
+      },
+      borderWidth: {
+        DEFAULT: '1px',
+        1.5: '1.5px',
+        2: '2px',
+      },
+      boxShadow: {
+        popover: 'var(--shadow-popover)',
+        dialog: 'var(--shadow-dialog)',
+        toast: 'var(--shadow-toast)',
+        sticky: 'var(--shadow-sticky)',
+        none: 'none',
+      },
+      spacing: {
+        4.5: '18px',
+        13: '52px',
+        18: '72px',
+      },
+      screens: {
+        xs: '480px',
+        sm: '768px',
+        md: '1024px',
+        lg: '1280px',
+        xl: '1600px',
+        '2xl': '1920px',
+      },
+      maxWidth: {
+        measure: '68ch',
+        'measure-tight': '60ch',
+        report: '720px',
+      },
+      transitionTimingFunction: {
+        enter: 'cubic-bezier(0.23, 1, 0.32, 1)',
+        exit: 'cubic-bezier(0.4, 0, 1, 1)',
+        move: 'cubic-bezier(0.4, 0, 0.2, 1)',
+      },
+      transitionDuration: {
+        100: '100ms',
+        140: '140ms',
+        180: '180ms',
+        220: '220ms',
+        280: '280ms',
+      },
+    },
+  },
+  plugins: [],
+};

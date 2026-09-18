@@ -1,0 +1,527 @@
+/* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
+
+/* ============================================================
+   LEDGER DESIGN SYSTEM
+   Tier 1 — PRIMITIVE TOKENS. Raw values. Reference nothing.
+   ============================================================ */
+:root {
+  /* Neutral — warm cast (hue ~40) */
+  --neutral-00: #ffffff;
+  --neutral-25: #fcfcfb;
+  --neutral-50: #fafaf8;
+  --neutral-100: #f4f4f1;
+  --neutral-200: #eaeae6;
+  --neutral-300: #dcdcd7;
+  --neutral-400: #bfbfb8;
+  --neutral-500: #97968e;
+  --neutral-600: #71706a;
+  --neutral-700: #56554f;
+  --neutral-800: #3a3934;
+  --neutral-900: #232220;
+  --neutral-950: #141312;
+  /* Signal orange — brand accent */
+  --orange-50: #fef1ec;
+  --orange-100: #fde3d8;
+  --orange-200: #fbb396;
+  --orange-300: #f97b4a;
+  --orange-400: #fa7440;
+  --orange-500: #f6521f;
+  --orange-600: #c2400f;
+  --orange-700: #9a330c;
+  --orange-800: #7a2a0c;
+  --orange-900: #4e1b07;
+  /* Blue — information, links */
+  --blue-50: #eef4ff;
+  --blue-100: #dce8ff;
+  --blue-200: #b9cffb;
+  --blue-400: #5b8def;
+  --blue-500: #2563eb;
+  --blue-600: #1d4fd7;
+  --blue-700: #1a44b4;
+  --blue-800: #16357f;
+  /* Green — success, positive evidence */
+  --green-50: #ecf7f0;
+  --green-100: #d6eddf;
+  --green-200: #bfdecb;
+  --green-400: #4aa273;
+  --green-500: #2e8b57;
+  --green-600: #1f7346;
+  --green-700: #1a5c39;
+  /* Amber — warning, incomplete */
+  --amber-50: #fdf6e6;
+  --amber-100: #faebc7;
+  --amber-200: #f0d99b;
+  --amber-400: #d19a26;
+  --amber-500: #b7791f;
+  --amber-600: #96610f;
+  --amber-700: #7a4f0c;
+  /* Red — danger, escalation */
+  --red-50: #fdf0ef;
+  --red-100: #fadfdc;
+  --red-200: #f2c1bc;
+  --red-400: #d9564a;
+  --red-500: #c4362b;
+  --red-600: #a62c22;
+  --red-700: #86241c;
+  /* Violet — AI provenance ONLY. Never brand. */
+  --violet-50: #f4f2fa;
+  --violet-100: #e8e4f4;
+  --violet-200: #d3cde8;
+  --violet-300: #b9b3cf;
+  --violet-500: #6e64a0;
+  --violet-600: #5b5288;
+  --violet-700: #4a4370;
+  /* Plum — reviewer disagreement */
+  --plum-50: #fbf0f6;
+  --plum-100: #f4dfeb;
+  --plum-200: #e6bed6;
+  --plum-600: #8e3a6b;
+  --plum-700: #742f57;
+  /* Teal — overridden interpretation */
+  --teal-50: #eaf5f4;
+  --teal-100: #d6edeb;
+  --teal-200: #b3dbd8;
+  --teal-600: #0e6f6b;
+  --teal-700: #0a514d;
+  /* Spacing — 4px base */
+  --space-0: 0px;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-80: 80px;
+  /* Radius */
+  --radius-0: 0px;
+  --radius-xs: 3px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+  --radius-full: 9999px;
+  /* Border widths */
+  --border-hairline: 1px;
+  --border-emphasis: 1.5px;
+  --border-strong: 2px;
+  /* Type */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  /* Motion */
+  --duration-1: 100ms;
+  --duration-2: 140ms;
+  --duration-3: 180ms;
+  --duration-4: 220ms;
+  --duration-5: 280ms;
+  --ease-enter: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ease-move: cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* ============================================================
+   Tier 2 — SEMANTIC TOKENS. Light theme.
+   Only this layer is remapped between themes.
+   ============================================================ */
+:root,
+[data-theme='light'] {
+  color-scheme: light;
+  /* Surfaces */
+  --canvas: var(--neutral-50);
+  --surface: var(--neutral-00);
+  --surface-subtle: var(--neutral-100);
+  --surface-sunken: var(--neutral-100);
+  --surface-raised: var(--neutral-00);
+  --surface-inverse: var(--neutral-900);
+  --surface-interactive-hover: var(--neutral-100);
+  --surface-interactive-active: var(--neutral-200);
+  --surface-selected: var(--orange-50);
+  --overlay-scrim: rgba(20, 19, 18, 0.42);
+  /* Foreground */
+  --fg-primary: var(--neutral-900);
+  --fg-secondary: var(--neutral-700);
+  --fg-muted: var(--neutral-600);
+  --fg-disabled: var(--neutral-400);
+  --fg-on-accent: #ffffff;
+  --fg-on-inverse: var(--neutral-100);
+  /* Borders */
+  --border-subtle: var(--neutral-200);
+  --border-default: var(--neutral-300);
+  --border-strong-c: var(--neutral-400);
+  --border-inverse: var(--neutral-700);
+  /* Brand accent — NON-TEXT ONLY. 3:1 governs: focus rings, markers,
+     borders, the live-session dot, chart accents. #f6521f on white is
+     3.4:1, which passes 3:1 and fails 4.5:1. Never put text on it. */
+  --brand-accent: var(--orange-500);
+  --brand-accent-hover: var(--orange-600);
+  --brand-accent-subtle: var(--orange-50);
+  --brand-accent-fg: var(--orange-700);
+  /* Primary action — CARRIES TEXT. 4.5:1 governs. White on orange-700
+     is 7.4:1 (AAA for normal text). This is the only accent-family
+     surface permitted to hold a label. */
+  --action-primary: var(--orange-700);
+  --action-primary-hover: var(--orange-800);
+  --action-primary-active: var(--orange-900);
+  --action-primary-fg: #ffffff;
+  /* Legacy accent aliases retained for non-text roles. */
+  --accent-solid: var(--brand-accent);
+  --accent-solid-hover: var(--brand-accent-hover);
+  --accent-solid-active: var(--orange-700);
+  --accent-fg: var(--brand-accent-fg);
+  --accent-border: var(--brand-accent);
+  --accent-bg: var(--brand-accent-subtle);
+  --focus-ring: var(--brand-accent);
+  /* Link */
+  --link-fg: var(--blue-700);
+  --link-fg-hover: var(--blue-800);
+  /* Status */
+  --info-fg: var(--blue-700);
+  --info-bg: var(--blue-50);
+  --info-border: var(--blue-200);
+  --info-solid: var(--blue-600);
+  --success-fg: var(--green-700);
+  --success-bg: var(--green-50);
+  --success-border: var(--green-200);
+  --success-solid: var(--green-600);
+  --warning-fg: var(--amber-700);
+  --warning-bg: var(--amber-50);
+  --warning-border: var(--amber-200);
+  --warning-solid: var(--amber-600);
+  --danger-fg: var(--red-700);
+  --danger-bg: var(--red-50);
+  --danger-border: var(--red-200);
+  --danger-solid: var(--red-600);
+  --neutral-status-fg: var(--neutral-700);
+  --neutral-status-bg: var(--neutral-100);
+  --neutral-status-border: var(--neutral-300);
+  /* Provenance */
+  --ai-fg: var(--violet-700);
+  --ai-bg: var(--violet-50);
+  --ai-border: var(--violet-300);
+  --human-fg: var(--neutral-900);
+  --human-bg: var(--neutral-00);
+  --human-border: var(--neutral-800);
+  /* Evidence — categorical, never ranked */
+  --ev-positive-fg: var(--green-700);
+  --ev-positive-bg: var(--green-50);
+  --ev-positive-border: var(--green-200);
+  --ev-development-fg: var(--blue-700);
+  --ev-development-bg: var(--blue-50);
+  --ev-development-border: var(--blue-200);
+  --ev-neutral-fg: var(--neutral-700);
+  --ev-neutral-bg: var(--neutral-100);
+  --ev-neutral-border: var(--neutral-300);
+  --ev-incomplete-fg: var(--amber-700);
+  --ev-incomplete-bg: var(--amber-50);
+  --ev-incomplete-border: var(--amber-200);
+  --ev-invalid-fg: var(--neutral-600);
+  --ev-invalid-bg: var(--neutral-50);
+  --ev-invalid-border: var(--neutral-300);
+  --ev-unmeasured-fg: var(--neutral-600);
+  --ev-unmeasured-bg: transparent;
+  --ev-unmeasured-border: var(--neutral-400);
+  --ev-disagreement-fg: var(--plum-700);
+  --ev-disagreement-bg: var(--plum-50);
+  --ev-disagreement-border: var(--plum-200);
+  --ev-overridden-fg: var(--teal-700);
+  --ev-overridden-bg: var(--teal-50);
+  --ev-overridden-border: var(--teal-200);
+  --ev-approved-fg: var(--neutral-900);
+  --ev-approved-bg: var(--neutral-100);
+  --ev-approved-border: var(--neutral-800);
+  --ev-escalation-fg: var(--red-700);
+  --ev-escalation-bg: var(--red-50);
+  --ev-escalation-border: var(--red-200);
+  /* Data visualisation — categorical, deuteranopia-separated */
+  --viz-1: #1d4fd7;
+  --viz-2: #b7791f;
+  --viz-3: #0e6f6b;
+  --viz-4: #8e3a6b;
+  --viz-5: #56554f;
+  --viz-empty: var(--neutral-200);
+  /* Elevation */
+  --shadow-popover: 0 1px 2px rgba(20, 19, 18, 0.06), 0 4px 12px rgba(20, 19, 18, 0.08);
+  --shadow-dialog: 0 2px 4px rgba(20, 19, 18, 0.06), 0 8px 24px rgba(20, 19, 18, 0.12);
+  --shadow-toast: 0 1px 2px rgba(20, 19, 18, 0.08), 0 6px 16px rgba(20, 19, 18, 0.1);
+  --shadow-sticky: 0 1px 0 rgba(20, 19, 18, 0.04);
+}
+/* ============================================================
+   Tier 2 — SEMANTIC TOKENS. Dark theme.
+   Not an inversion: borders gain contrast, elevation lightens.
+   ============================================================ */
+[data-theme='dark'] {
+  color-scheme: dark;
+  --canvas: #100f0e;
+  --surface: #1a1917;
+  --surface-subtle: #222120;
+  --surface-sunken: #151413;
+  --surface-raised: #262523;
+  --surface-inverse: var(--neutral-100);
+  --surface-interactive-hover: #2b2a27;
+  --surface-interactive-active: #34322f;
+  --surface-selected: #2e1c12;
+  --overlay-scrim: rgba(0, 0, 0, 0.62);
+  --fg-primary: #f2f1ee;
+  --fg-secondary: #c4c2bc;
+  --fg-muted: #9b9992;
+  --fg-disabled: #605e59;
+  --fg-on-accent: #1a0d06;
+  --fg-on-inverse: var(--neutral-900);
+  --border-subtle: #2c2b28;
+  --border-default: #3d3b37;
+  --border-strong-c: #56534d;
+  --border-inverse: var(--neutral-300);
+  /* Dark mode already passes by inverting polarity: near-black text on a
+     light orange surface. #1a0d06 on #fa7440 is 6.9:1. */
+  --brand-accent: var(--orange-400);
+  --brand-accent-hover: #fb8657;
+  --brand-accent-subtle: #2e1a10;
+  --brand-accent-fg: #fb8657;
+  --action-primary: var(--orange-400);
+  --action-primary-hover: #fb8657;
+  --action-primary-active: #f6521f;
+  --action-primary-fg: #1a0d06;
+  --accent-solid: var(--brand-accent);
+  --accent-solid-hover: var(--brand-accent-hover);
+  --accent-solid-active: #f6521f;
+  --accent-fg: var(--brand-accent-fg);
+  --accent-border: var(--brand-accent);
+  --accent-bg: var(--brand-accent-subtle);
+  --focus-ring: var(--brand-accent);
+  --link-fg: #8fb3fb;
+  --link-fg-hover: #b9cffb;
+  --info-fg: #9dbcfb;
+  --info-bg: #14203a;
+  --info-border: #294478;
+  --info-solid: var(--blue-500);
+  --success-fg: #7cc79c;
+  --success-bg: #10241a;
+  --success-border: #245239;
+  --success-solid: var(--green-500);
+  --warning-fg: #e0b45c;
+  --warning-bg: #2a2010;
+  --warning-border: #574220;
+  --warning-solid: var(--amber-500);
+  --danger-fg: #ee9086;
+  --danger-bg: #2c1512;
+  --danger-border: #5c2a24;
+  --danger-solid: var(--red-500);
+  --neutral-status-fg: #c4c2bc;
+  --neutral-status-bg: #26251f;
+  --neutral-status-border: #3d3b37;
+  --ai-fg: #b6aede;
+  --ai-bg: #1d1b2b;
+  --ai-border: #423c63;
+  --human-fg: #f2f1ee;
+  --human-bg: #1a1917;
+  --human-border: #85827a;
+  --ev-positive-fg: #7cc79c;
+  --ev-positive-bg: #10241a;
+  --ev-positive-border: #245239;
+  --ev-development-fg: #9dbcfb;
+  --ev-development-bg: #14203a;
+  --ev-development-border: #294478;
+  --ev-neutral-fg: #c4c2bc;
+  --ev-neutral-bg: #26251f;
+  --ev-neutral-border: #3d3b37;
+  --ev-incomplete-fg: #e0b45c;
+  --ev-incomplete-bg: #2a2010;
+  --ev-incomplete-border: #574220;
+  --ev-invalid-fg: #9b9992;
+  --ev-invalid-bg: #1d1c1a;
+  --ev-invalid-border: #3d3b37;
+  --ev-unmeasured-fg: #9b9992;
+  --ev-unmeasured-bg: transparent;
+  --ev-unmeasured-border: #56534d;
+  --ev-disagreement-fg: #dda3c5;
+  --ev-disagreement-bg: #2a1521;
+  --ev-disagreement-border: #5c2c47;
+  --ev-overridden-fg: #7fc9c5;
+  --ev-overridden-bg: #0f2524;
+  --ev-overridden-border: #1f5451;
+  --ev-approved-fg: #f2f1ee;
+  --ev-approved-bg: #2b2a27;
+  --ev-approved-border: #b0ada5;
+  --ev-escalation-fg: #ee9086;
+  --ev-escalation-bg: #2c1512;
+  --ev-escalation-border: #5c2a24;
+  --viz-1: #6f9bf5;
+  --viz-2: #d6a03a;
+  --viz-3: #45a8a3;
+  --viz-4: #cd82ab;
+  --viz-5: #a5a29a;
+  --viz-empty: #2c2b28;
+  --shadow-popover: 0 1px 2px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.45);
+  --shadow-dialog: 0 2px 4px rgba(0, 0, 0, 0.5), 0 8px 24px rgba(0, 0, 0, 0.55);
+  --shadow-toast: 0 1px 2px rgba(0, 0, 0, 0.5), 0 6px 16px rgba(0, 0, 0, 0.5);
+  --shadow-sticky: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+/* ============================================================
+   Tier 3 — COMPONENT TOKENS. Theme-agnostic aliases.
+   ============================================================ */
+:root {
+  --btn-primary-bg: var(--action-primary);
+  --btn-primary-bg-hover: var(--action-primary-hover);
+  --btn-primary-bg-active: var(--action-primary-active);
+  --btn-primary-fg: var(--action-primary-fg);
+  --btn-secondary-bg: var(--surface);
+  --btn-secondary-border: var(--border-default);
+  --btn-destructive-bg: var(--danger-solid);
+  --input-bg: var(--surface);
+  --input-border: var(--border-default);
+  --input-border-focus: var(--accent-border);
+  --input-fg-placeholder: var(--fg-muted);
+  --msg-user-bg: var(--surface-subtle);
+  --msg-user-border: var(--border-default);
+  --msg-assistant-rule: var(--ai-border);
+  --msg-system-border: var(--border-strong-c);
+  --table-header-bg: var(--surface-subtle);
+  --table-row-hover: var(--surface-interactive-hover);
+  --table-divider: var(--border-subtle);
+  --timer-fg: var(--fg-primary);
+  --timer-fg-final: var(--amber-700);
+  --rail-active-marker: var(--accent-solid);
+}
+[data-theme='dark'] {
+  --timer-fg-final: #e0b45c;
+}
+/* ============================================================
+   DENSITY MODES
+   ============================================================ */
+[data-density='compact'] {
+  --row-height: 28px;
+  --control-height: 28px;
+  --control-height-sm: 24px;
+  --pad-block: var(--space-4);
+  --pad-inline: var(--space-8);
+  --section-gap: var(--space-16);
+  --card-pad: var(--space-12);
+  --field-gap: var(--space-8);
+  --msg-gap: var(--space-12);
+}
+[data-density='default'] {
+  --row-height: 36px;
+  --control-height: 32px;
+  --control-height-sm: 26px;
+  --pad-block: var(--space-6);
+  --pad-inline: var(--space-12);
+  --section-gap: var(--space-24);
+  --card-pad: var(--space-16);
+  --field-gap: var(--space-12);
+  --msg-gap: var(--space-20);
+}
+[data-density='comfortable'] {
+  --row-height: 44px;
+  --control-height: 40px;
+  --control-height-sm: 32px;
+  --pad-block: var(--space-10);
+  --pad-inline: var(--space-16);
+  --section-gap: var(--space-32);
+  --card-pad: var(--space-20);
+  --field-gap: var(--space-16);
+  --msg-gap: var(--space-24);
+}
+/* ============================================================
+   BASE
+   ============================================================ */
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  background-color: var(--canvas);
+  color: var(--fg-primary);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+*:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+::selection {
+  background: var(--orange-100);
+  color: var(--neutral-900);
+}
+[data-theme='dark'] ::selection {
+  background: #4a2412;
+  color: #f2f1ee;
+}
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+/* Hatched fill for "unmeasured behaviour" — pattern, not colour */
+.hatch-unmeasured {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--border-default) 0px,
+    var(--border-default) 1px,
+    transparent 1px,
+    transparent 5px
+  );
+}
+/* Streaming caret */
+.stream-caret::after {
+  content: '';
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  background: var(--fg-primary);
+  animation: caret-blink 1s steps(2, start) infinite;
+}
+@keyframes caret-blink {
+  to {
+    visibility: hidden;
+  }
+}
+/* Thin scrollbars for dense panels */
+.scroll-panel {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong-c) transparent;
+}
+.scroll-panel::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.scroll-panel::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border: 3px solid transparent;
+  background-clip: content-box;
+  border-radius: 999px;
+}
+.scroll-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 100ms !important;
+  }
+  .stream-caret::after {
+    animation: none;
+  }
+}
