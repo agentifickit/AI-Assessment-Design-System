@@ -24,7 +24,7 @@ export const contrastGroups: ContrastGroup[] = [
   id: 'action',
   label: 'Primary action',
   note:
-  'The reason this group exists. The brand accent (#f6521f) is 3.4:1 on white — valid for a focus ring, invalid for a label. Primary actions sit on --action-primary instead.',
+  'The reason this group exists. Signal orange (#f6521f) carries only 3.4:1 against white, so the fix is the ink rather than the ramp: near-black on the same bright orange reaches 5.0:1. Interaction brightens the surface, so contrast rises as the button is engaged.',
   pairs: [
   {
     id: 'action-label',
@@ -40,7 +40,7 @@ export const contrastGroups: ContrastGroup[] = [
     fg: '--action-primary-fg',
     bg: '--action-primary-hover',
     target: 'text',
-    usage: 'Primary button hover state'
+    usage: 'Primary button hover — brightens to orange-400'
   },
   {
     id: 'action-active',
@@ -48,7 +48,7 @@ export const contrastGroups: ContrastGroup[] = [
     fg: '--action-primary-fg',
     bg: '--action-primary-active',
     target: 'text',
-    usage: 'Primary button pressed state'
+    usage: 'Primary button pressed — brightest step, paired with the 1px nudge'
   },
   {
     id: 'brand-nontext',

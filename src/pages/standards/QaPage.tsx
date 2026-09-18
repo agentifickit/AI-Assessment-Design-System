@@ -21,7 +21,7 @@ const groups: CheckGroup[] = [
   items: [
   { id: 'v1', text: 'No hardcoded palette value where a semantic token exists' },
   { id: 'v2', text: 'Signal orange appears only on non-text roles — focus rings, markers, borders, the live dot' },
-  { id: 'v3', text: 'Every labelled accent surface uses --action-primary, never --brand-accent' },
+  { id: 'v3', text: 'Every labelled accent surface pairs --action-primary with --action-primary-fg ink, never white' },
   { id: 'v4', text: 'Sibling cards in a row share baselines across heading, body, and footer' },
   { id: 'v5', text: 'Borders carry structure; shadows appear only on genuinely floating surfaces' },
   { id: 'v6', text: 'No gradient anywhere that was not explicitly requested' },

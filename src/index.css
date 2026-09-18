@@ -170,13 +170,17 @@
   --brand-accent-hover: var(--orange-600);
   --brand-accent-subtle: var(--orange-50);
   --brand-accent-fg: var(--orange-700);
-  /* Primary action — CARRIES TEXT. 4.5:1 governs. White on orange-700
-     is 7.4:1 (AAA for normal text). This is the only accent-family
+  /* Primary action — CARRIES TEXT. 4.5:1 governs. The surface stays the
+     bright signal orange; the INK is what makes it pass. Near-black on
+     orange-500 is 5.0:1, where white on the same orange is only 3.4:1.
+     Interaction brightens rather than deepens, so contrast improves as
+     the button is engaged: base 5.0:1, hover 6.2:1, active 6.5:1.
+     This is the only accent-family
      surface permitted to hold a label. */
-  --action-primary: var(--orange-700);
-  --action-primary-hover: var(--orange-800);
-  --action-primary-active: var(--orange-900);
-  --action-primary-fg: #ffffff;
+  --action-primary: var(--orange-500);
+  --action-primary-hover: var(--orange-400);
+  --action-primary-active: var(--orange-300);
+  --action-primary-fg: #1c1c1a;
   /* Legacy accent aliases retained for non-text roles. */
   --accent-solid: var(--brand-accent);
   --accent-solid-hover: var(--brand-accent-hover);

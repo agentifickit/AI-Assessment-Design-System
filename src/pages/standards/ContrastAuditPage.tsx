@@ -79,7 +79,7 @@ export function ContrastAuditPage() {
 
       <DocSection
         title="The accent split"
-        description="The reason this page exists. Signal orange is the brand, but at 3.4:1 on white it can only carry non-text roles. Primary actions sit on a deeper token so their labels clear 4.5:1.">
+        description="The reason this page exists. Signal orange stays bright everywhere — what changes is the ink. White on this orange is 3.4:1 and fails; near-black on the same orange is 5.0:1 and passes. Deepening the orange to rescue white text would have cost the brand its signal, so the ink moved instead.">
         
         <div className="grid gap-3 sm:grid-cols-2">
           <div className="rounded-md border border-line bg-surface p-4">
@@ -106,7 +106,8 @@ export function ContrastAuditPage() {
               <div className="min-w-0">
                 <p className="font-mono text-2xs text-fg-secondary">--action-primary</p>
                 <p className="mt-0.5 text-13 leading-6 text-fg-secondary">
-                  The only accent-family surface permitted to hold a label.
+                  Same orange, near-black ink. Hover and press brighten the surface, so contrast rises to 6.5:1 as the
+                  button is engaged.
                 </p>
               </div>
             </div>
