@@ -133,6 +133,19 @@ export const contrastGroups: ContrastGroup[] = [
   { id: 'viz-4', label: 'Series 4', fg: '--viz-4', bg: '--surface', target: 'non-text', usage: 'Dimension profile bars' },
   { id: 'viz-5', label: 'Series 5', fg: '--viz-5', bg: '--surface', target: 'non-text', usage: 'Dimension profile bars' }]
 
+},
+{
+  id: 'levels',
+  label: 'Progress and levels',
+  note:
+  'The LevelMeter marker is an fg-primary ring on a gradient whose primitives do not change with the theme, so it is checked against each stop. The Stepper fill is action orange on the page; against the 3px track itself it reads at about 2.5:1, which is not relied on: the fill is decorative and the markers carry the state.',
+  pairs: [
+  { id: 'level-marker-low', label: 'Marker ring on green-400', fg: '--fg-primary', bg: '--green-400', target: 'non-text', usage: 'LevelMeter marker, low band' },
+  { id: 'level-marker-mid', label: 'Marker ring on amber-400', fg: '--fg-primary', bg: '--amber-400', target: 'non-text', usage: 'LevelMeter marker, middle band' },
+  { id: 'level-marker-high', label: 'Marker ring on orange-500', fg: '--fg-primary', bg: '--orange-500', target: 'non-text', usage: 'LevelMeter marker, high band' },
+  { id: 'stepper-fill-canvas', label: 'Stepper fill on canvas', fg: '--action-primary', bg: '--canvas', target: 'non-text', usage: 'Stepper progress fill on the page canvas' },
+  { id: 'stepper-fill-surface', label: 'Stepper fill on surface', fg: '--action-primary', bg: '--surface', target: 'non-text', usage: 'Stepper progress fill on a surface' }]
+
 }];
 
 

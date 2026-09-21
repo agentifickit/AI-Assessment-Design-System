@@ -52,5 +52,5 @@ export const principles: Principle[] = [
   body:
   'Assessment states are kinds of observation, not tiers of quality. A scorecard would imply a precision the evidence does not support.',
   consequence:
-  'No traffic-light palette, no gauges, no numeric scores, no hire/reject recommendation anywhere in the system. Hue separates categories; glyph and label carry the meaning.'
+  'No traffic-light palette, no gauges, no numeric scores, no hire/reject recommendation on a candidate anywhere in the system. A derived level about the role may sit on a LevelMeter range with its band named. Hue separates categories; glyph and label carry the meaning.'
 }];

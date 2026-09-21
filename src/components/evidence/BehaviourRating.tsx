@@ -19,7 +19,8 @@ export interface BehaviourRatingProps {
 }
 
 /** Four named bands with the count of supporting moments beside each.
- *  Never a number, star, percentage, or gauge. */
+ *  A candidate rating is never a number, star, percentage, or gauge. Derived
+ *  levels that are not ratings (how much a role needs) use `LevelMeter`. */
 export function BehaviourRating({
   name,
   value,
