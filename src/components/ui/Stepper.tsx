@@ -13,11 +13,29 @@ export interface StepperProps {
   /** Index of the current step. Steps before it are complete. */
   current: number;
   label: string;
+  /** Progress inside each step, 0 to 1, indexed like `steps`. When present the
+   *  connectors become 3px tracks with an action-coloured fill so milestones and
+   *  progress are one component. Only the current step's entry is read: done
+   *  steps are full and future steps empty, so the fill can never contradict the
+   *  markers. Without it the connectors are unchanged. */
+  progress?: number[];
+  /** Connector width in px. The wizard uses 56 with `progress`. */
+  connectorWidth?: number;
   className?: string;
 }
 
+/** Fill for the connector that leaves step `i`, 0 to 1. The chip state decides
+ *  for done and future steps; the current step reads `progress[current]`,
+ *  clamped, with a missing or non-finite entry treated as 0. */
+function connectorFill(i: number, current: number, progress: number[]): number {
+  if (i < current) return 1;
+  if (i > current) return 0;
+  const value = progress[i];
+  return Number.isFinite(value) ? Math.min(1, Math.max(0, value)) : 0;
+}
+
 /** No "Step 1 of 4" caption — the markers already say it, and the list is announced as an ordered list. */
-export function Stepper({ steps, current, label, className }: StepperProps) {
+export function Stepper({ steps, current, label, progress, connectorWidth = 16, className }: StepperProps) {
   return (
     <nav aria-label={label} className={cn('min-w-0', className)}>
       <ol className="flex flex-wrap items-center gap-x-2 gap-y-2">
@@ -57,7 +75,21 @@ export function Stepper({ steps, current, label, className }: StepperProps) {
                 </span>
                 {complete && <span className="sr-only">Completed</span>}
               </span>
-              {i < steps.length - 1 && <span aria-hidden="true" className="h-px w-4 bg-line" />}
+              {i < steps.length - 1 &&
+              (progress ?
+              <span
+                aria-hidden="true"
+                className="h-[3px] shrink-0 overflow-hidden rounded-full bg-line"
+                style={{ width: connectorWidth }}>
+                
+                    <span
+                  className="block h-full rounded-full bg-action transition-[width] duration-280 ease-enter"
+                  style={{ width: `${connectorFill(i, current, progress) * 100}%` }} />
+
+                  </span> :
+
+              <span aria-hidden="true" className="h-px shrink-0 bg-line" style={{ width: connectorWidth }} />)
+              }
             </li>);
 
         })}

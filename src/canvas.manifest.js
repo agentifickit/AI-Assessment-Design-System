@@ -15,6 +15,7 @@ export const manifest = {
     scr_xfpapl: { name: "Behavioural framework", route: "/patterns/framework", position: { "x": 160, "y": 4180 } },
     scr_8bzosv: { name: "Evidence and review", route: "/patterns/evidence", position: { "x": 1560, "y": 4180 } },
     scr_oswt5p: { name: "AI interaction", route: "/patterns/ai", position: { "x": 2960, "y": 4180 } },
+    scr_plu120: { name: "Progress and levels", route: "/patterns/progress", position: { "x": 4360, "y": 4180 } },
     scr_m4u65e: { name: "Candidate workspace", route: "/screens/workspace", position: { "x": 160, "y": 8140 } },
     scr_0ex7x7: { name: "Reviewer evidence", route: "/screens/reviewer", position: { "x": 1560, "y": 8140 } },
     scr_h32qfy: { name: "Candidate report", route: "/screens/report", position: { "x": 2960, "y": 8140 } },
@@ -28,7 +29,7 @@ export const manifest = {
   sections: {
     sec_4tj9iw: { name: "Introduction", x: 0, y: 0, width: 4320, height: 1180 },
     sec_v7oji7: { name: "Foundations", x: 0, y: 1980, width: 12720, height: 1180 },
-    sec_ildla8: { name: "Patterns", x: 0, y: 3960, width: 4320, height: 1180 },
+    sec_ildla8: { name: "Patterns", x: 0, y: 3960, width: 5720, height: 1180 },
     sec_jq7uz3: { name: "Standards", x: 0, y: 5940, width: 5720, height: 1180 },
     sec_ejt32x: { name: "Application screens", x: 0, y: 7920, width: 7120, height: 1180 }
   },
@@ -52,7 +53,8 @@ export const manifest = {
   { kind: "section", id: "sec_ildla8", children: [
     { kind: "screen", id: "scr_xfpapl" },
     { kind: "screen", id: "scr_8bzosv" },
-    { kind: "screen", id: "scr_oswt5p" }]
+    { kind: "screen", id: "scr_oswt5p" },
+    { kind: "screen", id: "scr_plu120" }]
   },
   { kind: "section", id: "sec_jq7uz3", children: [
     { kind: "screen", id: "scr_1em0v2" },
