@@ -108,6 +108,9 @@ export default {content: [
         mono: 'var(--font-mono)',
       },
       fontSize: {
+        /* 9px and 10px are chrome steps (badge, micro, status), never reading text. See DS-20. */
+        '9': ['9px', { lineHeight: '12px' }],
+        '10': ['10px', { lineHeight: '16px' }],
         '2xs': ['11px', { lineHeight: '16px' }],
         xs: ['12px', { lineHeight: '16px' }],
         '13': ['13px', { lineHeight: '20px' }],
