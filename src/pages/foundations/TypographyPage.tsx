@@ -16,6 +16,10 @@ const styles = [
 { name: 'label', spec: '12 / 16 · 500', sample: 'Assessment window', cls: 'text-xs font-medium' },
 { name: 'label-sm', spec: '11 / 16 · 500 · 0.02em', sample: 'EVIDENCE COMPLETENESS', cls: 'text-2xs font-medium tracking-wide' },
 { name: 'caption', spec: '11 / 16 · 400', sample: 'Captured 14:02:11 · event 4a91', cls: 'text-2xs' },
+{ name: 'caption-lg', spec: '12 / 18 · 400', sample: 'Hi, Neha left on Friday and her patch is now yours.', cls: 'text-xs leading-[18px]' },
+{ name: 'micro', spec: '10 / 16 · 500 · 0.02em', sample: 'Email', cls: 'text-10 font-medium tracking-wide text-fg-muted' },
+{ name: 'badge', spec: '9 / 12 · 600', sample: '3', cls: 'text-9 font-semibold' },
+{ name: 'status', spec: '10 / 16 · mono 500 · 0.08em', sample: 'CONNECTION STABLE', cls: 'font-mono text-10 font-medium tracking-[0.08em]' },
 { name: 'code', spec: '12 / 20 · mono 400', sample: 'draft_v3 · sha 8f21c0', cls: 'font-mono text-xs' },
 { name: 'data', spec: '13 / 20 · 500 · tabular', sample: '1,284 · 42m 09s · 3 of 5', cls: 'text-13 font-medium tnum' },
 { name: 'data-lg', spec: '24 / 32 · 600 · tabular', sample: '18 / 24', cls: 'text-2xl font-semibold tnum' }];
@@ -100,10 +104,10 @@ export function TypographyPage() {
 
       <DocSection
         title="Scale"
-        description="11 / 12 / 13 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 48. 13px is the dense-UI default; 14px is the candidate default; 16px at 1.65 is the reading size for conversations and reports. Nothing sits below 11px, and 11px is only for tabular metadata.">
+        description="9 / 10 / 11 / 12 / 13 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 48. 13px is the dense-UI default; 14px is the candidate default; 16px at 1.65 is the reading size for conversations and reports. Prose never sits below 13px and caption at 11px is the floor for anything a reader is expected to read. Four steps sit below it, added 2026-09-22 for the candidate workspace (PRD-08, DS-20), and they are chrome, not reading: caption-lg (12/18) for secondary metadata that reads as a phrase, micro (10/16) for a one-word qualifier beside a row, badge (9/12) for a count or initials inside a badge or a 16px avatar, and status (10/16, mono, caps) for the status bar. Each must clear 4.5:1 on its ground, none may carry decision-critical text, and none may appear where a larger label is not already carrying the meaning.">
         
         <div className="flex flex-wrap items-baseline gap-x-6 gap-y-3 rounded-md border border-line bg-surface p-4">
-          {[11, 12, 13, 14, 16, 18, 20, 24, 30, 36, 48].map((n) =>
+          {[9, 10, 11, 12, 13, 14, 16, 18, 20, 24, 30, 36, 48].map((n) =>
           <span key={n} className="text-fg-primary" style={{ fontSize: `${n}px`, lineHeight: 1.2 }}>
               {n}
             </span>

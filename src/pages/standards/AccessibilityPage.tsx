@@ -100,7 +100,7 @@ export function AccessibilityPage() {
               ['Density modes allowed', 'Default and comfortable only', 'Compact, default, comfortable'],
               ['Minimum control height', '40px', '28px with 8px hit-slop'],
               ['Minimum touch target', '44 × 44px', '32 × 32px (pointer-first)'],
-              ['Minimum text size', '13px body, 11px metadata', '11px floor, tabular metadata only'],
+              ['Minimum text size', '13px body, 11px metadata', '11px reading floor; 9px and 10px only for badge, micro and status chrome (DS-20)'],
               ['Table row height', '44px', '28px compact / 36px default']].
               map(([rule, cand, op]) =>
               <tr key={rule} className="border-b border-line-subtle last:border-b-0">
