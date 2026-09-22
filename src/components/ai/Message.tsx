@@ -26,6 +26,10 @@ export interface MessageProps {
   onEdit?: () => void;
   branch?: {index: number;total: number;onPrev: () => void;onNext: () => void;};
   footer?: React.ReactNode;
+  /** Set false where the container already names the author (a copilot column
+   *  titled with the assistant's name, a thread of one sender). The accessible
+   *  name still carries the author. DS-11, approved 2026-09-22. */
+  attribution?: boolean;
   className?: string;
 }
 
@@ -42,6 +46,7 @@ export function Message({
   onEdit,
   branch,
   footer,
+  attribution = true,
   className
 }: MessageProps) {
   const isUser = author === 'user';
@@ -54,6 +59,7 @@ export function Message({
       className={cn('group/msg flex flex-col', isUser && 'items-end', className)}
       style={{ marginTop: 'var(--msg-gap)' }}>
       
+      {attribution &&
       <div className={cn('flex w-full items-baseline gap-2', isUser ? 'justify-end' : 'justify-start')}>
         <span
           className={cn(
@@ -65,6 +71,7 @@ export function Message({
         </span>
         {timestamp && <span className="text-2xs text-fg-muted tnum">{timestamp}</span>}
       </div>
+      }
 
       <div
         className={cn(

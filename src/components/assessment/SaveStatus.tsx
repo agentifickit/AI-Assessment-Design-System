@@ -12,7 +12,7 @@ export interface SaveStatusProps {
 }
 
 const meta: Record<SaveState, {Icon: React.ElementType;text: (t?: string) => string;cls: string;}> = {
-  saved: { Icon: CheckIcon, text: (t) => t ? `Your work is saved · ${t}` : 'Your work is saved', cls: 'text-fg-muted' },
+  saved: { Icon: CheckIcon, text: (t) => t ? `Your work is saved, ${t}` : 'Your work is saved', cls: 'text-fg-muted' },
   saving: { Icon: Loader2Icon, text: () => 'Saving your work', cls: 'text-fg-muted' },
   retrying: { Icon: RotateCwIcon, text: () => 'Retrying save — your work is kept on this device', cls: 'text-warning-fg' },
   queued: { Icon: CloudOffIcon, text: () => 'Offline — changes are queued and will save on reconnect', cls: 'text-warning-fg' }
