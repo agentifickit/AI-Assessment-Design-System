@@ -21,6 +21,7 @@ import { FrameworkPage } from './pages/patterns/FrameworkPage';
 import { EvidencePage } from './pages/patterns/EvidencePage';
 import { AiPage } from './pages/patterns/AiPage';
 import { ProgressPage } from './pages/patterns/ProgressPage';
+import { CandidateShellPage } from './pages/patterns/CandidateShellPage';
 
 import { WorkspaceScreen } from './pages/screens/WorkspaceScreen';
 import { ReviewerScreen } from './pages/screens/ReviewerScreen';
@@ -64,6 +65,7 @@ export function App({ theme = 'light', density = 'default' }: AppProps) {
             <Route path="/patterns/evidence" element={<EvidencePage />} />
             <Route path="/patterns/ai" element={<AiPage />} />
             <Route path="/patterns/progress" element={<ProgressPage />} />
+            <Route path="/patterns/candidate-shell" element={<CandidateShellPage />} />
 
             <Route path="/screens/workspace" element={<WorkspaceScreen />} />
             <Route path="/screens/reviewer" element={<ReviewerScreen />} />

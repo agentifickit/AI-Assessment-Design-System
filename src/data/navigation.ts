@@ -41,7 +41,8 @@ export const navGroups: NavGroup[] = [
   { label: 'Behavioural framework', to: '/patterns/framework' },
   { label: 'Evidence and review', to: '/patterns/evidence' },
   { label: 'AI interaction', to: '/patterns/ai' },
-  { label: 'Progress and levels', to: '/patterns/progress' }]
+  { label: 'Progress and levels', to: '/patterns/progress' },
+  { label: 'Candidate shell', to: '/patterns/candidate-shell' }]
 
 },
 {

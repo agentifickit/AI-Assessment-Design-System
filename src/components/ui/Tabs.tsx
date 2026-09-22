@@ -13,7 +13,10 @@ export interface TabsProps {
   value: string;
   onChange: (id: string) => void;
   label: string;
-  variant?: 'line' | 'segmented';
+  /** 'browser' is the candidate shell's top-bar strip: the active tab is white with
+   *  a three-side border and no bottom border so it merges into the page; inactive
+   *  tabs share edges on the sunken strip. DS-15, approved 2026-09-22. */
+  variant?: 'line' | 'segmented' | 'browser';
   className?: string;
 }
 
@@ -28,6 +31,44 @@ export function Tabs({ items, value, onChange, label, variant = 'line', classNam
       onChange(items[(idx - 1 + items.length) % items.length].id);
     }
   };
+
+  if (variant === 'browser') {
+    return (
+      <div
+        role="tablist"
+        aria-label={label}
+        onKeyDown={onKeyDown}
+        className={cn('flex w-full items-end border-b border-line bg-surface-sunken px-2 pt-1.5', className)}>
+        
+        {items.map((t, i) => {
+          const active = t.id === value;
+          return (
+            <button
+              key={t.id}
+              role="tab"
+              type="button"
+              aria-selected={active}
+              tabIndex={active ? 0 : -1}
+              onClick={() => onChange(t.id)}
+              className={cn(
+                'relative inline-flex h-8 max-w-[220px] items-center gap-1.5 rounded-t-sm border border-line px-3 text-13 transition-[background-color,color] duration-100 ease-enter',
+                i > 0 && '-ml-px',
+                active ?
+                'z-10 -mb-px border-b-0 bg-surface font-medium text-fg-primary' :
+                'bg-surface-active text-fg-muted hover:text-fg-primary'
+              )}>
+              
+              {t.icon}
+              <span className="truncate">{t.label}</span>
+              {typeof t.count === 'number' &&
+              <span className="rounded-xs border border-line bg-surface px-1 text-2xs text-fg-muted tnum">{t.count}</span>
+              }
+            </button>);
+
+        })}
+      </div>);
+
+  }
 
   if (variant === 'segmented') {
     return (
