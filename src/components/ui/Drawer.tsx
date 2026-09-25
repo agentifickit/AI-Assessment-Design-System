@@ -16,6 +16,13 @@ export interface DrawerProps {
   pinned?: boolean;
   onPinChange?: (pinned: boolean) => void;
   footer?: React.ReactNode;
+  /** 'left' opens from the left edge, over the sidebar: the candidate shell
+   *  opens its brief and inbox there, beside the navigation that called them.
+   *  DS-26. */
+  side?: 'left' | 'right';
+  /** Keeps the shell's bars in view: the floating drawer and its scrim start
+   *  below a top bar and stop above a status bar, in px. DS-26. */
+  inset?: {top?: number;bottom?: number;};
   className?: string;
 }
 
@@ -23,8 +30,22 @@ export interface DrawerProps {
  *  drawer from the right and can pin as a 400px column. The page stays the
  *  work surface; the drawer never becomes a third permanent pane. DS-16,
  *  approved 2026-09-22, amends D-2 of PRD-08. Escape closes an unpinned
- *  drawer; a pinned column is closed with its own control. */
-export function Drawer({ open, onClose, title, eyebrow, children, pinned = false, onPinChange, footer, className }: DrawerProps) {
+ *  drawer; a pinned column is closed with its own control. DS-26 (workspace
+ *  review, 2026-09-25): it can open from the left, and sit between the top
+ *  bar and the status bar so the tabs and the session state stay visible. */
+export function Drawer({
+  open,
+  onClose,
+  title,
+  eyebrow,
+  children,
+  pinned = false,
+  onPinChange,
+  footer,
+  side = 'right',
+  inset,
+  className
+}: DrawerProps) {
   const uid = useId();
   const titleId = `${uid}-title`;
 
@@ -49,7 +70,8 @@ export function Drawer({ open, onClose, title, eyebrow, children, pinned = false
     aria-labelledby={titleId}
     className={cn(
       'flex min-h-0 flex-col bg-surface',
-      pinned ? 'w-[400px] shrink-0 border-l border-line' : 'relative h-full w-[480px] max-w-[90%] border-l border-line shadow-dialog',
+      side === 'left' ? 'border-r border-line' : 'border-l border-line',
+      pinned ? 'w-[400px] shrink-0' : 'relative h-full w-[480px] max-w-[90%] shadow-dialog',
       className
     )}>
     
@@ -80,7 +102,11 @@ export function Drawer({ open, onClose, title, eyebrow, children, pinned = false
   if (typeof document === 'undefined') return null;
 
   return createPortal(
-    <div className="fixed inset-0 z-40 flex justify-end" data-ledger-overlay="">
+    <div
+      className={cn('fixed inset-0 z-40 flex', side === 'left' ? 'justify-start' : 'justify-end')}
+      style={inset ? { top: inset.top ?? 0, bottom: inset.bottom ?? 0 } : undefined}
+      data-ledger-overlay="">
+      
       <div className="absolute inset-0" style={{ background: 'var(--overlay-scrim)' }} onClick={onClose} aria-hidden="true" />
       {panel}
     </div>,

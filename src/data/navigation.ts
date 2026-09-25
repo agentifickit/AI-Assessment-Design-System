@@ -42,7 +42,9 @@ export const navGroups: NavGroup[] = [
   { label: 'Evidence and review', to: '/patterns/evidence' },
   { label: 'AI interaction', to: '/patterns/ai' },
   { label: 'Progress and levels', to: '/patterns/progress' },
-  { label: 'Candidate shell', to: '/patterns/candidate-shell' }]
+  { label: 'Candidate shell', to: '/patterns/candidate-shell' },
+  { label: 'Workspace content', to: '/patterns/workspace-content' },
+  { label: 'Menus and popovers', to: '/patterns/menus' }]
 
 },
 {
