@@ -13,7 +13,9 @@ export interface ToolActionRowProps {
   /** `row` is the bordered row; `step` is a borderless line in a copilot
    *  thread, where only a failure or a stop is written out. DS-25. */
   variant?: 'row' | 'step';
-  /** Replaces the completed tick in the `step` variant, e.g. for working notes. */
+  /** The tool's own icon in the `step` variant (a globe for web search, a
+   *  grid for the sheet). While it runs it breathes inside a turning ring;
+   *  when it finishes a small tick pops onto its corner. DS-25, DS-30. */
   icon?: React.ReactNode;
   className?: string;
 }
@@ -25,8 +27,7 @@ const statusMeta: Record<ToolStatus, {label: string;Icon: React.ElementType;cls:
   cancelled: { label: 'Cancelled', Icon: SlashIcon, cls: 'text-fg-muted' }
 };
 
-/** In a step the tick is quiet: a thread of green ticks reads as a checklist
- *  the candidate has to act on. The running spinner takes the AI colour. */
+/** In a step the icon is quiet once done, and the AI colour while it runs. */
 const stepCls: Record<ToolStatus, string> = {
   running: 'text-ai-fg',
   completed: 'text-fg-muted',
@@ -49,25 +50,45 @@ export function ToolActionRow({
   if (variant === 'step') {
     const written = status === 'failed' || status === 'cancelled';
     return (
-      <div className={cn('min-w-0', className)}>
+      <div className={cn('ai-step-in min-w-0', className)}>
         <button
           type="button"
           onClick={() => detail && setOpen((o) => !o)}
           aria-expanded={detail ? open : undefined}
           disabled={!detail}
-          className="flex w-full items-center gap-2 rounded-xs py-1 text-left disabled:cursor-default">
-          <span className={cn('inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center', stepCls[status])}>
-            {icon && status === 'completed' ?
-            icon :
+          className="group flex w-full items-center gap-2 rounded-xs py-1 text-left disabled:cursor-default">
+          <span className="relative inline-flex h-4 w-4 shrink-0 items-center justify-center">
+            {icon ?
+            <>
+                {status === 'running' &&
+              <span className="ai-ring absolute -inset-[3px]" aria-hidden="true" />
+              }
+                <span
+                className={cn(
+                  'inline-flex h-3.5 w-3.5 items-center justify-center',
+                  stepCls[status],
+                  status === 'running' && 'ai-breathe'
+                )}
+                aria-hidden="true">
+                  {icon}
+                </span>
+                {status === 'completed' &&
+              <span
+                className="ai-pop absolute -bottom-1 -right-1 inline-flex h-2.5 w-2.5 items-center justify-center rounded-full bg-surface text-success-fg"
+                aria-hidden="true">
+                    <CheckIcon className="h-2 w-2" strokeWidth={3.5} />
+                  </span>
+              }
+              </> :
             <Icon
-              className={cn('h-3.5 w-3.5', status === 'running' && 'animate-spin')}
+              className={cn('h-3.5 w-3.5', stepCls[status], status === 'running' && 'animate-spin')}
               aria-hidden="true" />
             }
           </span>
           <span
             className={cn(
               'min-w-0 truncate text-xs',
-              status === 'running' ? 'text-fg-primary' : 'text-fg-secondary'
+              status === 'running' ? 'ai-shimmer font-medium' : 'text-fg-secondary group-enabled:group-hover:text-fg-primary'
             )}>
             {action}
           </span>
@@ -88,7 +109,7 @@ export function ToolActionRow({
           }
         </button>
         {open && detail &&
-        <div className="mb-1 ml-[22px] mt-0.5 rounded-sm border border-line-subtle bg-surface-subtle px-2.5 py-2 text-2xs leading-5 text-fg-secondary">
+        <div className="ai-step-in mb-1 ml-6 mt-0.5 rounded-sm border border-line-subtle bg-surface-subtle px-2.5 py-2 text-2xs leading-5 text-fg-secondary">
             {detail}
           </div>
         }

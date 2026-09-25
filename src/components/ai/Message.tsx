@@ -42,6 +42,11 @@ export interface MessageProps {
   /** `always` keeps the action row visible, e.g. under the latest reply;
    *  `hover` reveals it on hover and on keyboard focus. */
   actionsVisible?: 'hover' | 'always';
+  /** Draw the streaming caret. In the conversation appearance it is a soft
+   *  breathing dot rather than a blink. Set false when the children draw it
+   *  themselves, e.g. a markdown renderer that puts `stream-soft` on its own
+   *  root so the dot sits at the end of the last line. DS-31. */
+  caret?: boolean;
   className?: string;
 }
 
@@ -65,6 +70,7 @@ export function Message({
   avatar,
   actions,
   actionsVisible = 'hover',
+  caret = true,
   className
 }: MessageProps) {
   const isUser = author === 'user';
@@ -124,7 +130,7 @@ export function Message({
             isError ?
             'text-danger-fg' :
             'text-fg-secondary',
-            streaming && 'stream-caret'
+            streaming && caret && (conversation ? 'stream-soft' : 'stream-caret')
           )}>
           
           {children}

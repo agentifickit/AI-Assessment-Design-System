@@ -11,7 +11,7 @@ import { PromptComposer } from '../../components/ai/PromptComposer';
 import { AssistantMark } from '../../components/ai/AssistantMark';
 import { ResponseStatus } from '../../components/ai/ResponseStatus';
 import { SuggestionList } from '../../components/ai/SuggestionList';
-import { ToolStepGroup } from '../../components/ai/ToolStepGroup';
+import { ReasoningTrace } from '../../components/ai/ReasoningTrace';
 import { Tag } from '../../components/ui/Tag';
 import { IconButton } from '../../components/ui/IconButton';
 import {
@@ -121,13 +121,27 @@ export function AiPage() {
           </div>
         </Example>
 
-        <Example label="Responding, before the first words; a counter joins after three seconds" tone="surface">
+        <Example label="Responding: the copy moves through what the assistant is doing with this turn; a counter joins after three seconds" tone="surface">
           <div className="max-w-[360px]">
-            <ResponseStatus elapsed={4} />
+            <ResponseStatus
+              elapsed={4}
+              phrases={['Reading your message', 'Reading the brief', 'Opening your sheet', 'Drafting a reply']} />
           </div>
         </Example>
 
-        <Example label="A reply: steps folded when there are three or more, sources as numbered chips, actions on hover" tone="surface">
+        <Example label="Thinking the candidate can audit: open while it streams, folded after, every word on opening" tone="surface">
+          <div className="flex max-w-[360px] flex-col gap-3">
+            <ReasoningTrace
+              streaming
+              text={'The brief wants a pricing call for the renewal.\nUsage sits under the Growth limit for eight of twelve months.\nTwo months went over, so a flat 10% needs a reason.'} />
+            <ReasoningTrace
+              streaming={false}
+              seconds={4}
+              text="The brief wants a pricing call for the renewal. Usage sits under the Growth limit for eight of twelve months." />
+          </div>
+        </Example>
+
+        <Example label="A reply: the thought folded, each tool on its own icon, sources as numbered chips, actions under the latest reply" tone="surface">
           <div className="max-w-[360px]">
             <Message author="user" authorLabel="You" attribution={false} appearance="conversation">
               What does the brief ask me to do?
@@ -146,22 +160,21 @@ export function AiPage() {
                   <SourceChip index={2} title="Usage sheet" icon={<Table2Icon className="h-3 w-3" />} />
                 </div>
               }>
-              <div className="mb-2">
-                <ToolStepGroup summary="3 steps">
-                  <ToolActionRow variant="step" action="Working notes" status="completed" icon={<NotebookTextIcon className="h-3.5 w-3.5" />} detail="Read the brief first, then check the usage sheet." />
-                  <ToolActionRow variant="step" action="Read your sheet" status="completed" />
-                  <ToolActionRow variant="step" action="Searched the web for renewal discount benchmarks" status="completed" />
-                </ToolStepGroup>
+              <div className="mb-2 flex flex-col">
+                <ReasoningTrace streaming={false} seconds={4} text="Read the brief first, then check the usage sheet." />
+                <ToolActionRow variant="step" action="Read your sheet" status="completed" icon={<Table2Icon className="h-3.5 w-3.5" />} />
+                <ToolActionRow variant="step" action="Searched the web for renewal discount benchmarks" status="completed" icon={<GlobeIcon className="h-3.5 w-3.5" />} />
               </div>
               The brief asks for a pricing recommendation for the renewal, backed by the usage sheet.
             </Message>
           </div>
         </Example>
 
-        <Example label="A step still running, and one that failed" tone="surface">
+        <Example label="A step running (its icon breathes in a turning ring, the words sweep), one done (a tick pops on), one failed" tone="surface">
           <div className="max-w-[360px]">
-            <ToolActionRow variant="step" action="Reading your sheet" status="running" />
-            <ToolActionRow variant="step" action="Searching the web for renewal benchmarks" status="failed" />
+            <ToolActionRow variant="step" action="Reading your sheet" status="running" icon={<Table2Icon className="h-3.5 w-3.5" />} />
+            <ToolActionRow variant="step" action="Read the brief" status="completed" icon={<ClipboardListIcon className="h-3.5 w-3.5" />} />
+            <ToolActionRow variant="step" action="Searching the web for renewal benchmarks" status="failed" icon={<GlobeIcon className="h-3.5 w-3.5" />} />
           </div>
         </Example>
 
@@ -170,8 +183,10 @@ export function AiPage() {
           columns={1}
           entries={[
           { term: 'Mark', detail: 'AssistantMark leads the assistant\'s name and never replaces it. It turns only while the assistant is responding.' },
-          { term: 'Steps', detail: 'Written as the observable action in the present tense while running ("Reading your sheet") and the past tense once done ("Read your sheet"). Only a failure or a stop is written out as a status; a finished step shows a quiet tick.' },
-          { term: 'Working notes', detail: 'Model reasoning that the thread can show is labelled "Working notes", never "Thought for" or "Thinking".' },
+          { term: 'Responding', detail: 'The status moves through phrases that describe this turn: the message, what it carried (the brief, the sheet, a selection), then drafting. The last phrase holds. No mood words, no jokes.' },
+          { term: 'Thinking', detail: 'ReasoningTrace streams the model\'s reasoning open, then folds to "Thought for 4s". "Thinking" is the label of a trace the reader can open, never of a wait with nothing behind it.' },
+          { term: 'Steps', detail: 'Every tool call stays visible on its own icon: a globe for the web, a grid for the sheet. Present tense while running ("Reading your sheet"), past once done ("Read your sheet"). Only a failure or a stop is written out as a status. In the copilot, steps are not folded; ToolStepGroup is for long runs elsewhere.' },
+          { term: 'Text', detail: 'The server smooths the stream to whole words and each new word fades in; the reply ends in a breathing dot (`stream-soft`) until it is done.' },
           { term: 'Sources', detail: 'Numbered SourceChips under the reply, with the source kind as the icon. The count is never written as a sentence.' },
           { term: 'Actions', detail: 'Icon buttons with tooltips: copy, then the product action (Add to pad). Visible under the latest reply, on hover for earlier ones.' },
           { term: 'Failure and stop', detail: 'A failure stays in the thread as a system message that names what became of the work, with Try again. A reply the person stopped keeps its text and says "You stopped this reply".' }]
@@ -180,30 +195,28 @@ export function AiPage() {
 
       <DocSection
         title="Copilot composer"
-        description="Five controls at rest: + on the left with the mode beside it, the model, dictation and send on the right. Files, workspace context and tools nest in the + menu; a tool that is on shows as a removable chip in the footer, so its state is never hidden behind the menu.">
-        <Example label="PromptComposer with leading, trailing and context slots" tone="surface">
+        description="Five controls at rest: + on the left with the mode beside it, the model, dictation and send on the right. Files, workspace context and web search nest in the + menu; a dot on + says a tool is on. The accent ring glows in on focus, and while the assistant responds a light travels around it.">
+        <Example label="PromptComposer while the assistant responds: a light travels around the accent ring; web search on shows as a dot on +" tone="surface">
           <div className="max-w-[360px]">
             <PromptComposer
-              value="What does the brief ask me to do?"
+              value=""
               onChange={() => undefined}
               onSubmit={() => undefined}
+              onStop={() => undefined}
+              state="streaming"
+              placeholder="Copilot is working. You can keep writing in your doc."
               sendKey="enter"
               label="Message the copilot"
               context={<Tag icon={<ClipboardListIcon className="h-3 w-3" />} onRemove={() => undefined} removeLabel="Remove Task brief">Task brief</Tag>}
               leading={
               <>
-                  <IconButton label="Add files and tools" size="md" icon={<PlusIcon className="h-3.5 w-3.5" />} className="h-7 w-7 rounded-full border-line" />
+                  <span className="relative inline-flex">
+                    <IconButton label="Add files and tools, web search on" size="md" icon={<PlusIcon className="h-3.5 w-3.5" />} className="h-7 w-7 rounded-full border-line" />
+                    <span className="absolute right-0 top-0 h-2 w-2 rounded-full border-2 border-surface bg-ai-fg" aria-hidden="true" />
+                  </span>
                   <button type="button" className="inline-flex h-7 items-center gap-1 rounded-sm px-2 text-2xs font-medium text-fg-secondary hover:bg-surface-hover">
                     Ask <ChevronDownIcon className="h-3 w-3 opacity-60" aria-hidden="true" />
                   </button>
-                  {/* The tool chip: a tool that is on, in the AI tint, with its off control. */}
-                  <span className="inline-flex h-6 items-center gap-1 rounded-full border border-ai-border bg-ai-bg pl-2 pr-0.5 text-2xs font-medium text-ai-fg">
-                    <GlobeIcon className="h-3 w-3" aria-hidden="true" />
-                    Web
-                    <button type="button" aria-label="Turn off web search" className="inline-flex h-5 w-5 items-center justify-center rounded-full hover:bg-surface">
-                      <XIcon className="h-3 w-3" aria-hidden="true" />
-                    </button>
-                  </span>
                 </>
               }
               trailing={
@@ -218,7 +231,7 @@ export function AiPage() {
         </Example>
         <DoDont
           className="mt-4"
-          doText="Nest what is used now and then (upload, add from the workspace, web search) in +. Keep the mode and the model visible, because they change what the assistant does."
+          doText="Nest what is used now and then (upload, add from the workspace, web search) in +, with a dot on + while a tool is on. Keep the mode and the model visible, because they change what the assistant does."
           dontText="A row of seven icons, a divider between the text and the controls, a character counter from the first keystroke, or a focus ring on the field inside a focused surface." />
       </DocSection>
 
@@ -291,7 +304,7 @@ export function AiPage() {
           doText={
           <ul className="flex list-disc flex-col gap-1.5 pl-4">
               <li>“Responding” · “Retrieving from Brand guidelines.pdf”</li>
-              <li>“Reading your sheet”, “Working notes”, “You stopped this reply”</li>
+              <li>“Reading your sheet”, “Thinking” over a trace you can open, “You stopped this reply”</li>
               <li>“AI-generated draft” · “Human review required”</li>
               <li>“Your work is saved” · “You can review before submitting”</li>
               <li>“Evidence not captured” · “This behaviour was not observed”</li>
@@ -300,7 +313,7 @@ export function AiPage() {
           dontText={
           <ul className="flex list-disc flex-col gap-1.5 pl-4">
               <li>“AI is thinking” — implies hidden reasoning we cannot see</li>
-              <li>“Thought for 12 seconds”, “Used 1 sources” — the first implies a mind, the second counts at the reader</li>
+              <li>“Thinking” over a spinner with nothing to open; “Used 1 sources” — it counts at the reader</li>
               <li>“The AI has decided” — no automated decision is made here</li>
               <li>“Bad prompt” · “Candidate failed” — judgemental and inaccurate</li>
               <li>“Objective score” · “Guaranteed accurate” — claims the method cannot support</li>

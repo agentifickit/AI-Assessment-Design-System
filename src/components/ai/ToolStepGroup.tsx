@@ -13,9 +13,10 @@ export interface ToolStepGroupProps {
   className?: string;
 }
 
-/** Three or more steps in one reply fold into a single line, so the answer
- *  stays the first thing a candidate reads. Opening it shows the steps on a
- *  thread line. Fewer than three are shown as they are. DS-26. */
+/** A long run of steps folded into one line, opened on a thread line. The
+ *  candidate copilot keeps its steps visible instead (Pulkit, 2026-09-26: tool
+ *  calls stay visible, each on its own icon); this is for long agent runs on
+ *  other surfaces, where the answer must stay the first thing read. DS-26. */
 export function ToolStepGroup({
   summary,
   running = false,

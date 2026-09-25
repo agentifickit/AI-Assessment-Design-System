@@ -58,7 +58,8 @@ const MAX_ROWS = 8;
 
 /** The composer is one raised surface: context on top, the text, then a
  *  footer of at most five controls (+, mode, model, dictate, send). Send and
- *  stop are the round controls; the accent is spent on send alone. */
+ *  stop are the round controls. The accent is spent on send and on the ring,
+ *  which moves only while the assistant is responding. */
 export const PromptComposer = forwardRef<HTMLTextAreaElement, PromptComposerProps>(
   function PromptComposer(
   {
@@ -126,8 +127,11 @@ export const PromptComposer = forwardRef<HTMLTextAreaElement, PromptComposerProp
         }
 
         <div
+          // The accent ring glows in on focus, and while the assistant responds
+          // a light travels around it (DS-32); both are still under reduced motion.
+          data-live={state === 'streaming' || undefined}
           className={cn(
-            'rounded-xl border bg-[var(--input-bg)] transition-[border-color,box-shadow] duration-100 ease-enter',
+            'composer-surface rounded-xl border bg-[var(--input-bg)]',
             over ? 'border-danger-solid' : 'border-line focus-within:border-accent-border',
             blocked ? 'bg-surface-subtle' : 'shadow-[var(--shadow-composer)]'
           )}>
