@@ -557,7 +557,7 @@ body {
     transform: rotate(180deg) scale(1);
   }
 }
-/* Copilot motion (DS-29 to DS-32). Every animation here has a still
+/* Copilot motion (DS-44 to DS-47). Every animation here has a still
    equivalent under reduced motion, and none of it carries meaning the
    words do not: the label, the step text and the status say it first. */
 @property --composer-sweep {

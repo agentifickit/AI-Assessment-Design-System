@@ -128,7 +128,7 @@ export const PromptComposer = forwardRef<HTMLTextAreaElement, PromptComposerProp
 
         <div
           // The accent ring glows in on focus, and while the assistant responds
-          // a light travels around it (DS-32); both are still under reduced motion.
+          // a light travels around it (DS-47); both are still under reduced motion.
           data-live={state === 'streaming' || undefined}
           className={cn(
             'composer-surface rounded-xl border bg-[var(--input-bg)]',
