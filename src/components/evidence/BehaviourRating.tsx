@@ -75,7 +75,7 @@ export function BehaviourRating({
                   name={name}
                   checked={selected}
                   onChange={() => onChange?.(b.id)}
-                  className="h-3.5 w-3.5 shrink-0 appearance-none rounded-full border border-line bg-[var(--input-bg)] checked:border-[4px] checked:border-accent" />
+                  className="h-3.5 w-3.5 shrink-0 appearance-none rounded-full border border-line bg-[var(--input-bg)] checked:border-[4px] checked:border-action" />
                 
                 <span className="text-13 text-fg-primary">{b.label}</span>
               </span>

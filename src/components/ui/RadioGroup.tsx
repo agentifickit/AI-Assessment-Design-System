@@ -36,7 +36,7 @@ export function RadioGroup({ name, legend, options, value, onChange, hint, class
                 checked={value === o.value}
                 disabled={o.disabled}
                 onChange={() => onChange(o.value)}
-                className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer appearance-none rounded-full border border-line bg-[var(--input-bg)] transition-colors duration-100 ease-enter checked:border-[5px] checked:border-accent hover:border-line-strong disabled:cursor-not-allowed disabled:opacity-50" />
+                className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer appearance-none rounded-full border border-line bg-[var(--input-bg)] transition-colors duration-100 ease-enter checked:border-[5px] checked:border-action hover:border-line-strong disabled:cursor-not-allowed disabled:opacity-50" />
               
               <label
                 htmlFor={id}

@@ -32,8 +32,8 @@ export function ReviewerDecision({
       <div className="flex flex-wrap items-center justify-between gap-2 px-3 pt-2.5">
         <span className="inline-flex items-center gap-1.5 text-2xs font-medium text-fg-primary">
           <UserCheckIcon className="h-3.5 w-3.5" aria-hidden="true" />
-          {reviewer}
-          <span className="font-normal text-fg-muted">· {role}</span>
+          {reviewer},
+          <span className="font-normal text-fg-muted">{role}</span>
         </span>
         <span className="flex items-center gap-2">
           {approved && <EvidenceStateBadge state="approved" size="sm" />}

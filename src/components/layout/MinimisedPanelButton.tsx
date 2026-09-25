@@ -43,7 +43,7 @@ export function MinimisedPanelButton({
       {typeof count === 'number' && count > 0 &&
       <span
         aria-hidden="true"
-        className="absolute -right-1 -top-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-accent px-1 text-9 font-semibold text-fg-accent tnum">
+        className="absolute -right-1 -top-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-action px-1 text-9 font-semibold text-action-fg tnum">
           {count > 99 ? '99+' : count}
         </span>
       }
