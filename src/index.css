@@ -262,6 +262,8 @@
   --shadow-dialog: 0 2px 4px rgba(20, 19, 18, 0.06), 0 8px 24px rgba(20, 19, 18, 0.12);
   --shadow-toast: 0 1px 2px rgba(20, 19, 18, 0.08), 0 6px 16px rgba(20, 19, 18, 0.1);
   --shadow-sticky: 0 1px 0 rgba(20, 19, 18, 0.04);
+  /* The copilot composer: a surface that sits just above the thread (DS-22) */
+  --shadow-composer: 0 1px 2px rgba(20, 19, 18, 0.04), 0 2px 8px rgba(20, 19, 18, 0.05);
 }
 /* ============================================================
    Tier 2 — SEMANTIC TOKENS. Dark theme.
@@ -373,6 +375,7 @@
   --shadow-dialog: 0 2px 4px rgba(0, 0, 0, 0.5), 0 8px 24px rgba(0, 0, 0, 0.55);
   --shadow-toast: 0 1px 2px rgba(0, 0, 0, 0.5), 0 6px 16px rgba(0, 0, 0, 0.5);
   --shadow-sticky: 0 1px 0 rgba(0, 0, 0, 0.4);
+  --shadow-composer: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 /* ============================================================
    Tier 3 — COMPONENT TOKENS. Theme-agnostic aliases.
@@ -499,6 +502,48 @@ body {
     visibility: hidden;
   }
 }
+/* Assistant responding (DS-24): a light sweep across the label and a slow
+   turn of the mark. Under reduced motion both stand still and the label,
+   in plain secondary text, carries the state on its own. */
+.ai-shimmer {
+  color: var(--fg-secondary);
+  background-image: linear-gradient(
+    90deg,
+    var(--fg-muted) 0%,
+    var(--fg-muted) 40%,
+    var(--ai-fg) 50%,
+    var(--fg-muted) 60%,
+    var(--fg-muted) 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: ai-shimmer 1.8s linear infinite;
+}
+@keyframes ai-shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -150% 0;
+  }
+}
+.ai-mark-working {
+  transform-origin: center;
+  animation: ai-mark-turn 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+@keyframes ai-mark-turn {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(90deg) scale(0.8);
+  }
+  100% {
+    transform: rotate(180deg) scale(1);
+  }
+}
 /* Thin scrollbars for dense panels */
 .scroll-panel {
   scrollbar-width: thin;
@@ -526,6 +571,14 @@ body {
     transition-duration: 100ms !important;
   }
   .stream-caret::after {
+    animation: none;
+  }
+  .ai-shimmer {
+    animation: none;
+    background-image: none;
+    -webkit-text-fill-color: currentColor;
+  }
+  .ai-mark-working {
     animation: none;
   }
 }

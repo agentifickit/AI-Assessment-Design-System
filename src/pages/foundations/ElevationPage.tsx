@@ -35,8 +35,8 @@ const levels = [
   name: 'Sticky',
   bg: '--surface',
   border: '1px default on the leaving edge',
-  shadow: 'shadow-sticky (1px)',
-  use: 'Sticky headers, sticky table headers, the pinned composer bar.',
+  shadow: 'shadow-sticky (1px); the copilot composer uses shadow-composer',
+  use: 'Sticky headers, sticky table headers, the pinned composer bar. The copilot composer lifts a little further so the text field reads as the place to type (DS-22).',
   dark: 'Shadow is near-invisible; the border does the work.'
 },
 {
