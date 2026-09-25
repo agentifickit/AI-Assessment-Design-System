@@ -7,11 +7,13 @@ export interface SourceChipProps {
   title: string;
   locator?: string;
   onOpen?: () => void;
+  /** The source's kind, e.g. a sheet or an email. Defaults to a document. DS-28. */
+  icon?: React.ReactNode;
   className?: string;
 }
 
 /** Numbered citation. The number is the durable reference used in reports and exports. */
-export function SourceChip({ index, title, locator, onOpen, className }: SourceChipProps) {
+export function SourceChip({ index, title, locator, onOpen, icon, className }: SourceChipProps) {
   return (
     <button
       type="button"
@@ -25,7 +27,12 @@ export function SourceChip({ index, title, locator, onOpen, className }: SourceC
       <span className="inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-[2px] border border-line-strong text-[9px] font-semibold tnum">
         {index}
       </span>
+      {icon ?
+      <span className="inline-flex h-3 w-3 shrink-0 items-center justify-center text-fg-muted" aria-hidden="true">
+          {icon}
+        </span> :
       <FileTextIcon className="h-3 w-3 shrink-0 text-fg-muted" aria-hidden="true" />
+      }
       <span className="truncate">{title}</span>
       {locator && <span className="shrink-0 text-fg-muted tnum">{locator}</span>}
     </button>);
