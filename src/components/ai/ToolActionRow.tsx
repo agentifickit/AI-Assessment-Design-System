@@ -15,7 +15,7 @@ export interface ToolActionRowProps {
   variant?: 'row' | 'step';
   /** The tool's own icon in the `step` variant (a globe for web search, a
    *  grid for the sheet). While it runs it breathes inside a turning ring;
-   *  when it finishes a small tick pops onto its corner. DS-25, DS-30. */
+   *  when it finishes a small tick pops onto its corner. DS-25, DS-45. */
   icon?: React.ReactNode;
   className?: string;
 }
