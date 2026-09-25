@@ -10,10 +10,10 @@ export interface StatusSegment {
    *  With `lead`, this is the value that follows it. */
   label: string;
   /** A muted lead word ("Connection", "Progress", "Elapsed"); the label
-   *  follows in the darker ink, so the value is what the eye lands on. DS-25. */
+   *  follows in the darker ink, so the value is what the eye lands on. DS-33. */
   lead?: string;
   /** A 12px glyph before the text: a check for saved, a clock for elapsed, a
-   *  6px dot for the connection. Decorative; the words carry the state. DS-25. */
+   *  6px dot for the connection. Decorative; the words carry the state. DS-33. */
   glyph?: React.ReactNode;
   tone?: StatusTone;
   /** Announced on change. Connection and save state are live; the candidate name is not. */
@@ -30,9 +30,9 @@ export interface StatusBarProps {
   /** Right-aligned slot, e.g. the timer. */
   trailing?: React.ReactNode;
   /** A control at the far left, before the segments: the session menu, a
-   *  Popover whose trigger is a StatusBarButton. DS-25. */
+   *  Popover whose trigger is a StatusBarButton. DS-33. */
   menu?: React.ReactNode;
-  /** Hairlines between segments, each segment padded 12px. DS-25. */
+  /** Hairlines between segments, each segment padded 12px. DS-33. */
   divided?: boolean;
   /** Names the bar for assistive technology, e.g. "Session status". */
   label?: string;
@@ -48,7 +48,7 @@ const toneClasses: Record<StatusTone, string> = {
 /** The candidate shell's 32px bottom bar. Segments are instrumentation, so they
  *  use the `status` type style (10/16 mono, caps, tracked) and never carry a
  *  decision. DS-12, approved 2026-09-22. The timer segment is a slot: what it
- *  shows is a PRD decision, not a design-system one. DS-25 (workspace reviews,
+ *  shows is a PRD decision, not a design-system one. DS-33 (workspace reviews,
  *  2026-09-25 and 26): glyphs, dividers, a lead word and value, segments at
  *  the right, and a menu at the far left that holds what the candidate reads
  *  once, so the bar keeps only what changes. */
@@ -151,7 +151,7 @@ const presenceClasses: Record<StatusPresence, string> = {
 /** The status bar's first segment as a control: the candidate's initials and
  *  name, a chevron that opens upward. Pass it as a Popover trigger and spread
  *  the trigger props onto it. The mark is a circle, as every person is (DS-19).
- *  DS-25. */
+ *  DS-33. */
 export function StatusBarButton({ initials, presence, open, children, className, ...props }: StatusBarButtonProps) {
   return (
     <button

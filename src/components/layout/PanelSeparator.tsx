@@ -10,7 +10,7 @@ export interface PanelSeparatorProps {
   /** Called with the next width, already clamped to min and max, from a drag
    *  or the keyboard. With it the separator owns the whole contract: arrows
    *  move the line by `step`, Home and End go to min and max, Enter calls
-   *  `onCollapse`. DS-28. */
+   *  `onCollapse`. DS-36. */
   onChange?: (value: number) => void;
   /** Which side of the line the resized panel is on. 'previous' (a sidebar on
    *  the left) grows as the line moves right; 'next' (a copilot on the right)
@@ -21,7 +21,7 @@ export interface PanelSeparatorProps {
   /** Enter on the separator collapses the panel it resizes. */
   onCollapse?: () => void;
   /** Runs first; call preventDefault to take a key over. Without `onChange`
-   *  the caller handles every key here, as before DS-28. */
+   *  the caller handles every key here, as before DS-36. */
   onKeyDown?: (e: React.KeyboardEvent) => void;
   /** Called with a pixel delta as the pointer moves. */
   onDrag?: (deltaPx: number) => void;

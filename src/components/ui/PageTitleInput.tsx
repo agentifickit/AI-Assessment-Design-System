@@ -25,7 +25,7 @@ export interface PageTitleInputProps {
  *  scrolling. Enter moves on to the body, Escape restores the name. The field
  *  has no box because it is the heading; the caret is its focus indicator.
  *  The placeholder is in the muted ink, which passes 3:1 as large text, not
- *  the disabled ink. DS-33, from the workspace review of 2026-09-26. */
+ *  the disabled ink. DS-41, from the workspace review of 2026-09-26. */
 export function PageTitleInput({
   value,
   onCommit,

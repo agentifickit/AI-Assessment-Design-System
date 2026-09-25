@@ -19,7 +19,7 @@ export interface MediaCardProps {
 /** A recording inside a document: a manager's walkthrough video or a voice
  *  note. A bordered card on the subtle surface with the title and duration
  *  above the player and the transcript behind a quiet toggle. It sits in the
- *  brief's media slot, above the message, where a walkthrough belongs. DS-31. */
+ *  brief's media slot, above the message, where a walkthrough belongs. DS-39. */
 export function MediaCard({ kind, title, duration, src, children, transcript, className }: MediaCardProps) {
   const [showTranscript, setShowTranscript] = useState(false);
   const transcriptId = useId();

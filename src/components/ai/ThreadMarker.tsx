@@ -10,7 +10,7 @@ export interface ThreadMarkerProps {
 /** Marks where a message thread's context changes: turns carried from an
  *  earlier unit sit under "Unit 1", this unit's under "This unit". 11px muted
  *  text centred between two hairlines. It marks a boundary in the reading
- *  order; it is not a heading, and it never takes the accent. DS-34, from the
+ *  order; it is not a heading, and it never takes the accent. DS-42, from the
  *  workspace review of 2026-09-26. */
 export function ThreadMarker({ children, className }: ThreadMarkerProps) {
   return (

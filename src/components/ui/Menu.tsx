@@ -9,7 +9,7 @@ export type MenuProps = Omit<PopoverProps, 'role'>;
  *  point. Follows the WAI-ARIA menu pattern: the first item takes focus on
  *  open, arrows, Home and End move, Escape and Tab close. Items close the menu
  *  themselves by calling the caller's handler; the menu does not guess.
- *  DS-27. */
+ *  DS-35. */
 export function Menu(props: MenuProps) {
   return <Popover {...props} role="menu" />;
 }

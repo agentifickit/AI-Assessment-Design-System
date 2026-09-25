@@ -91,7 +91,7 @@ export function PromptComposer({
             removeLabel={`Remove ${a.name}`}>
             
                 {a.name}
-                {a.meta && <span className="ml-1.5 text-fg-muted">{a.meta}</span>}
+                <span className="text-fg-muted"> · {a.meta}</span>
               </Tag>
           )}
           </div>

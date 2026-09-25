@@ -17,8 +17,8 @@ export const manifest = {
     scr_oswt5p: { name: "AI interaction", route: "/patterns/ai", position: { "x": 2960, "y": 4180 } },
     scr_plu120: { name: "Progress and levels", route: "/patterns/progress", position: { "x": 4360, "y": 4180 } },
     scr_plu124: { name: "Candidate shell", route: "/patterns/candidate-shell", position: { "x": 5760, "y": 4180 } },
-    scr_ds2931: { name: "Workspace content", route: "/patterns/workspace-content", position: { "x": 7160, "y": 4180 } },
-    scr_ds2700: { name: "Menus and popovers", route: "/patterns/menus", position: { "x": 8560, "y": 4180 } },
+    scr_ds3743: { name: "Workspace content", route: "/patterns/workspace-content", position: { "x": 7160, "y": 4180 } },
+    scr_ds3500: { name: "Menus and popovers", route: "/patterns/menus", position: { "x": 8560, "y": 4180 } },
     scr_m4u65e: { name: "Candidate workspace", route: "/screens/workspace", position: { "x": 160, "y": 8140 } },
     scr_0ex7x7: { name: "Reviewer evidence", route: "/screens/reviewer", position: { "x": 1560, "y": 8140 } },
     scr_h32qfy: { name: "Candidate report", route: "/screens/report", position: { "x": 2960, "y": 8140 } },
@@ -59,8 +59,8 @@ export const manifest = {
     { kind: "screen", id: "scr_oswt5p" },
     { kind: "screen", id: "scr_plu120" },
     { kind: "screen", id: "scr_plu124" },
-    { kind: "screen", id: "scr_ds2931" },
-    { kind: "screen", id: "scr_ds2700" }]
+    { kind: "screen", id: "scr_ds3743" },
+    { kind: "screen", id: "scr_ds3500" }]
   },
   { kind: "section", id: "sec_jq7uz3", children: [
     { kind: "screen", id: "scr_1em0v2" },

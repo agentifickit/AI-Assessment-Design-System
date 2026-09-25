@@ -37,7 +37,7 @@ export function AiPage() {
         title="Message variants"
         description="Author is carried by position, border treatment, and a written label. Never by colour alone — a user message and an assistant message remain distinguishable in greyscale and at 200% zoom.">
         
-        <Example label="Message, user, assistant with tool call and citation, system, error" tone="surface">
+        <Example label="Message · user, assistant with tool call and citation, system, error" tone="surface">
           <div className="max-w-measure">
             <Message author="user" authorLabel="You" timestamp="13:11" onEdit={() => undefined}>
               Draft the opening two paragraphs. Do not claim anything the churn review does not support.
@@ -51,7 +51,7 @@ export function AiPage() {
               footer={
               <ul className="flex flex-wrap gap-1.5">
                   <li>
-                    <SourceChip index={1} title="Mid-market churn review.pdf" locator="p.2, Exit interviews" />
+                    <SourceChip index={1} title="Mid-market churn review.pdf" locator="p.2 · Exit interviews" />
                   </li>
                 </ul>
               }>
@@ -85,7 +85,7 @@ export function AiPage() {
         <Alert
           tone="info"
           title="The four announcements"
-          children="Generation started, generation completed, generation interrupted, generation failed. Each is delivered once, through a single polite live region per thread, naming what happened rather than just “done”." />
+          children="Generation started · generation completed · generation interrupted · generation failed. Each is delivered once, through a single polite live region per thread, naming what happened rather than just “done”." />
         
         <SpecList
           className="mt-4"
@@ -132,7 +132,7 @@ export function AiPage() {
               onStop={() => setState('idle')}
               state={state}
               notice={notice}
-              attachments={[{ id: 'a', name: 'Mid-market churn review.pdf', meta: 'PDF, 6 pages' }]}
+              attachments={[{ id: 'a', name: 'Mid-market churn review.pdf', meta: 'PDF · 6 pages' }]}
               onRemoveAttachment={() => undefined}
               onAttach={() => undefined}
               suggestions={state === 'idle' ? ['What have I not verified?', 'Check my draft against the source'] : undefined}
@@ -146,18 +146,18 @@ export function AiPage() {
         <DoDont
           doText={
           <ul className="flex list-disc flex-col gap-1.5 pl-4">
-              <li>“Responding”, “Retrieving from Brand guidelines.pdf”</li>
-              <li>“AI-generated draft”, “Human review required”</li>
-              <li>“Your work is saved”, “You can review before submitting”</li>
-              <li>“Evidence not captured”, “This behaviour was not observed”</li>
+              <li>“Responding” · “Retrieving from Brand guidelines.pdf”</li>
+              <li>“AI-generated draft” · “Human review required”</li>
+              <li>“Your work is saved” · “You can review before submitting”</li>
+              <li>“Evidence not captured” · “This behaviour was not observed”</li>
             </ul>
           }
           dontText={
           <ul className="flex list-disc flex-col gap-1.5 pl-4">
               <li>“AI is thinking” — implies hidden reasoning we cannot see</li>
               <li>“The AI has decided” — no automated decision is made here</li>
-              <li>“Bad prompt”, “Candidate failed” — judgemental and inaccurate</li>
-              <li>“Objective score”, “Guaranteed accurate” — claims the method cannot support</li>
+              <li>“Bad prompt” · “Candidate failed” — judgemental and inaccurate</li>
+              <li>“Objective score” · “Guaranteed accurate” — claims the method cannot support</li>
             </ul>
           } />
         

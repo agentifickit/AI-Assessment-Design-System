@@ -64,7 +64,7 @@ export const contrastGroups: ContrastGroup[] = [
     fg: '--selection-ring',
     bg: '--surface',
     target: 'non-text',
-    usage: 'Sheet selection, fill handle, selected header marks (DS-35)'
+    usage: 'Sheet selection, fill handle, selected header marks (DS-43)'
   },
   {
     id: 'brand-fg',

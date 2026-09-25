@@ -18,10 +18,10 @@ export interface DrawerProps {
   footer?: React.ReactNode;
   /** 'left' opens from the left edge, over the sidebar: the candidate shell
    *  opens its brief and inbox there, beside the navigation that called them.
-   *  DS-26. */
+   *  DS-34. */
   side?: 'left' | 'right';
   /** Keeps the shell's bars in view: the floating drawer and its scrim start
-   *  below a top bar and stop above a status bar, in px. DS-26. */
+   *  below a top bar and stop above a status bar, in px. DS-34. */
   inset?: {top?: number;bottom?: number;};
   className?: string;
 }
@@ -30,7 +30,7 @@ export interface DrawerProps {
  *  drawer from the right and can pin as a 400px column. The page stays the
  *  work surface; the drawer never becomes a third permanent pane. DS-16,
  *  approved 2026-09-22, amends D-2 of PRD-08. Escape closes an unpinned
- *  drawer; a pinned column is closed with its own control. DS-26 (workspace
+ *  drawer; a pinned column is closed with its own control. DS-34 (workspace
  *  review, 2026-09-25): it can open from the left, and sit between the top
  *  bar and the status bar so the tabs and the session state stay visible. */
 export function Drawer({

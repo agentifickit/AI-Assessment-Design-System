@@ -14,7 +14,7 @@ export interface InlineNameInputProps {
 /** A name edited where it is shown: a tab, a sidebar row. It takes focus with
  *  the text selected, grows with the name, and commits exactly once: Enter or
  *  leaving the field keeps the name, Escape keeps the old one. Keys stop here,
- *  so the strip's arrows and F2 do not fire while typing. DS-21. */
+ *  so the strip's arrows and F2 do not fire while typing. DS-29. */
 export function InlineNameInput({ initial, label, onDone, className }: InlineNameInputProps) {
   const [value, setValue] = useState(initial);
   const ref = useRef<HTMLInputElement>(null);

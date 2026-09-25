@@ -217,20 +217,20 @@ export function CandidateShellPage() {
           className="mt-3"
           title="Changed in the workspace reviews, 2026-09-25 and 2026-09-26"
           entries={[
-          { term: 'DS-21, tabs close, pin and rename', detail: 'Every tab carries its own close; pinned tabs sit first and cannot close until unpinned; pages the candidate made rename in place. The new-tab control follows the last tab. Supersedes DS-15’s single strip without controls.' },
-          { term: 'DS-22, tabs shrink, then scroll', detail: 'Tabs give up width, 224px down to 112px, before the strip scrolls. The strip never shows a scrollbar; fades mark the clipped edges.' },
-          { term: 'DS-23, the top bar owns the dock control', detail: 'The sidebar can leave its own control out, drags from 200 to 400px, and stays mounted while hidden.' },
-          { term: 'DS-24, sidebar rows say words, not counts', detail: 'Trailing meta is a word ("Unit 1"). "See all" carries no count.' },
-          { term: 'DS-25, the status bar keeps what changes', detail: 'What the candidate reads once (the assessment, the connection while it is fine, the shortcuts) moves into the session menu under their name. Segments gain glyphs, dividers and a muted lead word.' },
-          { term: 'DS-26, reference opens from the left', detail: 'The brief and the inbox open over the sidebar, beside the navigation that called them, between the top bar and the status bar. Amends DS-16’s right-hand drawer for the candidate shell.' },
-          { term: 'DS-30, a page state is a quiet label', detail: '"Read only" is muted text beside a lock, not a Badge. Badges are 3px, never pills.' },
+          { term: 'DS-29, tabs close, pin and rename', detail: 'Every tab carries its own close; pinned tabs sit first and cannot close until unpinned; pages the candidate made rename in place. The new-tab control follows the last tab. Supersedes DS-15’s single strip without controls.' },
+          { term: 'DS-30, tabs shrink, then scroll', detail: 'Tabs give up width, 224px down to 112px, before the strip scrolls. The strip never shows a scrollbar; fades mark the clipped edges.' },
+          { term: 'DS-31, the top bar owns the dock control', detail: 'The sidebar can leave its own control out, drags from 200 to 400px, and stays mounted while hidden.' },
+          { term: 'DS-32, sidebar rows say words, not counts', detail: 'Trailing meta is a word ("Unit 1"). "See all" carries no count.' },
+          { term: 'DS-33, the status bar keeps what changes', detail: 'What the candidate reads once (the assessment, the connection while it is fine, the shortcuts) moves into the session menu under their name. Segments gain glyphs, dividers and a muted lead word.' },
+          { term: 'DS-34, reference opens from the left', detail: 'The brief and the inbox open over the sidebar, beside the navigation that called them, between the top bar and the status bar. Amends DS-16’s right-hand drawer for the candidate shell.' },
+          { term: 'DS-38, a page state is a quiet label', detail: '"Read only" is muted text beside a lock, not a Badge. Badges are 3px, never pills.' },
           { term: 'Focus ring in the base layer', detail: 'The global focus ring moved into the base layer and no longer sets a 3px radius, so a component can place it inside its edge. See Accessibility.' }]
           } />
 
       </DocSection>
 
       <DocSection
-        title="Top bar and browser tabs (DS-15, DS-21, DS-22)"
+        title="Top bar and browser tabs (DS-15, DS-29, DS-30)"
         description="The open pages sit in the full-width top bar as browser-style tabs. The active tab is white with a three-side border and no bottom border, so it merges into the page below; inactive tabs take the same outline on the sunken strip and share edges with their neighbour. The hairline runs full width and stops under the active tab. Left of the tabs, in this order: the sidebar's dock control, the inbox with its unread count, the brief, then back and forward.">
 
         <Example label="Top bar with Tabs variant=browser" note="Right-click a tab, double-click the note to rename, F2 on the focused tab" bodyClassName="p-0">
@@ -295,7 +295,7 @@ export function CandidateShellPage() {
       </DocSection>
 
       <DocSection
-        title="Sidebar (DS-14, DS-23, DS-24)"
+        title="Sidebar (DS-14, DS-31, DS-32)"
         description="240px by default, replacing the 48px icon rail for the candidate. Docked it is a column in the flow; its right edge drags from 200 to 400px. Hidden, a 12px hot edge on the left peeks the same panel as a floating overlay on hover or focus; clicking the edge docks it again. The panel stays mounted in every mode. In the candidate shell the top bar owns the dock control, so the sidebar leaves its own out and its header holds the search field.">
 
         <Example label={`Sidebar, mode ${sidebar}, ${sidebarWidth}px`} note="Drag the edge, or focus it and use the arrows; hover the left edge when hidden" bodyClassName="p-0">
@@ -346,15 +346,15 @@ export function CandidateShellPage() {
           entries={[
           { term: 'Anatomy', detail: '48px header (the search field, or a workspace row with the dock control), one scroll container of sections, a footer outside it for the quiet Submit.' },
           { term: 'Modes', detail: 'docked, hidden, peek. Peek is an overlay with the dialog shadow, inset 12px, and closes when the pointer leaves. Hidden keeps the panel mounted.' },
-          { term: 'Width (DS-23)', detail: 'Pass width and onWidthChange: the right edge becomes a PanelSeparator, 200 to 400px. Arrows move it 16px, Home and End go to the ends, Enter hides the sidebar.' },
-          { term: 'Rows (DS-24)', detail: 'SidebarSection with an 11px heading and an optional action; SidebarItem at 28px with a 14px glyph, trailing meta in words, a 6px unread dot, double-click to rename; SidebarSeeAll without a count.' },
+          { term: 'Width (DS-31)', detail: 'Pass width and onWidthChange: the right edge becomes a PanelSeparator, 200 to 400px. Arrows move it 16px, Home and End go to the ends, Enter hides the sidebar.' },
+          { term: 'Rows (DS-32)', detail: 'SidebarSection with an 11px heading and an optional action; SidebarItem at 28px with a 14px glyph, trailing meta in words, a 6px unread dot, double-click to rename; SidebarSeeAll without a count.' },
           { term: 'Accessibility', detail: 'A nav landmark named by the label. The hot edge is a real button, "Show sidebar", so keyboard users can peek and dock it. An unread row says so to screen readers.' }]
           } />
 
       </DocSection>
 
       <DocSection
-        title="Resizing panels (DS-28)"
+        title="Resizing panels (DS-36)"
         description="PanelSeparator takes the whole resize contract when given onChange: the drag, arrows by 16px, Home and End to the ends, Enter to collapse, and aria-valuenow for the width. resizes says which side grows: the copilot on the right grows as the line moves left.">
 
         <Example label={`PanelSeparator resizes="next", copilot ${copilotWidth}px`} bodyClassName="p-0">
@@ -367,7 +367,7 @@ export function CandidateShellPage() {
       </DocSection>
 
       <DocSection
-        title="Page header and its state (DS-30)"
+        title="Page header and its state (DS-38)"
         description="The row above the page: where the open document lives, and on the right its state and actions. A state the candidate cannot act on, such as a material being read only, is said quietly: muted 11px text beside a 12px glyph. It is not a Badge, and never a pill.">
 
         <Example label="Page header with StateLabel" bodyClassName="p-0">
@@ -387,7 +387,7 @@ export function CandidateShellPage() {
       </DocSection>
 
       <DocSection
-        title="Status bar (DS-12, DS-25)"
+        title="Status bar (DS-12, DS-33)"
         description="A 32px bottom bar of mono small-caps segments. Segments use the status type style (10/16 mono caps, tracked) because they are instrumentation. The candidate's name at the far left opens the session details, which hold what is read once: the assessment, the unit, the connection while it is fine, and the shortcuts, with room for settings such as a theme. The bar keeps what changes: the save, the unit, the clock, and the connection only while it is lost. What the timer shows is a product decision; the bar only reserves the seat.">
 
         <Example label="StatusBar divided, with the session menu" note="Open the name" bodyClassName="p-0">
@@ -428,7 +428,7 @@ export function CandidateShellPage() {
             trailingSegments={[{ id: 'elapsed', lead: 'Elapsed', label: '41:12', glyph: <ClockIcon className="h-3 w-3" aria-hidden="true" /> }]} />
 
         </Example>
-        <Example label="StatusBar without the DS-25 options, unchanged" className="mt-3" bodyClassName="p-0">
+        <Example label="StatusBar without the DS-33 options, unchanged" className="mt-3" bodyClassName="p-0">
           <StatusBar
             segments={[
             { id: 'who', label: 'Priya Shah' },
@@ -441,15 +441,15 @@ export function CandidateShellPage() {
         <SpecList
           className="mt-4"
           entries={[
-          { term: 'Segments (DS-25)', detail: 'lead is the muted word, label the value in the secondary ink; glyph is a 12px mark before them. divided puts a hairline between segments and pads each 12px. shrink marks the value that truncates first (the unit title).' },
-          { term: 'Session menu (DS-25)', detail: 'A Popover (a disclosure, role dialog) opening upward, triggered by StatusBarButton: the initials in a 16px circle with the connection as a 6px dot, the name, a chevron. Escape and a click outside close it and return focus.' },
+          { term: 'Segments (DS-33)', detail: 'lead is the muted word, label the value in the secondary ink; glyph is a 12px mark before them. divided puts a hairline between segments and pads each 12px. shrink marks the value that truncates first (the unit title).' },
+          { term: 'Session menu (DS-33)', detail: 'A Popover (a disclosure, role dialog) opening upward, triggered by StatusBarButton: the initials in a 16px circle with the connection as a 6px dot, the name, a chevron. Escape and a click outside close it and return focus.' },
           { term: 'Live regions', detail: 'Save and connection segments are polite live regions. When the connection moves into the menu, announce it from a visually hidden live region so a change is still heard.' }]
           } />
 
       </DocSection>
 
       <DocSection
-        title="Drawer (DS-16, DS-26)"
+        title="Drawer (DS-16, DS-34)"
         description="Reference content (the brief, the inbox) opens over the page as a 480px drawer and can pin, becoming a 400px column in the flow where the caller places it. In the candidate shell it opens from the left, over the sidebar, and stops at the top bar and the status bar so the tabs and the session state stay in view. Pinning it there makes it a pinned tab, which is the product's composition.">
 
         <Example label="Drawer, floating then pinned">
@@ -496,7 +496,7 @@ export function CandidateShellPage() {
           className="mt-4"
           entries={[
           { term: 'Widths', detail: '480px floating (max 90% of the viewport), 400px pinned. The pinned column takes a hairline on the page side and no shadow.' },
-          { term: 'Side and inset (DS-26)', detail: 'side="left" opens from the left edge with the hairline on its right. inset={{ top: 40, bottom: 32 }} keeps the candidate shell’s top bar and status bar outside the scrim.' },
+          { term: 'Side and inset (DS-34)', detail: 'side="left" opens from the left edge with the hairline on its right. inset={{ top: 40, bottom: 32 }} keeps the candidate shell’s top bar and status bar outside the scrim.' },
           { term: 'Header', detail: '48px: small-caps eyebrow for the source, the title, then pin and close at the right.' },
           { term: 'Keyboard', detail: 'Escape closes a floating drawer. A pinned column is closed with its own control so a keystroke cannot remove a pane the candidate arranged.' }]
           } />
@@ -549,7 +549,7 @@ export function CandidateShellPage() {
               <span className="flex items-center gap-2 text-13 text-fg-secondary"><Avatar name="Priya Shah" size="xs" /> xs, initials in the badge style</span>
             </div>
           </Example>
-          <Example label="A file name shown without its extension (DS-29)" tone="surface">
+          <Example label="A file name shown without its extension (DS-37)" tone="surface">
             <span className="flex items-center gap-2 text-13 text-fg-secondary">
               <FileGlyph name="Retention by cohort.pdf" className="text-fg-muted" />
               <FileName name="Retention by cohort.pdf" />

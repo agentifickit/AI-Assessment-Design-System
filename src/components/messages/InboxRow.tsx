@@ -18,7 +18,7 @@ export interface ChannelMarkProps {
 /** Where a message came from, as a 14px mark in the muted ink with the
  *  channel's name for screen readers. It takes the slot a repeated word
  *  ("Email") used to fill; Teams takes the same slot when its PRD adds it.
- *  DS-32. */
+ *  DS-40. */
 export function ChannelMark({ channel, className }: ChannelMarkProps) {
   const Icon = channelIcon[channel];
   return (
@@ -53,7 +53,7 @@ export interface InboxRowProps {
  *  primary ink and medium weight while unread; the preview follows in the
  *  muted ink. At the right, the time, then the unread dot and the channel
  *  mark. The sender's initials are a circle, or the square for Slack (DS-19).
- *  DS-32, from the workspace review of 2026-09-26. */
+ *  DS-40, from the workspace review of 2026-09-26. */
 export function InboxRow({ channel, sender, subject, preview, time, unread, active, onOpen }: InboxRowProps) {
   return (
     <li>

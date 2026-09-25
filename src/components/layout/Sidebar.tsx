@@ -18,13 +18,13 @@ export interface SidebarProps {
   /** Pinned to the bottom, outside the scroll container: settings, submit. */
   footer?: React.ReactNode;
   /** Draws the hide and dock control in the header. Turn it off when the
-   *  shell's top bar owns that control, as the candidate shell's does. DS-23. */
+   *  shell's top bar owns that control, as the candidate shell's does. DS-31. */
   dockControl?: boolean;
   /** Docked width in px. */
   width?: number;
   /** With it, the docked sidebar's right edge is a PanelSeparator: drag it
    *  between `minWidth` and `maxWidth`, arrows move it 16px, Home and End go
-   *  to the ends, Enter hides the sidebar. DS-23. */
+   *  to the ends, Enter hides the sidebar. DS-31. */
   onWidthChange?: (width: number) => void;
   minWidth?: number;
   maxWidth?: number;
@@ -35,7 +35,7 @@ export interface SidebarProps {
  *  the flow; hidden it leaves a 12px hot edge on the left that peeks the same
  *  panel as a floating overlay on hover or focus, so nothing is ever more than
  *  one gesture away. Replaces the 48px icon rail for the candidate. DS-14,
- *  approved 2026-09-22. DS-23 (workspace reviews, 2026-09-25 and 26): the
+ *  approved 2026-09-22. DS-31 (workspace reviews, 2026-09-25 and 26): the
  *  dock control is optional, the width can be dragged, and the panel stays
  *  mounted while hidden, so whatever it holds (a file list that feeds search)
  *  keeps its state; only its visibility changes. */
@@ -134,7 +134,7 @@ export interface SidebarSectionProps {
 }
 
 /** One sidebar group: a quiet 11px heading and its rows. Every section header
- *  uses the same type step, whatever it holds. DS-24. */
+ *  uses the same type step, whatever it holds. DS-32. */
 export function SidebarSection({ label, action, children, className }: SidebarSectionProps) {
   return (
     <div className={cn('px-2 pb-2', className)}>
@@ -161,7 +161,7 @@ export interface SidebarItemProps {
   onRename?: (label: string) => void;
 }
 
-/** A 28px sidebar row. DS-24: trailing meta sits at the right in the muted
+/** A 28px sidebar row. DS-32: trailing meta sits at the right in the muted
  *  ink, an unread item carries a 6px dot after it, and a renameable row
  *  edits in place on double-click. */
 export function SidebarItem({ label, icon, onSelect, active, meta, unread, onRename }: SidebarItemProps) {

@@ -10,7 +10,7 @@ export interface KeyValueItem {
 export interface KeyValueListProps {
   items: KeyValueItem[];
   /** 'rows' divides each pair with a hairline; 'inline' is a compact two-column
-   *  grid; 'properties' is a document's property rows (DS-31). */
+   *  grid; 'properties' is a document's property rows (DS-39). */
   variant?: 'rows' | 'inline' | 'properties';
   /** Properties only: 'sm' sets values in the 11px step and the secondary
    *  ink, for a read-out inside a popover. */
@@ -22,7 +22,7 @@ export interface KeyValueListProps {
  *  what it asks for, as Linear and ClickUp do above an issue: an 88px label
  *  column in the muted 11px step, values in the 13px body ink on a 20px line,
  *  6px between rows, no rules and no fills. Values wrap; labels never do, so
- *  keep them to one or two words ("Hand in", "Unit"). DS-31, from the task
+ *  keep them to one or two words ("Hand in", "Unit"). DS-39, from the task
  *  brief in the workspace review of 2026-09-26. */
 export function KeyValueList({ items, variant = 'rows', size = 'md', className }: KeyValueListProps) {
   if (variant === 'properties') {

@@ -32,7 +32,7 @@ export interface BriefNoteProps {
  *  then the message itself at reading measure, the materials as a list, and
  *  one way to ask about it. There is no separate deliverable box: "Hand in" is
  *  a property. Direction chosen with Pulkit on 2026-09-25 from Linear's and
- *  ClickUp's property rows and a manager's memo. DS-31. */
+ *  ClickUp's property rows and a manager's memo. DS-39. */
 export function BriefNote({ sender, title, properties = [], media, children, materials = [], action, className }: BriefNoteProps) {
   return (
     <article aria-label={title} className={cn('px-6 py-5', className)}>

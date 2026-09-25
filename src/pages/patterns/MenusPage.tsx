@@ -43,7 +43,7 @@ export function MenusPage() {
       <PageHeader
         eyebrow="Patterns"
         title="Menus and popovers"
-        intro="Ledger had no menu. The candidate workspace composed four: the copilot's mode, model and chat switchers, the new-page menu, the tab context menu, and the session details under the candidate's name. These are the primitives it needed. A Menu is a list of commands; a Popover is a disclosure that reads a few facts out. Both float on the popover elevation, are non-modal, and close on Escape or a click outside. DS-27, from the workspace review of 2026-09-26." />
+        intro="Ledger had no menu. The candidate workspace composed four: the copilot's mode, model and chat switchers, the new-page menu, the tab context menu, and the session details under the candidate's name. These are the primitives it needed. A Menu is a list of commands; a Popover is a disclosure that reads a few facts out. Both float on the popover elevation, are non-modal, and close on Escape or a click outside. DS-35, from the workspace review of 2026-09-26." />
 
 
       <DocSection

@@ -45,7 +45,7 @@ function menuItems(panel: HTMLElement | null): HTMLElement[] {
  *  a list of commands. Non-modal: nothing behind it goes inert. A click
  *  outside and Escape close it; Escape returns focus to the trigger. Focus
  *  moves in on open, to the first item of a menu or to the panel of a
- *  disclosure, so a screen reader lands on what opened. DS-27, from the
+ *  disclosure, so a screen reader lands on what opened. DS-35, from the
  *  workspace review round 2 (2026-09-26), where the product had composed it
  *  twice (the copilot's switchers and the status bar's session menu). */
 export function Popover({

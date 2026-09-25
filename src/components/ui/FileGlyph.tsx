@@ -37,7 +37,7 @@ export interface FileGlyphProps {
  *  glyph: it shows a small bordered "PDF" tag, because a page glyph reads as
  *  the candidate's own document. The tag is type drawn as a glyph, the one
  *  place type goes under the 9px chrome floor (DS-20); it is hidden from
- *  assistive technology, and FileName says the kind in words. DS-29, from the
+ *  assistive technology, and FileName says the kind in words. DS-37, from the
  *  workspace review of 2026-09-26. */
 export function FileGlyph({ name = '', kind, className }: FileGlyphProps) {
   const k = kind ?? kindOf(name);
@@ -66,7 +66,7 @@ export interface FileNameProps {
 
 /** A file's name as it is shown: without its extension, since the glyph
  *  beside it already says the kind. Screen readers still hear it ("Retention
- *  by cohort, PDF"), and the full name is the hover title. DS-29. */
+ *  by cohort, PDF"), and the full name is the hover title. DS-37. */
 export function FileName({ name, className }: FileNameProps) {
   const trimmed = name.trim();
   const match = EXTENSION.exec(trimmed);

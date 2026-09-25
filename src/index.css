@@ -403,7 +403,7 @@
      row and column header marks take the ring; the range takes the fill. The
      ring carries the state at 3:1; the 10% fill only tints, so text in a
      selected cell keeps its contrast. Selection is one of the few sanctioned
-     accent uses, with focus, the primary action and the live dot. DS-35. */
+     accent uses, with focus, the primary action and the live dot. DS-43. */
   --selection-ring: var(--brand-accent);
   --selection-fill: color-mix(in srgb, var(--brand-accent) 10%, transparent);
 }

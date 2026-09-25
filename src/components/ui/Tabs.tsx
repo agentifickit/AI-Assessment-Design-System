@@ -45,7 +45,7 @@ export interface TabsProps extends BrowserTabsOptions {
   /** 'browser' is the candidate shell's top-bar strip: the active tab is white with
    *  a three-side border and no bottom border so it merges into the page; inactive
    *  tabs share edges on the sunken strip. DS-15, approved 2026-09-22; per-tab
-   *  close, pinning, rename and the context menu are DS-21, overflow is DS-22. */
+   *  close, pinning, rename and the context menu are DS-29, overflow is DS-30. */
   variant?: 'line' | 'segmented' | 'browser';
   className?: string;
 }
@@ -129,6 +129,7 @@ export function Tabs({ items, value, onChange, label, variant = 'line', classNam
     </div>);
 
 }
+
 type BrowserTabsProps = BrowserTabsOptions & Pick<TabsProps, 'items' | 'value' | 'onChange' | 'label' | 'className'>;
 
 function tabBox(list: HTMLElement | null, id: string): HTMLElement | undefined {
@@ -136,10 +137,10 @@ function tabBox(list: HTMLElement | null, id: string): HTMLElement | undefined {
 }
 
 /** The browser variant (DS-15), with the controls the candidate shell found it
- *  needed (DS-21): a close on every tab, shown on hover, on focus and on the
+ *  needed (DS-29): a close on every tab, shown on hover, on focus and on the
  *  active tab; pinned tabs first, with an unpin control in the close's place;
  *  rename in place; a context menu with Pin, Rename and Close; the new-tab
- *  control right after the last tab. Overflow (DS-22): tabs shrink before the
+ *  control right after the last tab. Overflow (DS-30): tabs shrink before the
  *  strip scrolls, as a browser's do, from 224px down to 112px, which still
  *  shows a few letters. Past that the strip scrolls sideways with no
  *  scrollbar, the wheel scrolls it too, a fade marks each clipped edge, and

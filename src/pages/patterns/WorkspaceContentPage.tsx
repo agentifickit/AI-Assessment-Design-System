@@ -58,11 +58,11 @@ export function WorkspaceContentPage() {
       <PageHeader
         eyebrow="Patterns"
         title="Workspace content"
-        intro="What the candidate reads and writes inside the shell: the task brief as a note from the manager, property rows, the inbox list, file glyphs, a page title edited in the page, markers in the copilot thread, and the selection in a sheet. Each was composed by the product in the workspace reviews of 2026-09-25 and 2026-09-26 and is folded in here, DS-29 to DS-35." />
+        intro="What the candidate reads and writes inside the shell: the task brief as a note from the manager, property rows, the inbox list, file glyphs, a page title edited in the page, markers in the copilot thread, and the selection in a sheet. Each was composed by the product in the workspace reviews of 2026-09-25 and 2026-09-26 and is folded in here, DS-37 to DS-43." />
 
 
       <DocSection
-        title="The brief as a note from the manager (DS-31)"
+        title="The brief as a note from the manager (DS-39)"
         description="The brief reads as a message, not a form. The sender heads it, then the task's name, then what the unit asks for as properties, then a walkthrough recording when there is one, then the message at reading measure, the materials, and one quiet way to ask about it. The old Deliverable box repeated Hand in and is gone: Hand in is a property.">
 
         <Example label="BriefNote in the 480px drawer" tone="surface" bodyClassName="p-0">
@@ -112,7 +112,7 @@ export function WorkspaceContentPage() {
       </DocSection>
 
       <DocSection
-        title="Property rows (DS-31)"
+        title="Property rows (DS-39)"
         description="KeyValueList variant=properties is how a document states what it asks for, as Linear and ClickUp do above an issue: an 88px label column in the muted 11px step, values in the 13px body ink, 6px between rows, no rules and no fills. Values wrap; labels stay one or two words.">
 
         <Example label='KeyValueList variant="properties"' tone="surface">
@@ -135,7 +135,7 @@ export function WorkspaceContentPage() {
       </DocSection>
 
       <DocSection
-        title="Inbox rows and the channel mark (DS-32)"
+        title="Inbox rows and the channel mark (DS-40)"
         description="One row per message: the sender's initials, sender and subject, a two-line preview, then at the right the time, the unread dot and the channel as a 14px mark rather than a repeated word. Slack senders take the square (DS-19). Teams takes the same slot when its PRD adds it.">
 
         <Example label="InboxRow" tone="surface" bodyClassName="p-0">
@@ -177,7 +177,7 @@ export function WorkspaceContentPage() {
       </DocSection>
 
       <DocSection
-        title="File glyphs and names (DS-29)"
+        title="File glyphs and names (DS-37)"
         description="A file's kind is a 14px glyph in the ink of its row; kinds differ by shape, never by colour. A PDF shows a small bordered type tag instead of a page glyph, which would read as the candidate's own document. Names are shown without their extension, since the glyph already says it; screen readers still hear it.">
 
         <Example label="FileGlyph kinds" tone="surface">
@@ -203,7 +203,7 @@ export function WorkspaceContentPage() {
       </DocSection>
 
       <DocSection
-        title="A page title edited in the page (DS-33)"
+        title="A page title edited in the page (DS-41)"
         description="A document's name is its heading, edited where it is shown, as in Notion: a borderless field in the heading-1 step, the same name the tab and the sidebar show. Enter moves on to the body; Escape restores the name. An empty title shows the placeholder in the muted ink.">
 
         <Example label="PageTitleInput" tone="surface">
@@ -221,7 +221,7 @@ export function WorkspaceContentPage() {
       </DocSection>
 
       <DocSection
-        title="Thread markers (DS-34)"
+        title="Thread markers (DS-42)"
         description="Where a copilot thread's context changes, a quiet marker says so: turns carried from an earlier unit sit under the unit's name, this unit's under This unit. 11px muted text between two hairlines. Not a heading, never the accent.">
 
         <Example label="ThreadMarker" tone="surface">
@@ -236,7 +236,7 @@ export function WorkspaceContentPage() {
       </DocSection>
 
       <DocSection
-        title="Selection in a grid (DS-35)"
+        title="Selection in a grid (DS-43)"
         description="A sheet selects in the brand orange, as the rest of the workspace focuses in it, not in a grid engine's blue. The ring carries the state at 3:1; the range takes a 10% tint that leaves its text at full contrast. The fill handle and the selected row and column header marks take the ring colour. Selection joins focus, the primary action and the live dot as a sanctioned accent use; it is small and it is where the candidate is looking.">
 
         <Example label="Selected range B2 to C3" tone="surface">

@@ -12,7 +12,7 @@ export interface StateLabelProps {
  *  on the right of the page header next to the page's actions. No border, no
  *  fill, no radius. A state the reader cannot act on is information, not a
  *  status to scan for, so it is not a Badge. Badges stay for statuses in lists
- *  and tables, at `--radius-xs` 3px, never a pill. DS-30, from the workspace
+ *  and tables, at `--radius-xs` 3px, never a pill. DS-38, from the workspace
  *  review of 2026-09-26 ("Read only" had been a pill). */
 export function StateLabel({ icon, children, className }: StateLabelProps) {
   return (
