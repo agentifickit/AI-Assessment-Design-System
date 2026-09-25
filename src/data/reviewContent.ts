@@ -26,7 +26,7 @@ export interface TimelineMoment {
 export const candidate = {
   name: 'R. Adeyemi',
   reference: 'NW-2291',
-  assessment: 'Marketing · Campaign positioning',
+  assessment: 'Marketing, Campaign positioning',
   completedAt: '14 Aug, 13:54',
   duration: '52 min of 75',
   reviewer: 'J. Okonkwo',
@@ -50,7 +50,7 @@ export const moments: TimelineMoment[] = [
     before: 'I have a churn review and a draft campaign.',
     quote: 'Before you write anything: read the churn review and tell me the three most common reasons mid-market accounts gave for leaving. Quote them.',
     speaker: 'Candidate',
-    sourceLabel: 'Conversation · 13:06'
+    sourceLabel: 'Conversation, 13:06'
   },
   interpretation: {
     text: 'The candidate withheld the writing task until they had established what the source material said, and asked for quotations rather than a summary. This is consistent with scoping work before delegating it.',
@@ -78,7 +78,7 @@ export const moments: TimelineMoment[] = [
     quote: 'That is the opposite of what the campaign leads on. Draft the opening two paragraphs of a note to the VP arguing for a change of angle. Do not claim anything the churn review does not support, and mark anything you are inferring.',
     after: 'The assistant produced two paragraphs with one inference marked.',
     speaker: 'Candidate',
-    sourceLabel: 'Conversation · 13:11'
+    sourceLabel: 'Conversation, 13:11'
   },
   interpretation: {
     text: 'The candidate identified a contradiction between the campaign draft and the churn data, then constrained the assistant against unsupported claims. This may indicate they treat model output as needing substantiation.',
@@ -98,7 +98,7 @@ export const moments: TimelineMoment[] = [
     author: 'J. Okonkwo',
     timestamp: '15 Aug, 09:21',
     text: 'Worth raising at interview: ask what they would have done if the churn review had been silent on the point.',
-    anchor: 'Conversation · 13:11'
+    anchor: 'Conversation, 13:11'
   }
 },
 {
@@ -117,7 +117,7 @@ export const moments: TimelineMoment[] = [
     quote: 'Fourteen of 24 lost accounts named this.',
     after: 'Matches page 2 of the churn review, which records 14 of 24.',
     speaker: 'Candidate draft',
-    sourceLabel: 'Draft · revision 4'
+    sourceLabel: 'Draft, revision 4'
   },
   interpretation: {
     text: 'The figure in the draft matches the source document, and the document was opened before the figure was written. This is consistent with verification rather than reproduction.',
@@ -158,7 +158,7 @@ export const moments: TimelineMoment[] = [
   evidence: {
     quote: 'The churn review covers lost accounts only. I have not verified that the same pattern holds for the 142 accounts in the Q3 pipeline, and the note should not be read as saying it does.',
     speaker: 'Candidate draft',
-    sourceLabel: 'Draft · revision 7'
+    sourceLabel: 'Draft, revision 7'
   },
   interpretation: {
     text: 'The candidate added an unprompted statement of what their own recommendation does not establish. No assistant message suggested it.',

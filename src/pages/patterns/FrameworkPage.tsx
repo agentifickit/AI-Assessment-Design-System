@@ -53,7 +53,7 @@ export function FrameworkPage() {
         title="Profile presentation"
         description="Four labelled rows, each carrying its band, its supporting moment count, and — where a dimension was not measured — the reason instead of a rating.">
         
-        <Example label="DimensionProfile · report and reviewer summary">
+        <Example label="DimensionProfile, report and reviewer summary">
           <DimensionProfile results={dimensionResults} />
         </Example>
         <DoDont
@@ -104,7 +104,7 @@ export function FrameworkPage() {
         title="Coverage before conclusions"
         description="A reviewer sees how much of each dimension the session actually gave them before reading any interpretation — otherwise a thin evidence base and a rich one look identical.">
         
-        <Example label="DimensionCoverage · reviewer evaluation panel">
+        <Example label="DimensionCoverage, reviewer evaluation panel">
           <div className="max-w-md">
             <DimensionCoverage entries={coverage} />
           </div>

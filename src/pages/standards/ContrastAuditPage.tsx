@@ -83,7 +83,7 @@ export function ContrastAuditPage() {
         
         <div className="grid gap-3 sm:grid-cols-2">
           <div className="rounded-md border border-line bg-surface p-4">
-            <p className="text-2xs font-semibold uppercase tracking-wide text-fg-muted">Brand accent · non-text</p>
+            <p className="text-2xs font-semibold uppercase tracking-wide text-fg-muted">Brand accent, non-text</p>
             <div className="mt-2.5 flex items-center gap-3">
               <span className="h-9 w-9 shrink-0 rounded-sm" style={{ background: 'var(--brand-accent)' }} aria-hidden="true" />
               <div className="min-w-0">
@@ -95,7 +95,7 @@ export function ContrastAuditPage() {
             </div>
           </div>
           <div className="rounded-md border border-line bg-surface p-4">
-            <p className="text-2xs font-semibold uppercase tracking-wide text-fg-muted">Primary action · carries text</p>
+            <p className="text-2xs font-semibold uppercase tracking-wide text-fg-muted">Primary action, carries text</p>
             <div className="mt-2.5 flex items-center gap-3">
               <span
                 className="inline-flex h-9 shrink-0 items-center rounded-sm px-3 text-13 font-medium"

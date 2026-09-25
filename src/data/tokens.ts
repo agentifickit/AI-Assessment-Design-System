@@ -42,11 +42,11 @@ export const semanticSurface: TokenRow[] = [
 
 
 export const semanticForeground: TokenRow[] = [
-{ name: '--fg-primary', value: '#232220', dark: '#f2f1ee', usage: 'Body and heading text.', note: '14.8:1 light · 15.6:1 dark' },
-{ name: '--fg-secondary', value: '#56554f', dark: '#c4c2bc', usage: 'Supporting prose, table cells.', note: '7.4:1 light · 9.7:1 dark' },
-{ name: '--fg-muted', value: '#71706a', dark: '#9b9992', usage: 'Metadata, timestamps, hints.', note: '4.6:1 light · 5.4:1 dark. Never for decision-critical text.' },
+{ name: '--fg-primary', value: '#232220', dark: '#f2f1ee', usage: 'Body and heading text.', note: '14.8:1 light, 15.6:1 dark' },
+{ name: '--fg-secondary', value: '#56554f', dark: '#c4c2bc', usage: 'Supporting prose, table cells.', note: '7.4:1 light, 9.7:1 dark' },
+{ name: '--fg-muted', value: '#71706a', dark: '#9b9992', usage: 'Metadata, timestamps, hints.', note: '4.6:1 light, 5.4:1 dark. Never for decision-critical text.' },
 { name: '--fg-disabled', value: '#bfbfb8', dark: '#605e59', usage: 'Disabled control labels. Always paired with a disabled state, never alone.' },
-{ name: '--fg-on-accent', value: '#ffffff', dark: '#1a0d06', usage: 'Text on the accent solid.', note: '4.6:1 on orange-500 · 8.9:1 on orange-400' },
+{ name: '--fg-on-accent', value: '#ffffff', dark: '#1a0d06', usage: 'Text on the accent solid.', note: '4.6:1 on orange-500, 8.9:1 on orange-400' },
 { name: '--fg-on-inverse', value: '#f4f4f1', dark: '#232220', usage: 'Text on inverse surfaces.' }];
 
 

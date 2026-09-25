@@ -5,24 +5,24 @@ import { Example } from '../../components/docs/Example';
 import { DoDont } from '../../components/docs/DoDont';
 
 const styles = [
-{ name: 'display', spec: '36 / 44 · 600 · -0.02em', sample: 'Assessment complete', cls: 'text-4xl font-semibold tracking-[-0.02em]' },
-{ name: 'heading-1', spec: '24 / 32 · 600 · -0.01em', sample: 'Candidate evidence report', cls: 'text-2xl font-semibold tracking-[-0.01em]' },
-{ name: 'heading-2', spec: '18 / 28 · 600', sample: 'Challenges and improves AI output', cls: 'text-lg font-semibold' },
-{ name: 'heading-3', spec: '16 / 26 · 600', sample: 'Behaviour 3 of 5', cls: 'text-base font-semibold' },
-{ name: 'heading-4', spec: '13 / 20 · 600', sample: 'Reviewer notes', cls: 'text-13 font-semibold' },
-{ name: 'body-lg', spec: '16 / 26 · 400', sample: 'The candidate asked the assistant to justify its pricing claim before using it.', cls: 'text-base' },
-{ name: 'body-base', spec: '14 / 20 · 400', sample: 'The candidate asked the assistant to justify its pricing claim before using it.', cls: 'text-sm' },
-{ name: 'body-sm', spec: '13 / 20 · 400', sample: 'The candidate asked the assistant to justify its pricing claim before using it.', cls: 'text-13' },
-{ name: 'label', spec: '12 / 16 · 500', sample: 'Assessment window', cls: 'text-xs font-medium' },
-{ name: 'label-sm', spec: '11 / 16 · 500 · 0.02em', sample: 'EVIDENCE COMPLETENESS', cls: 'text-2xs font-medium tracking-wide' },
-{ name: 'caption', spec: '11 / 16 · 400', sample: 'Captured 14:02:11 · event 4a91', cls: 'text-2xs' },
-{ name: 'caption-lg', spec: '12 / 18 · 400', sample: 'Hi, Neha left on Friday and her patch is now yours.', cls: 'text-xs leading-[18px]' },
-{ name: 'micro', spec: '10 / 16 · 500 · 0.02em', sample: 'Email', cls: 'text-10 font-medium tracking-wide text-fg-muted' },
-{ name: 'badge', spec: '9 / 12 · 600', sample: '3', cls: 'text-9 font-semibold' },
-{ name: 'status', spec: '10 / 16 · mono 500 · 0.08em', sample: 'CONNECTION STABLE', cls: 'font-mono text-10 font-medium tracking-[0.08em]' },
-{ name: 'code', spec: '12 / 20 · mono 400', sample: 'draft_v3 · sha 8f21c0', cls: 'font-mono text-xs' },
-{ name: 'data', spec: '13 / 20 · 500 · tabular', sample: '1,284 · 42m 09s · 3 of 5', cls: 'text-13 font-medium tnum' },
-{ name: 'data-lg', spec: '24 / 32 · 600 · tabular', sample: '18 / 24', cls: 'text-2xl font-semibold tnum' }];
+{ name: 'display', spec: '36 / 44, 600, -0.02em', sample: 'Assessment complete', cls: 'text-4xl font-semibold tracking-[-0.02em]' },
+{ name: 'heading-1', spec: '24 / 32, 600, -0.01em', sample: 'Candidate evidence report', cls: 'text-2xl font-semibold tracking-[-0.01em]' },
+{ name: 'heading-2', spec: '18 / 28, 600', sample: 'Challenges and improves AI output', cls: 'text-lg font-semibold' },
+{ name: 'heading-3', spec: '16 / 26, 600', sample: 'Behaviour 3 of 5', cls: 'text-base font-semibold' },
+{ name: 'heading-4', spec: '13 / 20, 600', sample: 'Reviewer notes', cls: 'text-13 font-semibold' },
+{ name: 'body-lg', spec: '16 / 26, 400', sample: 'The candidate asked the assistant to justify its pricing claim before using it.', cls: 'text-base' },
+{ name: 'body-base', spec: '14 / 20, 400', sample: 'The candidate asked the assistant to justify its pricing claim before using it.', cls: 'text-sm' },
+{ name: 'body-sm', spec: '13 / 20, 400', sample: 'The candidate asked the assistant to justify its pricing claim before using it.', cls: 'text-13' },
+{ name: 'label', spec: '12 / 16, 500', sample: 'Assessment window', cls: 'text-xs font-medium' },
+{ name: 'label-sm', spec: '11 / 16, 500, 0.02em', sample: 'EVIDENCE COMPLETENESS', cls: 'text-2xs font-medium tracking-wide' },
+{ name: 'caption', spec: '11 / 16, 400', sample: 'Captured 14:02:11, event 4a91', cls: 'text-2xs' },
+{ name: 'caption-lg', spec: '12 / 18, 400', sample: 'Hi, Neha left on Friday and her patch is now yours.', cls: 'text-xs leading-[18px]' },
+{ name: 'micro', spec: '10 / 16, 500, 0.02em', sample: 'Email', cls: 'text-10 font-medium tracking-wide text-fg-muted' },
+{ name: 'badge', spec: '9 / 12, 600', sample: '3', cls: 'text-9 font-semibold' },
+{ name: 'status', spec: '10 / 16, mono 500, 0.08em', sample: 'CONNECTION STABLE', cls: 'font-mono text-10 font-medium tracking-[0.08em]' },
+{ name: 'code', spec: '12 / 20, mono 400', sample: 'draft_v3, sha 8f21c0', cls: 'font-mono text-xs' },
+{ name: 'data', spec: '13 / 20, 500, tabular', sample: '1,284 rows, 42m 09s, 3 of 5', cls: 'text-13 font-medium tnum' },
+{ name: 'data-lg', spec: '24 / 32, 600, tabular', sample: '18 / 24', cls: 'text-2xl font-semibold tnum' }];
 
 
 export function TypographyPage() {
@@ -45,7 +45,7 @@ export function TypographyPage() {
             d: "Fallback: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial."
           },
           {
-            n: 'Inter · tabular',
+            n: 'Inter, tabular',
             r: 'Data, timers, IDs',
             s: '0123456789',
             cls: 'font-sans tnum',

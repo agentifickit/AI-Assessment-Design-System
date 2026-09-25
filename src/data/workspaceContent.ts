@@ -10,7 +10,7 @@ export interface ReferenceDoc {
 }
 
 export const taskBrief = {
-  assessment: 'Marketing · Campaign positioning',
+  assessment: 'Marketing, Campaign positioning',
   taskName: 'Reposition the Q3 renewal campaign',
   totalMinutes: 75,
   scenario:
@@ -34,26 +34,26 @@ export const referenceDocs: ReferenceDoc[] = [
 {
   id: 'churn',
   name: 'Mid-market churn review.pdf',
-  meta: 'PDF · 6 pages',
+  meta: 'PDF, 6 pages',
   summary:
   'Exit interviews from 24 mid-market accounts lost in H1. Cites onboarding time and unclear ownership of reporting, not missing features.'
 },
 {
   id: 'campaign',
   name: 'Q3 renewal campaign draft.docx',
-  meta: 'DOCX · 3 pages',
+  meta: 'DOCX, 3 pages',
   summary: 'The existing campaign. Three of four sections lead on newly shipped features.'
 },
 {
   id: 'brand',
   name: 'Brand guidelines.pdf',
-  meta: 'PDF · 18 pages',
+  meta: 'PDF, 18 pages',
   summary: 'Voice, claim substantiation rules, and the approved list of comparative statements.'
 },
 {
   id: 'accounts',
   name: 'Renewal pipeline Q3.csv',
-  meta: 'CSV · 142 rows',
+  meta: 'CSV, 142 rows',
   summary: 'Accounts up for renewal this quarter with segment, ARR band, and last touchpoint.'
 }];
 
@@ -107,8 +107,8 @@ export const transcript: TranscriptTurn[] = [
   'Feature gaps are mentioned by 3 of 24 accounts, and in two of those the named feature had shipped before renewal.'],
 
   sources: [
-  { index: 1, title: 'Mid-market churn review.pdf', locator: 'p.2 · Exit interview summary' },
-  { index: 2, title: 'Mid-market churn review.pdf', locator: 'p.3 · Ownership' }]
+  { index: 1, title: 'Mid-market churn review.pdf', locator: 'p.2, Exit interview summary' },
+  { index: 2, title: 'Mid-market churn review.pdf', locator: 'p.3, Ownership' }]
 
 },
 {

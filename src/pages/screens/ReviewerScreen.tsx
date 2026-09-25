@@ -67,7 +67,7 @@ export function ReviewerScreen() {
               {candidate.name} <span className="font-mono text-2xs font-normal text-fg-muted">{candidate.reference}</span>
             </h2>
             <p className="text-2xs text-fg-muted">
-              {candidate.assessment} · completed {candidate.completedAt} · {candidate.duration}
+              {candidate.assessment}, completed {candidate.completedAt}, {candidate.duration}
             </p>
           </div>
           <div className="flex items-center gap-2">
@@ -144,7 +144,7 @@ export function ReviewerScreen() {
           <div className="flex min-h-0 min-w-0 flex-1">
             <PanelRegion
               label="Evidence inspector"
-              heading={`Inspector · ${selected.timestamp}`}
+              heading={`Inspector, ${selected.timestamp}`}
               headerAside={<DimensionBadge dimension={selected.dimension} size="sm" />}>
               
               <div className="p-3">

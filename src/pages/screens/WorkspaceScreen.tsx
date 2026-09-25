@@ -144,7 +144,7 @@ export function WorkspaceScreen() {
         onSubmit={send}
         onStop={stop}
         state={phase === 'streaming' ? 'streaming' : 'idle'}
-        attachments={[{ id: 'churn', name: 'Mid-market churn review.pdf', meta: 'PDF · 6 pages' }]}
+        attachments={[{ id: 'churn', name: 'Mid-market churn review.pdf', meta: 'PDF, 6 pages' }]}
         onAttach={() => undefined}
         suggestions={
         phase === 'streaming' ?

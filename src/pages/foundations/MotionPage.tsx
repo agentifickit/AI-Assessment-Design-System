@@ -44,7 +44,7 @@ const rows: MotionRow[] = [
 },
 {
   moment: 'Timeline jump',
-  duration: '280ms scroll · 400ms highlight',
+  duration: '280ms scroll, 400ms highlight',
   easing: 'ease-enter',
   property: 'scroll, opacity',
   note: 'Scrubbing is instant. The 400ms target highlight is a fade of a highlight, not movement, so it may exceed the movement ceiling.'
@@ -115,10 +115,10 @@ export function MotionPage() {
         
         <SpecList
           entries={[
-          { term: '--dur-press · 100ms', detail: 'Press and hover feedback. High frequency, so the shortest.' },
-          { term: '--dur-fast · 140ms', edge: true, detail: 'State changes on existing elements: selection, save status, colour changes.' },
-          { term: '--dur-base · 180ms', detail: 'Small elements entering or leaving: toasts, banners, confirmations.' },
-          { term: '--dur-panel · 220–280ms', detail: 'Structural movement: panel collapse, drawers, sheets, dialogs. 300ms is a hard ceiling.' },
+          { term: '--dur-press, 100ms', detail: 'Press and hover feedback. High frequency, so the shortest.' },
+          { term: '--dur-fast, 140ms', edge: true, detail: 'State changes on existing elements: selection, save status, colour changes.' },
+          { term: '--dur-base, 180ms', detail: 'Small elements entering or leaving: toasts, banners, confirmations.' },
+          { term: '--dur-panel, 220–280ms', detail: 'Structural movement: panel collapse, drawers, sheets, dialogs. 300ms is a hard ceiling.' },
           { term: '--ease-enter', detail: <><code>cubic-bezier(0.23, 1, 0.32, 1)</code> — decelerating. Anything entering, expanding, or settling.</> },
           { term: '--ease-move', detail: <><code>cubic-bezier(0.65, 0, 0.35, 1)</code> — symmetrical. Movement across the screen in both directions.</> },
           { term: '--ease-linear', detail: 'Continuous or indeterminate motion only: the streaming caret, a determinate progress fill.' }].
