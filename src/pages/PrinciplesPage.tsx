@@ -22,7 +22,7 @@ export function PrinciplesPage() {
             </div>
             <p className="mt-2 max-w-measure text-13 leading-6 text-fg-secondary">{p.body}</p>
             <p className="mt-3 max-w-measure border-l-2 border-accent-border pl-3 text-13 leading-6 text-fg-primary">
-              <span className="font-medium">Consequence · </span>
+              <span className="font-medium">Consequence: </span>
               {p.consequence}
             </p>
           </li>
@@ -65,7 +65,7 @@ export function PrinciplesPage() {
           doText={
           <>
               Label the draft, keep it subordinate, and require a named reviewer before it becomes a conclusion.
-              “AI-generated draft interpretation · Moderate confidence · 3 linked moments”.
+              “AI-generated draft interpretation, Moderate confidence, 3 linked moments”.
             </>
           }
           dontText={

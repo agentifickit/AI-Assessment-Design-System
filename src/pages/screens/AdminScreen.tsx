@@ -27,7 +27,7 @@ const invites: InviteRow[] = [
 { id: 'NW-2291', name: 'R. Adeyemi', email: 'r.adeyemi@example.com', assessment: 'Campaign positioning', status: 'completed', sent: '12 Aug', activity: 'Submitted 14 Aug, 13:54' },
 { id: 'NW-2304', name: 'T. Lindqvist', email: 't.lindqvist@example.com', assessment: 'Campaign positioning', status: 'completed', sent: '12 Aug', activity: 'Submitted 14 Aug, 10:22' },
 { id: 'NW-2312', name: 'M. Haddad', email: 'm.haddad@example.com', assessment: 'Outbound sequence review', status: 'completed', sent: '12 Aug', activity: 'Submitted 15 Aug, 16:41' },
-{ id: 'NW-2318', name: 'S. Oyelaran', email: 's.oyelaran@example.com', assessment: 'Campaign positioning', status: 'started', sent: '14 Aug', activity: 'In progress · 22 min elapsed' },
+{ id: 'NW-2318', name: 'S. Oyelaran', email: 's.oyelaran@example.com', assessment: 'Campaign positioning', status: 'started', sent: '14 Aug', activity: 'In progress, 22 min elapsed' },
 { id: 'NW-2320', name: 'K. Novák', email: 'k.novak@example.com', assessment: 'Campaign positioning', status: 'invited', sent: '15 Aug', activity: 'Not opened' },
 { id: 'NW-2277', name: 'D. Ferreira', email: 'd.ferreira@example.com', assessment: 'Outbound sequence review', status: 'expired', sent: '02 Aug', activity: 'Invitation expired 09 Aug' }];
 
@@ -147,7 +147,7 @@ export function AdminScreen() {
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="min-w-0">
             <h2 className="text-sm font-semibold text-fg-primary">Northwind Analytics</h2>
-            <p className="mt-0.5 text-2xs text-fg-muted">6 invitations · 3 completed · 2 candidate issues open</p>
+            <p className="mt-0.5 text-2xs text-fg-muted">6 invitations, 3 completed, 2 candidate issues open</p>
           </div>
           <div className="flex items-center gap-2">
             <Button variant="secondary" size="sm" icon={<MailIcon className="h-3.5 w-3.5" />}>
@@ -240,7 +240,7 @@ export function AdminScreen() {
                         {q.candidate} <span className="font-mono text-2xs font-normal text-fg-muted">{q.id}</span>
                       </p>
                       <p className="mt-0.5 text-2xs text-fg-muted">
-                        Reviewer: {q.reviewer} · {q.due}
+                        Reviewer: {q.reviewer}, {q.due}
                       </p>
                     </div>
                     <div className="flex items-center gap-2">

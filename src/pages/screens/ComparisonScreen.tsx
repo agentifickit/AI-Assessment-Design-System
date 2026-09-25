@@ -53,7 +53,7 @@ const candidates: CandidateColumn[] = [
         state: 'positive',
         quote: 'That is the opposite of what the campaign leads on.',
         speaker: 'Candidate',
-        sourceLabel: 'Conversation · 13:11'
+        sourceLabel: 'Conversation, 13:11'
       }
     },
     diligence: { band: 'consistently-demonstrated', opportunity: 'observed', moments: 5 }
@@ -75,7 +75,7 @@ const candidates: CandidateColumn[] = [
         state: 'positive',
         quote: 'Audience is the VP of Marketing, internal, and she has already seen the campaign draft.',
         speaker: 'Candidate',
-        sourceLabel: 'Conversation · 09:14'
+        sourceLabel: 'Conversation, 09:14'
       }
     },
     discernment: { band: 'partially-demonstrated', opportunity: 'observed', moments: 2 },

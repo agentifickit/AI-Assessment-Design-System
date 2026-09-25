@@ -44,7 +44,7 @@ export function Progress({
         <div
           className={cn(
             'h-full rounded-full transition-[width] duration-280 ease-enter',
-            tone === 'accent' ? 'bg-accent' : 'bg-fg-secondary',
+            tone === 'accent' ? 'bg-brand' : 'bg-fg-secondary',
             indeterminate && 'w-1/3 animate-pulse'
           )}
           style={indeterminate ? undefined : { width: `${pct}%` }} />

@@ -34,8 +34,7 @@ export function EvidenceExcerpt({
       <figcaption className="flex flex-wrap items-center justify-between gap-2 border-b border-line-subtle px-3 py-2">
         <EvidenceStateBadge state={state} size="sm" />
         <span className="flex items-center gap-2 text-2xs text-fg-muted">
-          <span>{speaker}</span>
-          <span aria-hidden="true">·</span>
+          <span>{speaker},</span>
           <span className="tnum">{timestamp}</span>
         </span>
       </figcaption>

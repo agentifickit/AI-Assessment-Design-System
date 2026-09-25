@@ -34,7 +34,7 @@ export function DocsShell({ children }: {children: React.ReactNode;}) {
           <span className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className="inline-flex h-5 w-5 items-center justify-center rounded-xs bg-accent text-[10px] font-bold"
+              className="inline-flex h-5 w-5 items-center justify-center rounded-xs bg-brand text-[10px] font-bold"
               style={{ color: 'var(--fg-on-accent)' }}>
               
               L

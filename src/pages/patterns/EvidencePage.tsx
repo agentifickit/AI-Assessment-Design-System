@@ -30,7 +30,7 @@ export function EvidencePage() {
         title="The five layers"
         description="Rendered in fixed order by EvaluationLayerStack. A caller supplies named slots and cannot reorder them, so the grammar is identical in the reviewer workspace, the report, and the comparison detail.">
         
-        <Example label="EvaluationLayerStack · all five layers present" tone="surface">
+        <Example label="EvaluationLayerStack, all five layers present" tone="surface">
           <EvaluationLayerStack
             sourceEvent={
             <SourceEvent
@@ -76,11 +76,11 @@ export function EvidencePage() {
           className="mt-4"
           columns={1}
           entries={[
-          { term: 'Layer 1 · Source event', detail: 'What happened, verbatim, with an event id. Set in mono on a sunken surface — mono marks the machine record, so it is never confusable with our narration.' },
-          { term: 'Layer 2 · Evidence', detail: 'The relevant observed behaviour, quoted in a figure/blockquote with the surrounding context dimmed. The quote is marked, never paraphrased.' },
-          { term: 'Layer 3 · Interpretation', detail: 'What the behaviour may indicate. Always labelled as an AI-generated draft, always carries a confidence band, and shows a notice when no evidence is linked.' },
-          { term: 'Layer 4 · Reviewer decision', detail: 'The accountable human conclusion, with a named person and role. An override keeps the original AI text available in a disclosure rather than deleting it.' },
-          { term: 'Layer 5 · Limitation', detail: 'What was not observed or cannot be concluded. Dashed border, same visual weight as a finding — a limitation is a result, not a footnote.' }]
+          { term: 'Layer 1, Source event', detail: 'What happened, verbatim, with an event id. Set in mono on a sunken surface — mono marks the machine record, so it is never confusable with our narration.' },
+          { term: 'Layer 2, Evidence', detail: 'The relevant observed behaviour, quoted in a figure/blockquote with the surrounding context dimmed. The quote is marked, never paraphrased.' },
+          { term: 'Layer 3, Interpretation', detail: 'What the behaviour may indicate. Always labelled as an AI-generated draft, always carries a confidence band, and shows a notice when no evidence is linked.' },
+          { term: 'Layer 4, Reviewer decision', detail: 'The accountable human conclusion, with a named person and role. An override keeps the original AI text available in a disclosure rather than deleting it.' },
+          { term: 'Layer 5, Limitation', detail: 'What was not observed or cannot be concluded. Dashed border, same visual weight as a finding — a limitation is a result, not a footnote.' }]
           } />
         
       </DocSection>
@@ -89,7 +89,7 @@ export function EvidencePage() {
         title="Missing layers stay visible"
         description="An omitted layer renders an explicit placeholder rather than disappearing, so a reader can distinguish “there is no reviewer decision” from “the reviewer decision is off screen”.">
         
-        <Example label="EvaluationLayerStack · evidence captured, no human conclusion yet" tone="surface">
+        <Example label="EvaluationLayerStack, evidence captured, no human conclusion yet" tone="surface">
           <EvaluationLayerStack
             sourceEvent={
             <SourceEvent
@@ -154,7 +154,7 @@ export function EvidencePage() {
       </DocSection>
 
       <DocSection title="Limitations">
-        <Example label="LimitationBlock · capture failure" tone="surface">
+        <Example label="LimitationBlock, capture failure" tone="surface">
           <LimitationBlock
             state="incomplete"
             title={moments[3].limitation!.title}

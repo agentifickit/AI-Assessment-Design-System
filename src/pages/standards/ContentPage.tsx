@@ -19,14 +19,14 @@ const pairs: {context: string;use: string;avoid: string;why: string;}[] = [
 },
 {
   context: 'An AI draft awaits a human',
-  use: 'AI-generated draft · Human review required',
+  use: 'AI-generated draft, human review required',
   avoid: 'AI assessment complete',
   why: 'No conclusion exists until a named person signs it. Saying “complete” misrepresents where accountability sits.'
 },
 {
   context: 'A conclusion is final',
   use: 'Reviewer-approved',
-  avoid: 'Verified · Confirmed',
+  avoid: 'Verified or Confirmed',
   why: '“Reviewer-approved” names who is accountable. The alternatives imply a machine check the product does not perform.'
 },
 {
@@ -38,7 +38,7 @@ const pairs: {context: string;use: string;avoid: string;why: string;}[] = [
 {
   context: 'Work is stored',
   use: 'Your work is saved',
-  avoid: 'Autosaved · Synced',
+  avoid: 'Autosaved or Synced',
   why: 'Plain language, and it answers the question the candidate is actually asking under time pressure.'
 },
 {
@@ -49,8 +49,8 @@ const pairs: {context: string;use: string;avoid: string;why: string;}[] = [
 },
 {
   context: 'A candidate performed poorly',
-  use: 'Partially demonstrated · Development area',
-  avoid: 'Candidate failed · Weak performance',
+  use: 'Partially demonstrated, development area',
+  avoid: 'Candidate failed or Weak performance',
   why: 'The assessment produces evidence for a human decision. It does not issue verdicts.'
 },
 {
@@ -58,6 +58,12 @@ const pairs: {context: string;use: string;avoid: string;why: string;}[] = [
   use: 'Rated on 4 linked moments',
   avoid: 'Objective score: 3.2 / 5',
   why: 'There is no score in this product. A number implies a precision and a comparability the method does not have.'
+},
+{
+  context: 'Two facts side by side',
+  use: 'Candidate, 06:25',
+  avoid: 'A middle dot between them',
+  why: 'The middle dot reads as machine-made copy. Join two facts with a comma, give them a column each, or write the sentence.'
 },
 {
   context: 'A prompt was ineffective',

@@ -402,6 +402,13 @@
   --timer-fg: var(--fg-primary);
   --timer-fg-final: var(--amber-700);
   --rail-active-marker: var(--accent-solid);
+  /* Selection in a grid: the selected range's ring, the fill handle and the
+     row and column header marks take the ring; the range takes the fill. The
+     ring carries the state at 3:1; the 10% fill only tints, so text in a
+     selected cell keeps its contrast. Selection is one of the few sanctioned
+     accent uses, with focus, the primary action and the live dot. DS-43. */
+  --selection-ring: var(--brand-accent);
+  --selection-fill: color-mix(in srgb, var(--brand-accent) 10%, transparent);
 }
 [data-theme='dark'] {
   --timer-fg-final: #e0b45c;
@@ -459,10 +466,16 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
-*:focus-visible {
-  outline: 2px solid var(--focus-ring);
-  outline-offset: 2px;
-  border-radius: var(--radius-xs);
+/* The focus ring sits in the base layer so a component's own focus utility
+   (focus-visible:outline-none on a borderless title, a negative offset inside
+   a menu) can override it. Unlayered, it outranked every utility under
+   Tailwind 4's cascade layers. It sets no radius: the outline follows the
+   element's own corners, where a forced 3px squared off round controls. */
+@layer base {
+  *:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
 }
 ::selection {
   background: var(--orange-100);

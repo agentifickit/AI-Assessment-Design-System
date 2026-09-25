@@ -14,6 +14,11 @@ export interface DialogProps {
   /** Critical overlays raise the scrim, remove click-outside dismissal, and
    *  refuse Escape — the reader must make an explicit choice. */
   critical?: boolean;
+  /** Holds the reader while work finishes (saving, submitting): no Escape, no
+   *  click outside, no close control, and none of the danger border or the
+   *  footer note that `critical` adds. Nothing is wrong, so nothing is red.
+   *  Issue #8. */
+  locked?: boolean;
   width?: 'sm' | 'md' | 'lg';
 }
 
@@ -42,8 +47,10 @@ export function Dialog({
   children,
   footer,
   critical,
+  locked,
   width = 'sm'
 }: DialogProps) {
+  const holds = critical || locked;
   const panelRef = useRef<HTMLDivElement>(null);
   const previouslyFocused = useRef<HTMLElement | null>(null);
   const uid = useId();
@@ -103,12 +110,12 @@ export function Dialog({
     };
   }, [open, focusables]);
 
-  /* Keyboard contract: Escape closes (unless critical), Tab cycles. */
+  /* Keyboard contract: Escape closes (unless critical or locked), Tab cycles. */
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        if (!critical) {
+        if (!holds) {
           e.preventDefault();
           onClose();
         }
@@ -134,7 +141,7 @@ export function Dialog({
     };
     document.addEventListener('keydown', onKey, true);
     return () => document.removeEventListener('keydown', onKey, true);
-  }, [open, critical, onClose, focusables]);
+  }, [open, holds, onClose, focusables]);
 
   if (!open || typeof document === 'undefined') return null;
 
@@ -143,7 +150,7 @@ export function Dialog({
       <div
         className="absolute inset-0 transition-opacity duration-180 ease-enter"
         style={{ background: 'var(--overlay-scrim)' }}
-        onClick={critical ? undefined : onClose}
+        onClick={holds ? undefined : onClose}
         aria-hidden="true" />
       
       <div
@@ -171,7 +178,7 @@ export function Dialog({
               </p>
             }
           </div>
-          {!critical &&
+          {!holds &&
           <IconButton label="Close dialog" size="sm" icon={<XIcon className="h-4 w-4" />} onClick={onClose} />
           }
         </header>

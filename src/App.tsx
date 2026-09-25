@@ -22,6 +22,8 @@ import { EvidencePage } from './pages/patterns/EvidencePage';
 import { AiPage } from './pages/patterns/AiPage';
 import { ProgressPage } from './pages/patterns/ProgressPage';
 import { CandidateShellPage } from './pages/patterns/CandidateShellPage';
+import { WorkspaceContentPage } from './pages/patterns/WorkspaceContentPage';
+import { MenusPage } from './pages/patterns/MenusPage';
 
 import { WorkspaceScreen } from './pages/screens/WorkspaceScreen';
 import { ReviewerScreen } from './pages/screens/ReviewerScreen';
@@ -66,6 +68,8 @@ export function App({ theme = 'light', density = 'default' }: AppProps) {
             <Route path="/patterns/ai" element={<AiPage />} />
             <Route path="/patterns/progress" element={<ProgressPage />} />
             <Route path="/patterns/candidate-shell" element={<CandidateShellPage />} />
+            <Route path="/patterns/workspace-content" element={<WorkspaceContentPage />} />
+            <Route path="/patterns/menus" element={<MenusPage />} />
 
             <Route path="/screens/workspace" element={<WorkspaceScreen />} />
             <Route path="/screens/reviewer" element={<ReviewerScreen />} />

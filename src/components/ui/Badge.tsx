@@ -28,7 +28,7 @@ const dotClasses: Record<BadgeTone, string> = {
   success: 'bg-success-solid',
   warning: 'bg-warning-solid',
   danger: 'bg-danger-solid',
-  accent: 'bg-accent',
+  accent: 'bg-brand',
   ai: 'bg-ai-fg'
 };
 

@@ -56,6 +56,11 @@ export default {content: [
           border: 'var(--accent-border)',
           bg: 'var(--accent-bg)',
         },
+        /* Grid selection (DS-35): the ring carries the state, the fill only tints. */
+        selection: {
+          DEFAULT: 'var(--selection-ring)',
+          fill: 'var(--selection-fill)',
+        },
         link: {
           DEFAULT: 'var(--link-fg)',
           hover: 'var(--link-fg-hover)',

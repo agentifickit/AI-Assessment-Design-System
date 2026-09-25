@@ -155,7 +155,7 @@ export function LayoutPage() {
         <SpecList
           columns={1}
           entries={[
-          { term: 'Reviewer workspace', detail: '320px timeline rail · flexible inspector · 380px evaluation panel. Under 1280px the evaluation panel becomes a right-hand drawer so the inspector keeps a readable measure.' },
+          { term: 'Reviewer workspace', detail: '320px timeline rail, flexible inspector, 380px evaluation panel. Under 1280px the evaluation panel becomes a right-hand drawer so the inspector keeps a readable measure.' },
           { term: 'Report', detail: '720px reading column centred in the canvas, with a sticky in-page table of contents to its left above 1024px and collapsed to a disclosure below it. Print styles drop the shell entirely.' },
           { term: 'Comparison', detail: 'Frozen 220px criterion column, candidate columns at 260px minimum, horizontal scroll beyond three candidates. Below 1024px it becomes a stacked accordion per dimension rather than a squeezed table.' },
           { term: 'Admin', detail: 'Full-width tables inside the operator shell. Sticky table headers and a frozen identity column; filters in a sticky toolbar above the scroll container.' }]
