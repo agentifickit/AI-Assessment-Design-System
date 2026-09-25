@@ -17,16 +17,13 @@ import { IconButton } from '../../components/ui/IconButton';
 import {
   ChevronDownIcon,
   ClipboardListIcon,
-  CopyIcon,
   FileTextIcon,
   GlobeIcon,
   MicIcon,
-  NotebookTextIcon,
   PenLineIcon,
   PlusIcon,
   StickyNoteIcon,
-  Table2Icon,
-  XIcon } from
+  Table2Icon } from
 'lucide-react';
 import { Alert } from '../../components/ui/Alert';
 import { ButtonGroup } from '../../components/ui/ButtonGroup';
