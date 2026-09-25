@@ -75,7 +75,9 @@ export const componentTokens: TokenRow[] = [
 { name: '--msg-assistant-rule', value: '→ --ai-border', usage: 'Left rule on assistant messages.' },
 { name: '--table-row-hover', value: '→ --surface-interactive-hover', usage: 'Reviewer queue row hover.' },
 { name: '--timer-fg-final', value: '→ --amber-700', usage: 'Timer under 10 minutes. Amber, never red.' },
-{ name: '--rail-active-marker', value: '→ --accent-solid', usage: 'The 2px marker beside the active nav item.' }];
+{ name: '--rail-active-marker', value: '→ --accent-solid', usage: 'The 2px marker beside the active nav item.' },
+{ name: '--selection-ring', value: '→ --brand-accent', usage: 'Grid selection: the range ring, the fill handle, the selected row and column header marks. DS-35.' },
+{ name: '--selection-fill', value: '→ --brand-accent at 10%', usage: 'The tint inside a selected range. It never carries the state alone.' }];
 
 
 export const spacingScale = [

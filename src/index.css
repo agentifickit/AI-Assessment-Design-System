@@ -399,6 +399,13 @@
   --timer-fg: var(--fg-primary);
   --timer-fg-final: var(--amber-700);
   --rail-active-marker: var(--accent-solid);
+  /* Selection in a grid: the selected range's ring, the fill handle and the
+     row and column header marks take the ring; the range takes the fill. The
+     ring carries the state at 3:1; the 10% fill only tints, so text in a
+     selected cell keeps its contrast. Selection is one of the few sanctioned
+     accent uses, with focus, the primary action and the live dot. DS-35. */
+  --selection-ring: var(--brand-accent);
+  --selection-fill: color-mix(in srgb, var(--brand-accent) 10%, transparent);
 }
 [data-theme='dark'] {
   --timer-fg-final: #e0b45c;

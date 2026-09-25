@@ -59,6 +59,14 @@ export const contrastGroups: ContrastGroup[] = [
     usage: 'Focus ring, nav marker, live-session dot, selected border'
   },
   {
+    id: 'selection-ring',
+    label: 'Grid selection ring against a cell',
+    fg: '--selection-ring',
+    bg: '--surface',
+    target: 'non-text',
+    usage: 'Sheet selection, fill handle, selected header marks (DS-35)'
+  },
+  {
     id: 'brand-fg',
     label: 'Brand accent text',
     fg: '--brand-accent-fg',
