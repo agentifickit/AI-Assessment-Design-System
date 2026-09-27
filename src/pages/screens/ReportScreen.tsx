@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDownIcon, DownloadIcon, ShareIcon } from 'lucide-react';
+import { CheckIcon, ChevronDownIcon, DownloadIcon, ShareIcon } from 'lucide-react';
 import { ScreenFrame } from '../../components/docs/ScreenFrame';
 import { DimensionProfile } from '../../components/dimensions/DimensionProfile';
 import { DimensionBadge } from '../../components/dimensions/DimensionBadge';
@@ -16,6 +16,7 @@ import { Alert } from '../../components/ui/Alert';
 import { KeyValueList } from '../../components/ui/KeyValueList';
 import { cn } from '../../utils/cn';
 import { candidate, dimensionResults, moments } from '../../data/reviewContent';
+import { statusWordMap } from '../../data/statusWords';
 
 const sections = [
 { id: 'summary', label: 'Summary' },
@@ -96,10 +97,14 @@ export function ReportScreen() {
               </div>
             </div>
             <div className="mt-4 flex flex-wrap items-center gap-2">
-              <Badge tone="success">Reviewer-approved</Badge>
+              <Badge
+                tone={statusWordMap.verified.tone}
+                icon={<CheckIcon className="h-3 w-3 shrink-0" strokeWidth={2.5} aria-hidden="true" />}>
+                {statusWordMap.verified.label}
+              </Badge>
               <Badge tone="neutral">Released 15 Aug</Badge>
               <span className="text-2xs text-fg-muted">
-                Approved by {candidate.reviewer}, {candidate.reviewerRole}
+                Verified by {candidate.reviewer}, {candidate.reviewerRole}
               </span>
             </div>
           </header>
