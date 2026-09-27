@@ -119,7 +119,7 @@ export const PromptComposer = forwardRef<HTMLTextAreaElement, PromptComposerProp
             key={s}
             type="button"
             onClick={() => onSuggestion?.(s)}
-            className="rounded-sm border border-line bg-surface px-2 py-1 text-left text-2xs text-fg-secondary transition-colors duration-100 ease-enter hover:bg-surface-hover hover:text-fg-primary">
+            className="rounded-sm border border-line bg-surface px-2 py-1 text-left text-2xs text-fg-secondary transition-colors duration-100 ease-enter hover:bg-surface-hover active:bg-surface-active hover:text-fg-primary">
                 {s}
               </button>
           )}
@@ -189,7 +189,7 @@ export const PromptComposer = forwardRef<HTMLTextAreaElement, PromptComposerProp
                   type="button"
                   onClick={onAttach}
                   disabled={blocked}
-                  className="inline-flex h-7 items-center gap-1.5 rounded-sm px-2 text-2xs font-medium text-fg-muted transition-colors duration-100 ease-enter hover:bg-surface-hover hover:text-fg-primary disabled:opacity-40">
+                  className="inline-flex h-7 items-center gap-1.5 rounded-sm px-2 text-2xs font-medium text-fg-muted transition-colors duration-100 ease-enter hover:bg-surface-hover active:bg-surface-active hover:text-fg-primary disabled:opacity-40">
                     <PaperclipIcon className="h-3.5 w-3.5" aria-hidden="true" />
                     Attach
                   </button>

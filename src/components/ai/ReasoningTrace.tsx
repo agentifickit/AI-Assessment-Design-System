@@ -53,7 +53,7 @@ export function ReasoningTrace({ text, streaming, seconds, className }: Reasonin
         type="button"
         onClick={() => setChosen(!open)}
         aria-expanded={open}
-        className="group flex items-center gap-2 rounded-xs py-1 text-left text-xs transition-colors duration-100 ease-enter">
+        className="group -mx-1 flex items-center gap-2 rounded-xs px-1 py-1 text-left text-xs transition-colors duration-100 ease-enter hover:bg-surface-hover active:bg-surface-active">
         <span
           className={cn(
             'inline-flex h-3.5 w-3.5 items-center justify-center',

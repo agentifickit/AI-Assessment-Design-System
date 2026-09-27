@@ -117,6 +117,18 @@ export const contrastGroups: ContrastGroup[] = [
 
 },
 {
+  id: 'copilot-states',
+  label: 'Copilot states',
+  note:
+  'DS-50. Inside the copilot column (.ai-scope), hover and press take the AI tint instead of grey. On an engaged control, muted ink steps up to secondary, so every label keeps 4.5:1 on the tint. Focus keeps the orange ring, measured under Brand accent against canvas.',
+  pairs: [
+  { id: 'ai-hover-primary', label: 'Primary ink on the hover tint', fg: '--fg-primary', bg: '--ai-hover', target: 'text', usage: 'A hovered menu row, source chip or suggestion' },
+  { id: 'ai-hover-secondary', label: 'Secondary ink on the hover tint', fg: '--fg-secondary', bg: '--ai-hover', target: 'text', usage: 'Menu descriptions and step rows while hovered' },
+  { id: 'ai-active-secondary', label: 'Secondary ink on the pressed tint', fg: '--fg-secondary', bg: '--ai-active', target: 'text', usage: 'A pressed control, an open menu trigger, the history button while open' },
+  { id: 'ai-hover-ai-fg', label: 'AI ink on the hover tint', fg: '--ai-fg', bg: '--ai-hover', target: 'text', usage: 'The suggestion icon and chevron while hovered' }]
+
+},
+{
   id: 'foreground',
   label: 'Foreground on surfaces',
   pairs: [

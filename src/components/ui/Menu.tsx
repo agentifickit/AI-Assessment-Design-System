@@ -52,7 +52,7 @@ export function MenuItem({
         'focus-visible:bg-surface-hover focus-visible:-outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
         destructive ? 'text-danger-fg hover:bg-danger-bg' : selected ?
         'bg-surface-active text-fg-primary' :
-        'text-fg-secondary hover:bg-surface-hover hover:text-fg-primary',
+        'text-fg-secondary hover:bg-surface-hover active:bg-surface-active hover:text-fg-primary',
         className
       )}>
 

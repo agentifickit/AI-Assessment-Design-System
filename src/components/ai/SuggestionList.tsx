@@ -40,8 +40,8 @@ export function SuggestionList({
           className={cn(
             'group flex w-full items-center text-left text-xs text-fg-secondary transition-colors duration-100 ease-enter hover:text-fg-primary',
             cards ?
-            'gap-3 rounded-md border border-line bg-surface px-2 py-2 hover:border-ai-border' :
-            'gap-2.5 rounded-sm px-2 py-1.5 hover:bg-surface-hover'
+            'gap-3 rounded-md border border-line bg-surface px-2 py-2 hover:border-ai-border hover:bg-surface-hover active:bg-surface-active' :
+            'gap-2.5 rounded-sm px-2 py-1.5 hover:bg-surface-hover active:bg-surface-active'
           )}>
             {s.icon &&
           <span

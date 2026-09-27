@@ -35,7 +35,7 @@ export function ToolStepGroup({
         type="button"
         onClick={() => setChosen(!open)}
         aria-expanded={open}
-        className="flex items-center gap-2 rounded-xs py-1 text-left text-xs text-fg-secondary transition-colors duration-100 ease-enter hover:text-fg-primary">
+        className="-mx-1 flex items-center gap-2 rounded-xs px-1 py-1 text-left text-xs text-fg-secondary transition-colors duration-100 ease-enter hover:bg-surface-hover hover:text-fg-primary active:bg-surface-active">
         <span className={cn('inline-flex h-3.5 w-3.5 items-center justify-center', running ? 'text-ai-fg' : 'text-fg-muted')}>
           {running ?
           <Loader2Icon className="h-3.5 w-3.5 animate-spin" aria-hidden="true" /> :

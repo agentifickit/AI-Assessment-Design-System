@@ -152,7 +152,7 @@ export function Message({
         <button
           type="button"
           onClick={onStop}
-          className="inline-flex h-6 items-center gap-1.5 rounded-xs border border-line bg-surface px-2 text-2xs font-medium text-fg-secondary transition-colors duration-100 ease-enter hover:bg-surface-hover">
+          className="inline-flex h-6 items-center gap-1.5 rounded-xs border border-line bg-surface px-2 text-2xs font-medium text-fg-secondary transition-colors duration-100 ease-enter hover:bg-surface-hover active:bg-surface-active">
           
               <SquareIcon className="h-2.5 w-2.5 fill-current" aria-hidden="true" />
               Stop
