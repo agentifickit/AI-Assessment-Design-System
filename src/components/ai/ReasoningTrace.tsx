@@ -13,7 +13,7 @@ export interface ReasoningTraceProps {
   className?: string;
 }
 
-/** Thinking the candidate can audit (DS-29). While the model reasons, the
+/** Thinking the candidate can audit (DS-44). While the model reasons, the
  *  trace is open and its lines arrive under a breathing icon, the older ones
  *  fading under the top edge. When the answer starts it folds to "Thought for
  *  4s"; opening it shows every word. "Thinking" is only ever the label of a

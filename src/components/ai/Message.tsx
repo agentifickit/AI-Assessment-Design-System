@@ -45,7 +45,7 @@ export interface MessageProps {
   /** Draw the streaming caret. In the conversation appearance it is a soft
    *  breathing dot rather than a blink. Set false when the children draw it
    *  themselves, e.g. a markdown renderer that puts `stream-soft` on its own
-   *  root so the dot sits at the end of the last line. DS-31. */
+   *  root so the dot sits at the end of the last line. DS-46. */
   caret?: boolean;
   className?: string;
 }

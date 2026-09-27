@@ -39,10 +39,16 @@ export function PageTitleInput({
   const ref = useRef<HTMLTextAreaElement>(null);
   const [draft, setDraft] = useState(value);
   const [editing, setEditing] = useState(false);
+  // Enter and Escape end the edit themselves. The blur that follows (Escape
+  // blurs, Enter moves on to the body) still sees the old render, where the
+  // field is editing and holds the typed text, so it must not commit again:
+  // for Escape that would keep the name it was meant to restore.
+  const finished = useRef(false);
   // A rename from elsewhere (the tab, the sidebar) shows unless the title is being typed.
   const shown = editing ? draft : value;
 
   const commit = (raw: string) => {
+    finished.current = true;
     setEditing(false);
     const next = raw.replace(/\s+/g, ' ').trim();
     if (next !== value) onCommit(next);
@@ -71,11 +77,14 @@ export function PageTitleInput({
       value={shown}
       readOnly={readOnly}
       onFocus={() => {
+        finished.current = false;
         setDraft(value);
         setEditing(true);
       }}
       onChange={(e) => setDraft(e.target.value.replace(/\n/g, ''))}
-      onBlur={(e) => editing && commit(e.currentTarget.value)}
+      onBlur={(e) => {
+        if (!finished.current) commit(e.currentTarget.value);
+      }}
       onKeyDown={(e) => {
         if (e.key === 'Enter') {
           e.preventDefault();
@@ -83,6 +92,7 @@ export function PageTitleInput({
           onEnter?.();
         } else if (e.key === 'Escape') {
           e.preventDefault();
+          finished.current = true;
           setEditing(false);
           e.currentTarget.blur();
         }
