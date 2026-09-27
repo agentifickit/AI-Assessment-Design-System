@@ -21,10 +21,10 @@ const groups: CheckGroup[] = [
   items: [
   { id: 'v1', text: 'No hardcoded palette value where a semantic token exists' },
   { id: 'v2', text: 'Signal orange appears only on non-text roles — focus rings, markers, borders, the live dot' },
-  { id: 'v3', text: 'Every labelled accent surface pairs --action-primary with --action-primary-fg ink, never white' },
+  { id: 'v3', text: 'A label on signal orange uses --action-primary-fg ink, never white; a white label sits only on the deeper action-button fill (DS-48)' },
   { id: 'v4', text: 'Sibling cards in a row share baselines across heading, body, and footer' },
-  { id: 'v5', text: 'Borders carry structure; shadows appear only on genuinely floating surfaces' },
-  { id: 'v6', text: 'No gradient anywhere that was not explicitly requested' },
+  { id: 'v5', text: 'Borders carry structure; shadows appear only on genuinely floating surfaces and under the action button (DS-48)' },
+  { id: 'v6', text: 'No gradient anywhere that was not explicitly requested; the action button\'s top-lit fill (DS-48) is the standing exception' },
   { id: 'v7', text: 'Nested surfaces step radius inward, never outward' },
   { id: 'v8', text: 'Mono type is used only for verbatim record, identifiers, and dimension codes' }]
 

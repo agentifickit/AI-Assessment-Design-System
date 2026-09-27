@@ -222,7 +222,7 @@ export const PromptComposer = forwardRef<HTMLTextAreaElement, PromptComposerProp
                 onClick={onSubmit}
                 disabled={!canSend}
                 aria-label="Send message"
-                className="ml-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full border border-action bg-action text-action-fg transition-colors duration-100 ease-enter hover:bg-action-hover disabled:cursor-not-allowed disabled:border-line disabled:bg-surface-subtle disabled:text-fg-disabled">
+                className="action-button ml-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full border transition-colors duration-100 ease-enter disabled:cursor-not-allowed disabled:border-line disabled:bg-surface-subtle disabled:text-fg-disabled">
                   <ArrowUpIcon className="h-3.5 w-3.5" aria-hidden="true" />
                 </button>
               }

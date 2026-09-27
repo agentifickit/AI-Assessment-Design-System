@@ -24,7 +24,7 @@ export const contrastGroups: ContrastGroup[] = [
   id: 'action',
   label: 'Primary action',
   note:
-  'The reason this group exists. Signal orange (#f6521f) carries only 3.4:1 against white, so the fix is the ink rather than the ramp: near-black on the same bright orange reaches 5.0:1. Interaction brightens the surface, so contrast rises as the button is engaged.',
+  'The reason this group exists. Signal orange (#f6521f) carries only 3.4:1 against white, so the fix is the ink rather than the ramp: near-black on the same bright orange reaches 5.0:1. Interaction brightens the surface, so contrast rises as the control is engaged. Buttons moved to the deeper action-button fill (DS-48, next group); these pairs still govern the labelled controls that keep the signal orange.',
   pairs: [
   {
     id: 'action-label',
@@ -32,7 +32,7 @@ export const contrastGroups: ContrastGroup[] = [
     fg: '--action-primary-fg',
     bg: '--action-primary',
     target: 'text',
-    usage: 'Button primary, SplitButton, PromptComposer send, Stepper active marker'
+    usage: 'Stepper active marker, checked Checkbox mark, solid Tag'
   },
   {
     id: 'action-hover',
@@ -40,7 +40,7 @@ export const contrastGroups: ContrastGroup[] = [
     fg: '--action-primary-fg',
     bg: '--action-primary-hover',
     target: 'text',
-    usage: 'Primary button hover — brightens to orange-400'
+    usage: 'Signal-orange control hover, brightens to orange-400'
   },
   {
     id: 'action-active',
@@ -48,7 +48,7 @@ export const contrastGroups: ContrastGroup[] = [
     fg: '--action-primary-fg',
     bg: '--action-primary-active',
     target: 'text',
-    usage: 'Primary button pressed — brightest step, paired with the 1px nudge'
+    usage: 'Signal-orange control pressed, the brightest step'
   },
   {
     id: 'brand-nontext',
@@ -73,6 +73,46 @@ export const contrastGroups: ContrastGroup[] = [
     bg: '--surface',
     target: 'text',
     usage: 'Accent-coloured text and icons — orange-700, never orange-500'
+  }]
+
+},
+{
+  id: 'action-button',
+  label: 'Action button',
+  note:
+  'DS-48. The primary button carries a white label on a top-lit gradient, after Cloudflare\'s buttons. White on the signal orange is 3.4:1, so the fill is deeper, and each stop is checked on its own because the label can sit anywhere between them. The stops are the same in both themes.',
+  pairs: [
+  {
+    id: 'action-button-from',
+    label: 'Label on the gradient\'s top stop',
+    fg: '--action-button-fg',
+    bg: '--action-button-from',
+    target: 'text',
+    usage: 'Button primary, IconButton solid, SplitButton, PromptComposer send: the lightest point'
+  },
+  {
+    id: 'action-button-to',
+    label: 'Label on the gradient\'s bottom stop',
+    fg: '--action-button-fg',
+    bg: '--action-button-to',
+    target: 'text',
+    usage: 'The same controls, the deepest point at rest'
+  },
+  {
+    id: 'action-button-hover',
+    label: 'Label on the hover gradient\'s top stop',
+    fg: '--action-button-fg',
+    bg: '--action-button-hover-from',
+    target: 'text',
+    usage: 'Hover deepens the gradient, so its top stop is the lightest hover point'
+  },
+  {
+    id: 'action-button-pressed',
+    label: 'Label on the pressed fill',
+    fg: '--action-button-fg',
+    bg: '--action-button-pressed',
+    target: 'text',
+    usage: 'Pressed: the gradient flattens and the shadow turns inward'
   }]
 
 },

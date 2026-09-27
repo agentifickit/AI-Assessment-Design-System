@@ -68,7 +68,8 @@ export const semanticProvenance: TokenRow[] = [
 
 
 export const componentTokens: TokenRow[] = [
-{ name: '--btn-primary-bg', value: '→ --accent-solid', usage: 'Primary button fill.' },
+{ name: '--btn-primary-bg', value: '→ gradient --action-button-from to -to', usage: 'Primary button fill: a top-lit gradient under a white label (DS-48).' },
+{ name: '--btn-primary-border', value: '→ --action-button-border', usage: 'Primary button hairline, darker than the fill; a lighter rim in dark mode.' },
 { name: '--btn-secondary-border', value: '→ --border-default', usage: 'Secondary button outline.' },
 { name: '--input-border-focus', value: '→ --accent-border', usage: 'Focused input outline.' },
 { name: '--msg-user-bg', value: '→ --surface-subtle', usage: 'User message inset block.' },

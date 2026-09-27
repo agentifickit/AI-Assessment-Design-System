@@ -15,11 +15,10 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-  // Primary is the bright signal orange with near-black ink (5.0:1). White on
-  // this orange would be 3.4:1, so the ink — not the ramp — is what passes.
-  // Hover and active brighten, which raises contrast as the button is engaged.
-  primary:
-  'bg-action text-action-fg border border-action hover:bg-action-hover active:bg-action-active',
+  // Primary is the action button (DS-48): a top-lit gradient on a deeper
+  // orange with a white label, 4.54:1 at its lightest stop. The surface,
+  // hover and press live in the .action-button class in index.css.
+  primary: 'action-button border',
   secondary:
   'bg-surface text-fg-primary border border-line hover:bg-surface-hover active:bg-surface-active',
   tertiary:

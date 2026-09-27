@@ -233,6 +233,21 @@ export function AiPage() {
       </DocSection>
 
       <DocSection
+        title="Dot field"
+        description="The copilot column sits on a quiet grid of dots (`dot-field`), so the thread reads as a working surface rather than a blank page. While the assistant works, a patch of the same grid turns orange at the bottom of the thread, where the reply grows, and a brighter band sweeps through it (`dot-field-live` with `data-live`). It is a live signal, like the session dot, and it goes when the reply is done (DS-49).">
+        <Example label="The field at rest, and the patch while the assistant responds" tone="surface">
+          <div className="dot-field relative h-40 max-w-[360px] overflow-hidden rounded-md border border-line bg-surface">
+            <p className="absolute left-4 top-4 text-xs text-fg-secondary">Checking the usage sheet</p>
+            <span className="dot-field-live absolute bottom-3 left-3 h-16 w-28" data-live="true" aria-hidden="true" />
+          </div>
+        </Example>
+        <DoDont
+          className="mt-4"
+          doText="One field per column, behind the thread and under the composer card. One patch, only while the assistant works, beside the words that say what it is doing."
+          dontText="A dot field behind documents, sheets or the report, or a patch that stays after the reply ends. The patch never stands in for the status words." />
+      </DocSection>
+
+      <DocSection
         title="Streaming accessibility"
         description="The intuitive approach — announce as it arrives — makes a screen reader unusable during a stream. This system announces four events and never token text.">
         

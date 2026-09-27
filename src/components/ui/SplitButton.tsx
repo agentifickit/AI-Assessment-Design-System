@@ -52,8 +52,8 @@ export function SplitButton({
         onClick={onPrimary}
         disabled={disabled}
         className={cn(
-          'inline-flex h-8 items-center rounded-l-sm border border-action bg-action px-3 text-13 font-medium text-action-fg',
-          'transition-colors duration-100 ease-enter hover:bg-action-hover disabled:opacity-50'
+          'action-button inline-flex h-8 items-center rounded-l-sm border px-3 text-13 font-medium',
+          'transition-colors duration-100 ease-enter disabled:opacity-50'
         )}>
         
         {primaryLabel}
@@ -66,8 +66,8 @@ export function SplitButton({
         disabled={disabled}
         onClick={() => setOpen((o) => !o)}
         className={cn(
-          'inline-flex h-8 w-7 items-center justify-center rounded-r-sm border border-l-0 border-action bg-action text-action-fg',
-          'transition-colors duration-100 ease-enter hover:bg-action-hover disabled:opacity-50'
+          'action-button inline-flex h-8 w-7 items-center justify-center rounded-r-sm border border-l-0',
+          'transition-colors duration-100 ease-enter disabled:opacity-50'
         )}>
         
         <ChevronDownIcon className="h-3.5 w-3.5" aria-hidden="true" />
