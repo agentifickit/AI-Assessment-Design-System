@@ -16,7 +16,7 @@ export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEl
 const variantClasses: Record<IconButtonVariant, string> = {
   ghost: 'border border-transparent text-fg-muted hover:bg-surface-hover hover:text-fg-primary',
   outline: 'border border-line bg-surface text-fg-secondary hover:bg-surface-hover hover:text-fg-primary',
-  solid: 'border border-action bg-action text-action-fg hover:bg-action-hover',
+  solid: 'action-button border',
   destructive: 'border border-transparent text-danger-fg hover:bg-danger-bg'
 };
 

@@ -41,7 +41,8 @@ export default {content: [
           subtle: 'var(--brand-accent-subtle)',
           fg: 'var(--brand-accent-fg)',
         },
-        /* Primary action — the only accent-family surface that carries text (4.5:1). */
+        /* Signal-orange action — carries near-black text (4.5:1). Buttons use
+           the deeper .action-button fill with a white label (DS-48). */
         action: {
           DEFAULT: 'var(--action-primary)',
           hover: 'var(--action-primary-hover)',

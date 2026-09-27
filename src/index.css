@@ -146,6 +146,9 @@
   --surface-subtle: var(--neutral-100);
   --surface-sunken: var(--neutral-100);
   --surface-raised: var(--neutral-00);
+  /* The dot field's grid (DS-49). Decorative, so no contrast target: it
+     should read as texture, 1.4:1 against the canvas. */
+  --dot-field-dot: #d4d3cd;
   --surface-inverse: var(--neutral-900);
   --surface-interactive-hover: var(--neutral-100);
   --surface-interactive-active: var(--neutral-200);
@@ -175,12 +178,31 @@
      orange-500 is 5.0:1, where white on the same orange is only 3.4:1.
      Interaction brightens rather than deepens, so contrast improves as
      the button is engaged: base 5.0:1, hover 6.2:1, active 6.5:1.
-     This is the only accent-family
-     surface permitted to hold a label. */
+     Checkbox, Toggle, the Stepper marker and a solid Tag use it. Buttons
+     use the deeper action-button fill below (DS-48). */
   --action-primary: var(--orange-500);
   --action-primary-hover: var(--orange-400);
   --action-primary-active: var(--orange-300);
   --action-primary-fg: #1c1c1a;
+  /* Action button — CARRIES A WHITE LABEL. 4.5:1 governs at every stop.
+     A top-lit gradient, a darker hairline, an inner highlight along the top
+     edge and a warm contact shadow (DS-48, after Cloudflare's buttons).
+     White needs a deeper orange than the signal: the lightest stop is
+     4.54:1, the bottom 5.23:1, hover 4.77 to 6.02:1, pressed 5.76:1.
+     The same stops serve both themes; only the edge and shadow change. */
+  --action-button-from: #d24610;
+  --action-button-to: #c33e0c;
+  --action-button-hover-from: #cc4411;
+  --action-button-hover-to: #b3380a;
+  --action-button-pressed: #b83a0b;
+  --action-button-border: #a8360b;
+  --action-button-fg: #ffffff;
+  --action-button-shadow: inset 0 1px 0 rgb(255 255 255 / 0.24), 0 1px 2px rgb(122 42 12 / 0.18),
+    0 3px 8px -2px rgb(246 82 31 / 0.3);
+  --action-button-shadow-hover: inset 0 1px 0 rgb(255 255 255 / 0.22), 0 1px 2px rgb(122 42 12 / 0.24),
+    0 4px 10px -2px rgb(246 82 31 / 0.4);
+  --action-button-shadow-pressed: inset 0 1px 2px rgb(78 27 7 / 0.35), 0 1px 1px rgb(122 42 12 / 0.2);
+  --action-button-text-shadow: 0 1px 0 rgb(78 27 7 / 0.25);
   /* Legacy accent aliases retained for non-text roles. */
   --accent-solid: var(--brand-accent);
   --accent-solid-hover: var(--brand-accent-hover);
@@ -275,6 +297,7 @@
   --surface: #1a1917;
   --surface-subtle: #222120;
   --surface-sunken: #151413;
+  --dot-field-dot: #34322e;
   --surface-raised: #262523;
   --surface-inverse: var(--neutral-100);
   --surface-interactive-hover: #2b2a27;
@@ -301,6 +324,15 @@
   --action-primary-hover: #fb8657;
   --action-primary-active: #f6521f;
   --action-primary-fg: #1a0d06;
+  /* The action button keeps its light-theme stops. On a dark surface a
+     lighter rim replaces the darker hairline, and the shadow goes black. */
+  --action-button-border: #e0622e;
+  --action-button-shadow: inset 0 1px 0 rgb(255 255 255 / 0.18), 0 1px 2px rgb(0 0 0 / 0.5),
+    0 4px 12px -2px rgb(217 74 20 / 0.35);
+  --action-button-shadow-hover: inset 0 1px 0 rgb(255 255 255 / 0.2), 0 1px 2px rgb(0 0 0 / 0.5),
+    0 6px 16px -2px rgb(217 74 20 / 0.45);
+  --action-button-shadow-pressed: inset 0 1px 2px rgb(0 0 0 / 0.4);
+  --action-button-text-shadow: 0 1px 0 rgb(78 27 7 / 0.3);
   --accent-solid: var(--brand-accent);
   --accent-solid-hover: var(--brand-accent-hover);
   --accent-solid-active: #f6521f;
@@ -381,10 +413,15 @@
    Tier 3 — COMPONENT TOKENS. Theme-agnostic aliases.
    ============================================================ */
 :root {
-  --btn-primary-bg: var(--action-primary);
-  --btn-primary-bg-hover: var(--action-primary-hover);
-  --btn-primary-bg-active: var(--action-primary-active);
-  --btn-primary-fg: var(--action-primary-fg);
+  --btn-primary-bg: linear-gradient(180deg, var(--action-button-from), var(--action-button-to));
+  --btn-primary-bg-hover: linear-gradient(
+    180deg,
+    var(--action-button-hover-from),
+    var(--action-button-hover-to)
+  );
+  --btn-primary-bg-active: var(--action-button-pressed);
+  --btn-primary-fg: var(--action-button-fg);
+  --btn-primary-border: var(--action-button-border);
   --btn-secondary-bg: var(--surface);
   --btn-secondary-border: var(--border-default);
   --btn-destructive-bg: var(--danger-solid);
@@ -484,6 +521,38 @@ body {
 [data-theme='dark'] ::selection {
   background: #4a2412;
   color: #f2f1ee;
+}
+/* The action button's surface (DS-48), shared by Button primary,
+   IconButton solid, SplitButton and the composer's send button. The
+   element brings its own border width, radius and size. It sits in the
+   components layer so a utility on the element (a disabled fill, a width)
+   still wins, under Tailwind 3 here and Tailwind 4 in the product.
+   Pressing drops the gradient for a flat, deeper fill and turns the
+   shadow inward; disabled drops the gradient, shadow and text shadow so
+   the disabled fill shows. */
+@layer components {
+  .action-button {
+    color: var(--action-button-fg);
+    background-color: var(--action-button-to);
+    background-image: var(--btn-primary-bg);
+    border-color: var(--action-button-border);
+    box-shadow: var(--action-button-shadow);
+    text-shadow: var(--action-button-text-shadow);
+  }
+  .action-button:hover:not(:disabled) {
+    background-image: var(--btn-primary-bg-hover);
+    box-shadow: var(--action-button-shadow-hover);
+  }
+  .action-button:active:not(:disabled) {
+    background-image: none;
+    background-color: var(--action-button-pressed);
+    box-shadow: var(--action-button-shadow-pressed);
+  }
+  .action-button:disabled {
+    background-image: none;
+    box-shadow: none;
+    text-shadow: none;
+  }
 }
 .tnum {
   font-variant-numeric: tabular-nums;
@@ -721,6 +790,52 @@ body {
     --composer-sweep: 360deg;
   }
 }
+/* The dot field (DS-49, after Cloudflare's assistant panel): a quiet grid
+   of dots behind the copilot, so the thread reads as a working surface.
+   .dot-field-live is a patch of the same grid in the brand accent that
+   shows only while the assistant works, a live signal like the session
+   dot: a soft blob of orange dots with a brighter band sweeping through.
+   Both grids are fixed to the viewport, so the patch's dots land on the
+   field's dots wherever either element sits. The patch needs a position
+   and a size from its container; it never takes pointer events. Reduced
+   motion keeps the patch, still. */
+.dot-field {
+  background-image: radial-gradient(circle, var(--dot-field-dot) 1px, transparent 1.5px);
+  background-size: 12px 12px;
+  background-attachment: fixed;
+}
+.dot-field-live {
+  pointer-events: none;
+  background-image: radial-gradient(circle, var(--brand-accent) 1.25px, transparent 1.75px);
+  background-size: 12px 12px;
+  background-attachment: fixed;
+  -webkit-mask-image:
+    radial-gradient(closest-side, #000 30%, transparent),
+    linear-gradient(110deg, rgb(0 0 0 / 0.3) 35%, #000 50%, rgb(0 0 0 / 0.3) 65%);
+  mask-image:
+    radial-gradient(closest-side, #000 30%, transparent),
+    linear-gradient(110deg, rgb(0 0 0 / 0.3) 35%, #000 50%, rgb(0 0 0 / 0.3) 65%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  -webkit-mask-size: 100% 100%, 300% 100%;
+  mask-size: 100% 100%, 300% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: 0 0, 100% 0;
+  mask-position: 0 0, 100% 0;
+  opacity: 0;
+  transition: opacity 280ms var(--ease-enter);
+}
+.dot-field-live[data-live='true'] {
+  opacity: 1;
+  animation: dot-field-drift 1.8s linear infinite;
+}
+@keyframes dot-field-drift {
+  to {
+    -webkit-mask-position: 0 0, 0 0;
+    mask-position: 0 0, 0 0;
+  }
+}
 /* Thin scrollbars for dense panels */
 .scroll-panel {
   scrollbar-width: thin;
@@ -757,6 +872,11 @@ body {
   }
   .ai-mark-working {
     animation: none;
+  }
+  .dot-field-live[data-live='true'] {
+    animation: none;
+    -webkit-mask-position: 0 0, 50% 0;
+    mask-position: 0 0, 50% 0;
   }
   .ai-phrase-in,
   .ai-phrase-out,
