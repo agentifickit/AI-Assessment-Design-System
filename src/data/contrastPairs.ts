@@ -120,12 +120,12 @@ export const contrastGroups: ContrastGroup[] = [
   id: 'copilot-states',
   label: 'Copilot states',
   note:
-  'DS-50. Inside the copilot column (.ai-scope), hover and press take the AI tint instead of grey. On an engaged control, muted ink steps up to secondary, so every label keeps 4.5:1 on the tint. Focus keeps the orange ring, measured under Brand accent against canvas.',
+  'DS-50, amended. Inside the copilot column (.ai-scope), hover and press use the system grey fills; violet stays with the assistant itself. On an engaged control, muted ink steps up to secondary, because muted on the pressed grey is 4.1:1. Focus keeps the orange ring, measured under Brand accent against canvas.',
   pairs: [
-  { id: 'ai-hover-primary', label: 'Primary ink on the hover tint', fg: '--fg-primary', bg: '--ai-hover', target: 'text', usage: 'A hovered menu row, source chip or suggestion' },
-  { id: 'ai-hover-secondary', label: 'Secondary ink on the hover tint', fg: '--fg-secondary', bg: '--ai-hover', target: 'text', usage: 'Menu descriptions and step rows while hovered' },
-  { id: 'ai-active-secondary', label: 'Secondary ink on the pressed tint', fg: '--fg-secondary', bg: '--ai-active', target: 'text', usage: 'A pressed control, an open menu trigger, the history button while open' },
-  { id: 'ai-hover-ai-fg', label: 'AI ink on the hover tint', fg: '--ai-fg', bg: '--ai-hover', target: 'text', usage: 'The suggestion icon and chevron while hovered' }]
+  { id: 'hover-primary', label: 'Primary ink on the hover fill', fg: '--fg-primary', bg: '--surface-interactive-hover', target: 'text', usage: 'A hovered menu row, source chip or suggestion' },
+  { id: 'hover-secondary', label: 'Secondary ink on the hover fill', fg: '--fg-secondary', bg: '--surface-interactive-hover', target: 'text', usage: 'Menu descriptions, step rows and the suggestion chevron while hovered' },
+  { id: 'active-secondary', label: 'Secondary ink on the pressed fill', fg: '--fg-secondary', bg: '--surface-interactive-active', target: 'text', usage: 'A pressed control, an open menu trigger, the history button while open' },
+  { id: 'active-primary', label: 'Primary ink on the pressed fill', fg: '--fg-primary', bg: '--surface-interactive-active', target: 'text', usage: 'The suggestion icon on its tile while hovered' }]
 
 },
 {

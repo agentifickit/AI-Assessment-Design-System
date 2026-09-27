@@ -262,13 +262,14 @@ export function AiPage() {
 
       <DocSection
         title="Copilot states"
-        description="Inside the copilot column (`ai-scope` on the column, header included), every control takes the AI tint when engaged, because the column is the assistant's. The scope remaps the two interaction surfaces, so ghost buttons, menu rows, source chips, suggestions and the expandable thinking and step rows all follow without their own variants (DS-50).">
+        description="Controls in the copilot column (`ai-scope` on the column, header included) use the same grey hover and pressed fills as the rest of the product. Violet belongs to the assistant itself: its mark, the rule on its replies, the pointer spotlight and the working dots. Spent on every hover as well, it stops meaning anything (DS-50, amended).">
         <SpecList
           columns={1}
           entries={[
           { term: 'Rest', detail: 'Unchanged: quiet ink on the column\'s surface, no fill.' },
-          { term: 'Hover', detail: 'The AI hover tint (`--ai-hover`). Muted ink steps up to secondary, 6.7:1 on the tint.' },
-          { term: 'Pressed, open, selected', detail: 'The deeper AI tint (`--ai-active`): a pressed control, an open menu trigger, the history button while its menu is open. Secondary ink 6.2:1.' },
+          { term: 'Hover', detail: 'The system hover fill (`--surface-interactive-hover`). Muted ink steps up to secondary, 6.8:1 on the fill.' },
+          { term: 'Pressed, open, selected', detail: 'The pressed fill (`--surface-interactive-active`): a pressed control, an open menu trigger, the history button while its menu is open. Secondary ink 6.2:1; muted would be 4.1:1, which is why it steps up.' },
+          { term: 'Violet', detail: 'Only where the assistant is present: its mark, the rule on its replies, the spotlight under the pointer and the working dots. Never a hover or pressed fill, a border or an icon on a control.' },
           { term: 'Focus', detail: 'The orange focus ring, as everywhere in the system. Keyboard focus never changes colour by region.' },
           { term: 'Disabled', detail: 'No fill and no hover; half opacity or the disabled ink, as the component already draws it.' },
           { term: 'Send', detail: 'The action button (DS-48): orange with a white label. It is the one orange control in the column, apart from focus.' },
