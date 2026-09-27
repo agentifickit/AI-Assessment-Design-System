@@ -20,7 +20,7 @@ export function SourceChip({ index, title, locator, onOpen, icon, className }: S
       onClick={onOpen}
       className={cn(
         'inline-flex max-w-full items-center gap-1.5 rounded-xs border border-line bg-surface px-1.5 py-0.5 text-2xs text-fg-secondary',
-        'transition-colors duration-100 ease-enter hover:bg-surface-hover hover:text-fg-primary',
+        'transition-colors duration-100 ease-enter hover:bg-surface-hover active:bg-surface-active hover:text-fg-primary',
         className
       )}>
       

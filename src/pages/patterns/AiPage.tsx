@@ -235,26 +235,45 @@ export function AiPage() {
 
       <DocSection
         title="Dot field"
-        description="The copilot column sits on a faint grid of dots (`DotField`), so the thread reads as a working surface rather than a blank page. A violet spotlight of the same grid follows the pointer over the column. Text never crosses a dot: messages, status lines and the empty state sit on `dot-knockout`, and starting points use the cards appearance of SuggestionList. While the assistant works, a patch of violet dots under the latest turn carries a sweeping band (`dot-field-live` with `data-live`), and it goes when the reply is done. The live dots are AI violet, like the assistant's mark, so orange stays with what the person acts on (DS-49).">
-        <Example label="Move the pointer over the field. The status line sits on its knockout; the patch below it is live" tone="surface">
-          <DotField className="h-64 max-w-[360px] overflow-hidden rounded-md border border-line bg-surface p-4">
-            <p className="dot-knockout w-fit text-xs text-fg-secondary">Checking the usage sheet</p>
-            <span className="dot-field-live mt-3 block h-10 w-24" data-live="true" aria-hidden="true" />
-            <SuggestionList
-              className="mt-4"
-              appearance="cards"
-              label="Suggested questions"
-              onSelect={() => undefined}
-              suggestions={[
-              { label: 'Summarise the materials', icon: <FileTextIcon className="h-3.5 w-3.5" /> },
-              { label: 'What does the brief ask me to do?', icon: <ClipboardListIcon className="h-3.5 w-3.5" /> }]
-              } />
-          </DotField>
+        description="The copilot column sits on a faint grid of dots (`DotField`), so the thread reads as a working surface rather than a blank page. A violet spotlight of the same grid follows the pointer over the column. Text never crosses a dot: messages, status lines and the empty state sit on `dot-knockout`, and the dots fade back in around them rather than stopping at an edge. While the assistant works, a patch of violet dots under the latest turn carries a sweeping band (`dot-field-live` with `data-live`), and it goes when the reply is done. The live dots are AI violet, like the assistant's mark, so orange stays with what the person acts on (DS-49).">
+        <Example label="Move the pointer over the field, and over the starting points. The status line fades into the dots; the patch below it is live" tone="surface">
+          <div className="ai-scope max-w-[360px]">
+            <DotField className="h-72 overflow-hidden rounded-md border border-line bg-surface p-4">
+              <p className="dot-knockout w-fit text-xs text-fg-secondary">Checking the usage sheet</p>
+              <span className="dot-field-live mt-3 block h-10 w-24" data-live="true" aria-hidden="true" />
+              <div className="dot-knockout mt-4">
+                <SuggestionList
+                  appearance="cards"
+                  label="Suggested questions"
+                  onSelect={() => undefined}
+                  suggestions={[
+                  { label: 'Summarise the materials', icon: <FileTextIcon className="h-3.5 w-3.5" /> },
+                  { label: 'What does the brief ask me to do?', icon: <ClipboardListIcon className="h-3.5 w-3.5" /> }]
+                  } />
+              </div>
+            </DotField>
+          </div>
         </Example>
         <DoDont
           className="mt-4"
-          doText="One field per copilot column, under a hairline below its header. Text and starting points on the field's own surface. One live patch, only while the assistant works, beside the words that say what it is doing."
-          dontText="A dot field behind documents, sheets or the report; text laid straight on the dots; orange dots; or a patch that stays after the reply ends. The patch never stands in for the status words." />
+          doText="One field per copilot column, under a hairline below its header. Text and starting points on the field's own surface, with the dots fading back in around them. One live patch, only while the assistant works, beside the words that say what it is doing."
+          dontText="A dot field behind documents, sheets or the report; text laid straight on the dots; a hard white box around a reply; orange dots; or a patch that stays after the reply ends. The patch never stands in for the status words." />
+      </DocSection>
+
+      <DocSection
+        title="Copilot states"
+        description="Inside the copilot column (`ai-scope` on the column, header included), every control takes the AI tint when engaged, because the column is the assistant's. The scope remaps the two interaction surfaces, so ghost buttons, menu rows, source chips, suggestions and the expandable thinking and step rows all follow without their own variants (DS-50).">
+        <SpecList
+          columns={1}
+          entries={[
+          { term: 'Rest', detail: 'Unchanged: quiet ink on the column\'s surface, no fill.' },
+          { term: 'Hover', detail: 'The AI hover tint (`--ai-hover`). Muted ink steps up to secondary, 6.7:1 on the tint.' },
+          { term: 'Pressed, open, selected', detail: 'The deeper AI tint (`--ai-active`): a pressed control, an open menu trigger, the history button while its menu is open. Secondary ink 6.2:1.' },
+          { term: 'Focus', detail: 'The orange focus ring, as everywhere in the system. Keyboard focus never changes colour by region.' },
+          { term: 'Disabled', detail: 'No fill and no hover; half opacity or the disabled ink, as the component already draws it.' },
+          { term: 'Send', detail: 'The action button (DS-48): orange with a white label. It is the one orange control in the column, apart from focus.' },
+          { term: 'Contrast and forced colours', detail: 'The dots, spotlight and patch are decoration: they go under increased contrast and forced colours, and never sit behind text.' }]
+          } />
       </DocSection>
 
       <DocSection

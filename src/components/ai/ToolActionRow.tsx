@@ -56,7 +56,7 @@ export function ToolActionRow({
           onClick={() => detail && setOpen((o) => !o)}
           aria-expanded={detail ? open : undefined}
           disabled={!detail}
-          className="group flex w-full items-center gap-2 rounded-xs py-1 text-left disabled:cursor-default">
+          className="group -mx-1 flex w-[calc(100%+0.5rem)] items-center gap-2 rounded-xs px-1 py-1 text-left transition-colors duration-100 ease-enter enabled:hover:bg-surface-hover enabled:active:bg-surface-active disabled:cursor-default">
           <span className="relative inline-flex h-4 w-4 shrink-0 items-center justify-center">
             {icon ?
             <>
@@ -123,7 +123,7 @@ export function ToolActionRow({
         onClick={() => detail && setOpen((o) => !o)}
         aria-expanded={detail ? open : undefined}
         disabled={!detail}
-        className="flex w-full items-center gap-2 px-2.5 py-1.5 text-left disabled:cursor-default">
+        className="flex w-full items-center gap-2 px-2.5 py-1.5 text-left transition-colors duration-100 ease-enter enabled:hover:bg-surface-hover enabled:active:bg-surface-active disabled:cursor-default">
         
         {detail &&
         <ChevronRightIcon

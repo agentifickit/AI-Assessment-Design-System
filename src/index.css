@@ -147,11 +147,16 @@
   --surface-sunken: var(--neutral-100);
   --surface-raised: var(--neutral-00);
   /* The dot field (DS-49). The grid is decorative, so no contrast target:
-     it should barely register, about 1.25:1 on the surface. The live dots
+     it should barely register, about 1.15:1 on the surface. The live dots
      are AI violet, the hue of the assistant's mark and rules, so orange
      stays with what the person acts on. */
-  --dot-field-dot: #e2e1dc;
+  --dot-field-dot: #edece8;
   --dot-field-live: var(--violet-500);
+  /* Copilot interaction states (DS-50): inside .ai-scope, hover and press
+     take the AI tint. Secondary ink holds 6.7:1 on the hover tint and 6.2:1
+     pressed; muted ink steps up to secondary on an engaged control. */
+  --ai-hover: #f3f1fa;
+  --ai-active: #ebe7f6;
   --surface-inverse: var(--neutral-900);
   --surface-interactive-hover: var(--neutral-100);
   --surface-interactive-active: var(--neutral-200);
@@ -300,8 +305,10 @@
   --surface: #1a1917;
   --surface-subtle: #222120;
   --surface-sunken: #151413;
-  --dot-field-dot: #2a2926;
+  --dot-field-dot: #242321;
   --dot-field-live: #8b82c4;
+  --ai-hover: #26233a;
+  --ai-active: #2f2b47;
   --surface-raised: #262523;
   --surface-inverse: var(--neutral-100);
   --surface-interactive-hover: #2b2a27;
@@ -806,7 +813,7 @@ body {
 .dot-field {
   position: relative;
   isolation: isolate;
-  background-image: radial-gradient(circle, var(--dot-field-dot) 0.9px, transparent 1.4px);
+  background-image: radial-gradient(circle, var(--dot-field-dot) 0.8px, transparent 1.3px);
   background-size: 12px 12px;
   background-attachment: fixed;
 }
@@ -836,10 +843,23 @@ body {
 .dot-field[data-spot] > .dot-field-spot {
   opacity: 1;
 }
+/* Text on the field: the block sits on the field's surface, and the dots
+   fade back in over about 24px around it rather than stopping at an edge.
+   The halo is a pseudo-element under every sibling (z-index -1 in the
+   isolated field), so it never washes over a bubble or a card beside it,
+   and it moves no layout. */
 .dot-knockout {
-  background-color: var(--surface);
-  border-radius: 4px;
-  box-shadow: 0 0 0 6px var(--surface);
+  position: relative;
+}
+.dot-knockout::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: 0 0 24px 14px var(--surface);
+  pointer-events: none;
 }
 .dot-field-live {
   pointer-events: none;
@@ -890,6 +910,39 @@ body {
 }
 .scroll-panel::-webkit-scrollbar-track {
   background: transparent;
+}
+/* The copilot's interaction states (DS-50). .ai-scope goes on the copilot
+   column, header included. Hover and press on every ghost control, menu row,
+   source chip, suggestion and expandable row in it take the AI tint, because
+   the column is the assistant's. Focus keeps the orange ring everywhere,
+   and the send button stays the action button. Muted ink on an engaged
+   control steps up to secondary, so it keeps 4.5:1 on the tint. */
+.ai-scope {
+  --surface-interactive-hover: var(--ai-hover);
+  --surface-interactive-active: var(--ai-active);
+}
+.ai-scope :is(button, [role='menuitem'], [role='menuitemradio'], [role='option']):is(:hover, :active, [aria-expanded='true']):not(:disabled) .text-fg-muted {
+  color: var(--fg-secondary);
+}
+/* The dots are decoration. Where the person has asked for more contrast or
+   the system forces its colours, they go, and so do the spotlight and the
+   working patch; the status words still say what is happening. */
+@media (prefers-contrast: more) {
+  .dot-field,
+  .dot-field-spot,
+  .dot-field-live {
+    background-image: none;
+  }
+}
+@media (forced-colors: active) {
+  .dot-field,
+  .dot-field-spot,
+  .dot-field-live {
+    background-image: none;
+  }
+  .dot-knockout::before {
+    display: none;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   *,
