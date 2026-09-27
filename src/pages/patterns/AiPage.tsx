@@ -11,6 +11,7 @@ import { PromptComposer } from '../../components/ai/PromptComposer';
 import { AssistantMark } from '../../components/ai/AssistantMark';
 import { ResponseStatus } from '../../components/ai/ResponseStatus';
 import { SuggestionList } from '../../components/ai/SuggestionList';
+import { DotField } from '../../components/ai/DotField';
 import { ReasoningTrace } from '../../components/ai/ReasoningTrace';
 import { Tag } from '../../components/ui/Tag';
 import { IconButton } from '../../components/ui/IconButton';
@@ -234,17 +235,26 @@ export function AiPage() {
 
       <DocSection
         title="Dot field"
-        description="The copilot column sits on a quiet grid of dots (`dot-field`), so the thread reads as a working surface rather than a blank page. While the assistant works, a patch of the same grid turns orange at the bottom of the thread, where the reply grows, and a brighter band sweeps through it (`dot-field-live` with `data-live`). It is a live signal, like the session dot, and it goes when the reply is done (DS-49).">
-        <Example label="The field at rest, and the patch while the assistant responds" tone="surface">
-          <div className="dot-field relative h-40 max-w-[360px] overflow-hidden rounded-md border border-line bg-surface">
-            <p className="absolute left-4 top-4 text-xs text-fg-secondary">Checking the usage sheet</p>
-            <span className="dot-field-live absolute bottom-3 left-3 h-16 w-28" data-live="true" aria-hidden="true" />
-          </div>
+        description="The copilot column sits on a faint grid of dots (`DotField`), so the thread reads as a working surface rather than a blank page. A violet spotlight of the same grid follows the pointer over the column. Text never crosses a dot: messages, status lines and the empty state sit on `dot-knockout`, and starting points use the cards appearance of SuggestionList. While the assistant works, a patch of violet dots under the latest turn carries a sweeping band (`dot-field-live` with `data-live`), and it goes when the reply is done. The live dots are AI violet, like the assistant's mark, so orange stays with what the person acts on (DS-49).">
+        <Example label="Move the pointer over the field. The status line sits on its knockout; the patch below it is live" tone="surface">
+          <DotField className="h-64 max-w-[360px] overflow-hidden rounded-md border border-line bg-surface p-4">
+            <p className="dot-knockout w-fit text-xs text-fg-secondary">Checking the usage sheet</p>
+            <span className="dot-field-live mt-3 block h-10 w-24" data-live="true" aria-hidden="true" />
+            <SuggestionList
+              className="mt-4"
+              appearance="cards"
+              label="Suggested questions"
+              onSelect={() => undefined}
+              suggestions={[
+              { label: 'Summarise the materials', icon: <FileTextIcon className="h-3.5 w-3.5" /> },
+              { label: 'What does the brief ask me to do?', icon: <ClipboardListIcon className="h-3.5 w-3.5" /> }]
+              } />
+          </DotField>
         </Example>
         <DoDont
           className="mt-4"
-          doText="One field per column, behind the thread and under the composer card. One patch, only while the assistant works, beside the words that say what it is doing."
-          dontText="A dot field behind documents, sheets or the report, or a patch that stays after the reply ends. The patch never stands in for the status words." />
+          doText="One field per copilot column, under a hairline below its header. Text and starting points on the field's own surface. One live patch, only while the assistant works, beside the words that say what it is doing."
+          dontText="A dot field behind documents, sheets or the report; text laid straight on the dots; orange dots; or a patch that stays after the reply ends. The patch never stands in for the status words." />
       </DocSection>
 
       <DocSection

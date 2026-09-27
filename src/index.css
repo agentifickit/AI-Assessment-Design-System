@@ -146,9 +146,12 @@
   --surface-subtle: var(--neutral-100);
   --surface-sunken: var(--neutral-100);
   --surface-raised: var(--neutral-00);
-  /* The dot field's grid (DS-49). Decorative, so no contrast target: it
-     should read as texture, 1.4:1 against the canvas. */
-  --dot-field-dot: #d4d3cd;
+  /* The dot field (DS-49). The grid is decorative, so no contrast target:
+     it should barely register, about 1.25:1 on the surface. The live dots
+     are AI violet, the hue of the assistant's mark and rules, so orange
+     stays with what the person acts on. */
+  --dot-field-dot: #e2e1dc;
+  --dot-field-live: var(--violet-500);
   --surface-inverse: var(--neutral-900);
   --surface-interactive-hover: var(--neutral-100);
   --surface-interactive-active: var(--neutral-200);
@@ -297,7 +300,8 @@
   --surface: #1a1917;
   --surface-subtle: #222120;
   --surface-sunken: #151413;
-  --dot-field-dot: #34322e;
+  --dot-field-dot: #2a2926;
+  --dot-field-live: #8b82c4;
   --surface-raised: #262523;
   --surface-inverse: var(--neutral-100);
   --surface-interactive-hover: #2b2a27;
@@ -790,23 +794,56 @@ body {
     --composer-sweep: 360deg;
   }
 }
-/* The dot field (DS-49, after Cloudflare's assistant panel): a quiet grid
+/* The dot field (DS-49, after Cloudflare's assistant panel): a faint grid
    of dots behind the copilot, so the thread reads as a working surface.
-   .dot-field-live is a patch of the same grid in the brand accent that
-   shows only while the assistant works, a live signal like the session
-   dot: a soft blob of orange dots with a brighter band sweeping through.
-   Both grids are fixed to the viewport, so the patch's dots land on the
-   field's dots wherever either element sits. The patch needs a position
-   and a size from its container; it never takes pointer events. Reduced
-   motion keeps the patch, still. */
+   `DotField` draws it and a violet spotlight of the same grid that follows
+   a mouse or pen (.dot-field-spot, under every child). .dot-field-live is a
+   patch that shows only while the assistant works: a soft blob of violet
+   dots with a brighter band sweeping through. Text never crosses a dot: it
+   sits on .dot-knockout, the field's own surface with a 6px halo. Every
+   grid is fixed to the viewport, so violet dots land on the grey ones
+   wherever an element sits. Reduced motion keeps the patch, still. */
 .dot-field {
-  background-image: radial-gradient(circle, var(--dot-field-dot) 1px, transparent 1.5px);
+  position: relative;
+  isolation: isolate;
+  background-image: radial-gradient(circle, var(--dot-field-dot) 0.9px, transparent 1.4px);
   background-size: 12px 12px;
   background-attachment: fixed;
 }
+.dot-field-spot {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(circle, var(--dot-field-live) 1.1px, transparent 1.6px);
+  background-size: 12px 12px;
+  background-attachment: fixed;
+  -webkit-mask-image: radial-gradient(
+    circle 96px at var(--dot-x, -999px) var(--dot-y, -999px),
+    #000,
+    rgb(0 0 0 / 0.4) 45%,
+    transparent 75%
+  );
+  mask-image: radial-gradient(
+    circle 96px at var(--dot-x, -999px) var(--dot-y, -999px),
+    #000,
+    rgb(0 0 0 / 0.4) 45%,
+    transparent 75%
+  );
+  opacity: 0;
+  transition: opacity 240ms var(--ease-enter);
+}
+.dot-field[data-spot] > .dot-field-spot {
+  opacity: 1;
+}
+.dot-knockout {
+  background-color: var(--surface);
+  border-radius: 4px;
+  box-shadow: 0 0 0 6px var(--surface);
+}
 .dot-field-live {
   pointer-events: none;
-  background-image: radial-gradient(circle, var(--brand-accent) 1.25px, transparent 1.75px);
+  background-image: radial-gradient(circle, var(--dot-field-live) 1.25px, transparent 1.75px);
   background-size: 12px 12px;
   background-attachment: fixed;
   -webkit-mask-image:
