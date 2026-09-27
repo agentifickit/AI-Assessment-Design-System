@@ -1,8 +1,24 @@
 import React from 'react';
+import { CheckIcon } from 'lucide-react';
 import { PageHeader } from '../../components/docs/PageHeader';
 import { DocSection } from '../../components/docs/DocSection';
 import { DoDont } from '../../components/docs/DoDont';
 import { Alert } from '../../components/ui/Alert';
+import { Badge } from '../../components/ui/Badge';
+import { statusWords, type StatusWord } from '../../data/statusWords';
+
+/** The one tone map: `dot` for every word but Verified, which takes the check. */
+function StatusWordBadge({ status }: {status: StatusWord;}) {
+  return status.glyph === 'check' ?
+  <Badge tone={status.tone} icon={<CheckIcon className="h-3 w-3 shrink-0" strokeWidth={2.5} aria-hidden="true" />}>
+      {status.label}
+    </Badge> :
+
+  <Badge tone={status.tone} dot>
+      {status.label}
+    </Badge>;
+
+}
 
 const pairs: {context: string;use: string;avoid: string;why: string;}[] = [
 {
@@ -24,10 +40,16 @@ const pairs: {context: string;use: string;avoid: string;why: string;}[] = [
   why: 'No conclusion exists until a named person signs it. Saying “complete” misrepresents where accountability sits.'
 },
 {
-  context: 'A conclusion is final',
-  use: 'Reviewer-approved',
-  avoid: 'Verified or Confirmed',
-  why: '“Reviewer-approved” names who is accountable. The alternatives imply a machine check the product does not perform.'
+  context: 'A report is final',
+  use: 'Verified',
+  avoid: 'AI-verified or Confirmed',
+  why: '“Verified” means a named Plural reviewer checked the report and released it (V1 decision C4, human-verified). A person did the checking, so the word never takes “AI-”, and wherever there is room it names them: “Verified by J. Okonkwo, 15 Aug”. It is the one word for this state in the pipeline, the queue and the report.'
+},
+{
+  context: 'Saying what was verified',
+  use: 'Verified report',
+  avoid: 'Verified candidate',
+  why: 'Verification covers the report: a reviewer checked what it says against the evidence it cites. It says nothing about the person, their identity or their credentials, so the word qualifies the report and never the candidate.'
 },
 {
   context: 'The assistant is generating',
@@ -120,6 +142,41 @@ export function ContentPage() {
                     </span>
                   </td>
                   <td className="px-3 py-2.5 leading-6 text-fg-secondary">{p.why}</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </DocSection>
+
+      <DocSection
+        title="Status words"
+        description="Decided with the candidate pipeline and the report (PLU-097 D-4, PLU-105 D-17, DS-26, 2026-09-27): one set of words and one tone map for the pipeline, the verification queue and the report. Each is a Badge with its dot, and the word is always present, so the tone is never the only cue. An approved report takes no hue: Verified is neutral, with the check glyph in place of the dot.">
+
+        <div className="overflow-hidden rounded-md border border-line bg-surface">
+          <table className="w-full border-collapse text-13">
+            <caption className="sr-only">Status words, their badge tone and who sees them</caption>
+            <thead>
+              <tr className="border-b border-line bg-surface-subtle">
+                {['Word', 'Tone', 'Shown to', 'Means'].map((h) =>
+                <th key={h} scope="col" className="px-3 py-2 text-left text-2xs font-semibold uppercase tracking-wide text-fg-muted">
+                    {h}
+                  </th>
+                )}
+              </tr>
+            </thead>
+            <tbody>
+              {statusWords.map((s) =>
+              <tr key={s.id} className="border-b border-line-subtle last:border-b-0 align-top">
+                  <th scope="row" className="w-44 px-3 py-2.5 text-left font-normal">
+                    <StatusWordBadge status={s} />
+                  </th>
+                  <td className="w-40 px-3 py-2.5 text-fg-secondary">
+                    <code className="font-mono text-2xs text-fg-primary">{s.tone}</code>
+                    {s.glyph === 'check' ? ', check glyph' : ', dot'}
+                  </td>
+                  <td className="w-48 px-3 py-2.5 text-fg-secondary">{s.adminOnly ? 'Plural admins only' : 'Recruiters and admins'}</td>
+                  <td className="px-3 py-2.5 leading-6 text-fg-secondary">{s.meaning}</td>
                 </tr>
               )}
             </tbody>

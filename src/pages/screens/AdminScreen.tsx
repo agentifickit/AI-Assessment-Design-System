@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MailIcon, PlusIcon, ShieldIcon } from 'lucide-react';
+import { CheckIcon, MailIcon, PlusIcon, ShieldIcon } from 'lucide-react';
 import { ScreenFrame } from '../../components/docs/ScreenFrame';
 import { DataTable, type Column } from '../../components/ui/DataTable';
 import { Tabs } from '../../components/ui/Tabs';
@@ -12,39 +12,40 @@ import { Avatar } from '../../components/ui/Avatar';
 import { Progress } from '../../components/ui/Progress';
 import { OpportunityStateBadge } from '../../components/evidence/OpportunityStateBadge';
 import { EvidenceStateBadge } from '../../components/evidence/EvidenceStateBadge';
+import { statusWordMap, type StatusWordId } from '../../data/statusWords';
 
 interface InviteRow {
   id: string;
   name: string;
   email: string;
   assessment: string;
-  status: 'invited' | 'started' | 'completed' | 'expired';
+  status: StatusWordId;
   sent: string;
   activity: string;
 }
 
 const invites: InviteRow[] = [
-{ id: 'NW-2291', name: 'R. Adeyemi', email: 'r.adeyemi@example.com', assessment: 'Campaign positioning', status: 'completed', sent: '12 Aug', activity: 'Submitted 14 Aug, 13:54' },
-{ id: 'NW-2304', name: 'T. Lindqvist', email: 't.lindqvist@example.com', assessment: 'Campaign positioning', status: 'completed', sent: '12 Aug', activity: 'Submitted 14 Aug, 10:22' },
-{ id: 'NW-2312', name: 'M. Haddad', email: 'm.haddad@example.com', assessment: 'Outbound sequence review', status: 'completed', sent: '12 Aug', activity: 'Submitted 15 Aug, 16:41' },
-{ id: 'NW-2318', name: 'S. Oyelaran', email: 's.oyelaran@example.com', assessment: 'Campaign positioning', status: 'started', sent: '14 Aug', activity: 'In progress, 22 min elapsed' },
+{ id: 'NW-2291', name: 'R. Adeyemi', email: 'r.adeyemi@example.com', assessment: 'Campaign positioning', status: 'verified', sent: '12 Aug', activity: 'Submitted 14 Aug, 13:54' },
+{ id: 'NW-2304', name: 'T. Lindqvist', email: 't.lindqvist@example.com', assessment: 'Campaign positioning', status: 'awaiting-verification', sent: '12 Aug', activity: 'Submitted 14 Aug, 10:22' },
+{ id: 'NW-2312', name: 'M. Haddad', email: 'm.haddad@example.com', assessment: 'Outbound sequence review', status: 'awaiting-verification', sent: '12 Aug', activity: 'Submitted 15 Aug, 16:41' },
+{ id: 'NW-2318', name: 'S. Oyelaran', email: 's.oyelaran@example.com', assessment: 'Campaign positioning', status: 'in-progress', sent: '14 Aug', activity: 'In progress, 22 min elapsed' },
 { id: 'NW-2320', name: 'K. Novák', email: 'k.novak@example.com', assessment: 'Campaign positioning', status: 'invited', sent: '15 Aug', activity: 'Not opened' },
 { id: 'NW-2277', name: 'D. Ferreira', email: 'd.ferreira@example.com', assessment: 'Outbound sequence review', status: 'expired', sent: '02 Aug', activity: 'Invitation expired 09 Aug' }];
 
 
-const statusTone = {
-  invited: 'neutral',
-  started: 'info',
-  completed: 'success',
-  expired: 'warning'
-} as const;
+/** The one tone map shared with the report (Standards, Content and tone). */
+function StatusCell({ id }: {id: StatusWordId;}) {
+  const s = statusWordMap[id];
+  return s.glyph === 'check' ?
+  <Badge tone={s.tone} icon={<CheckIcon className="h-3 w-3 shrink-0" strokeWidth={2.5} aria-hidden="true" />}>
+      {s.label}
+    </Badge> :
 
-const statusLabel = {
-  invited: 'Invited',
-  started: 'In progress',
-  completed: 'Completed',
-  expired: 'Expired'
-} as const;
+  <Badge tone={s.tone} dot>
+      {s.label}
+    </Badge>;
+
+}
 
 interface IssueRow {
   id: string;
@@ -125,7 +126,7 @@ export function AdminScreen() {
   },
   { id: 'ref', header: 'Reference', width: '110px', cell: (r) => <span className="font-mono text-2xs text-fg-muted">{r.id}</span> },
   { id: 'assessment', header: 'Assessment', cell: (r) => r.assessment },
-  { id: 'status', header: 'Status', width: '130px', cell: (r) => <Badge tone={statusTone[r.status]}>{statusLabel[r.status]}</Badge> },
+  { id: 'status', header: 'Status', width: '176px', cell: (r) => <StatusCell id={r.status} /> },
   { id: 'sent', header: 'Invited', width: '90px', cell: (r) => r.sent },
   { id: 'activity', header: 'Latest activity', cell: (r) => <span className="text-fg-secondary">{r.activity}</span> }];
 
