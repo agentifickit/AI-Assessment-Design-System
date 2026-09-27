@@ -152,11 +152,6 @@
      stays with what the person acts on. */
   --dot-field-dot: #edece8;
   --dot-field-live: var(--violet-500);
-  /* Copilot interaction states (DS-50): inside .ai-scope, hover and press
-     take the AI tint. Secondary ink holds 6.7:1 on the hover tint and 6.2:1
-     pressed; muted ink steps up to secondary on an engaged control. */
-  --ai-hover: #f3f1fa;
-  --ai-active: #ebe7f6;
   --surface-inverse: var(--neutral-900);
   --surface-interactive-hover: var(--neutral-100);
   --surface-interactive-active: var(--neutral-200);
@@ -307,8 +302,6 @@
   --surface-sunken: #151413;
   --dot-field-dot: #242321;
   --dot-field-live: #8b82c4;
-  --ai-hover: #26233a;
-  --ai-active: #2f2b47;
   --surface-raised: #262523;
   --surface-inverse: var(--neutral-100);
   --surface-interactive-hover: #2b2a27;
@@ -911,16 +904,13 @@ body {
 .scroll-panel::-webkit-scrollbar-track {
   background: transparent;
 }
-/* The copilot's interaction states (DS-50). .ai-scope goes on the copilot
-   column, header included. Hover and press on every ghost control, menu row,
-   source chip, suggestion and expandable row in it take the AI tint, because
-   the column is the assistant's. Focus keeps the orange ring everywhere,
-   and the send button stays the action button. Muted ink on an engaged
-   control steps up to secondary, so it keeps 4.5:1 on the tint. */
-.ai-scope {
-  --surface-interactive-hover: var(--ai-hover);
-  --surface-interactive-active: var(--ai-active);
-}
+/* The copilot's interaction states (DS-50, amended). .ai-scope goes on the
+   copilot column, header included. Hover and press keep the system's grey
+   fills; violet stays with the assistant itself (its mark, the rule on its
+   replies, the spotlight and the working dots), so it is not spent on every
+   control. Focus keeps the orange ring, and the send button stays the action
+   button. Muted ink on an engaged control steps up to secondary: muted on
+   the pressed grey is 4.1:1, secondary 6.2:1. */
 .ai-scope :is(button, [role='menuitem'], [role='menuitemradio'], [role='option']):is(:hover, :active, [aria-expanded='true']):not(:disabled) .text-fg-muted {
   color: var(--fg-secondary);
 }
