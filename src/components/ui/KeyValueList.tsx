@@ -12,9 +12,14 @@ export interface KeyValueListProps {
   /** 'rows' divides each pair with a hairline; 'inline' is a compact two-column
    *  grid; 'properties' is a document's property rows (DS-39). */
   variant?: 'rows' | 'inline' | 'properties';
-  /** Properties only: 'sm' sets values in the 11px step and the secondary
-   *  ink, for a read-out inside a popover. */
-  size?: 'sm' | 'md';
+  /** Properties: 'sm' sets values in the 11px step and the secondary ink,
+   *  for a read-out inside a popover. Rows: 'lg' sets values in body-base
+   *  (14/20), for candidate-facing facts. 'md' is the 13px default. */
+  size?: 'sm' | 'md' | 'lg';
+  /** Rows only: a fixed key column in px. The value starts 12px after it and
+   *  reads left-aligned, as facts about one person or one file do. Without
+   *  it the value sits at the right edge. Issue #17. */
+  keyColumn?: number;
   className?: string;
 }
 
@@ -24,7 +29,7 @@ export interface KeyValueListProps {
  *  6px between rows, no rules and no fills. Values wrap; labels never do, so
  *  keep them to one or two words ("Hand in", "Unit"). DS-39, from the task
  *  brief in the workspace review of 2026-09-26. */
-export function KeyValueList({ items, variant = 'rows', size = 'md', className }: KeyValueListProps) {
+export function KeyValueList({ items, variant = 'rows', size = 'md', keyColumn, className }: KeyValueListProps) {
   if (variant === 'properties') {
     return (
       <dl className={cn('grid grid-cols-[88px_minmax(0,1fr)] gap-x-3 gap-y-1.5', className)}>
@@ -60,12 +65,25 @@ export function KeyValueList({ items, variant = 'rows', size = 'md', className }
 
   }
 
+  const aligned = typeof keyColumn === 'number';
   return (
     <dl className={cn('divide-y divide-line-subtle', className)}>
       {items.map((i) =>
-      <div key={i.key} className="flex items-baseline justify-between gap-4 py-2">
-          <dt className="shrink-0 text-xs text-fg-muted">{i.key}</dt>
-          <dd className={cn('min-w-0 text-right text-13 text-fg-primary', i.mono && 'font-mono text-xs tnum')}>
+      <div
+        key={i.key}
+        className={cn('items-baseline py-2', aligned ? 'grid gap-3' : 'flex justify-between gap-4')}
+        style={aligned ? { gridTemplateColumns: `${keyColumn}px minmax(0, 1fr)` } : undefined}>
+        
+          <dt className={cn('text-xs text-fg-muted', aligned ? 'min-w-0' : 'shrink-0')}>{i.key}</dt>
+          <dd
+          className={cn(
+            'min-w-0 text-fg-primary',
+            !aligned && 'text-right',
+            size === 'lg' ? 'text-sm' : 'text-13',
+            i.mono && 'font-mono tnum',
+            i.mono && size !== 'lg' && 'text-xs'
+          )}>
+          
             {i.value}
           </dd>
         </div>

@@ -119,6 +119,8 @@ export default {content: [
         '10': ['10px', { lineHeight: '16px' }],
         '2xs': ['11px', { lineHeight: '16px' }],
         xs: ['12px', { lineHeight: '16px' }],
+        /* caption-lg 12/18: secondary metadata that reads as a phrase. DS-20, issue #17. */
+        'caption-lg': ['12px', { lineHeight: '18px' }],
         '13': ['13px', { lineHeight: '20px' }],
         sm: ['14px', { lineHeight: '20px' }],
         base: ['16px', { lineHeight: '26px' }],
