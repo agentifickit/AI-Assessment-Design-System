@@ -118,11 +118,9 @@ export function Tabs({ items, value, onChange, label, variant = 'line', classNam
             
             {t.icon}
             {t.label}
-            {typeof t.count === 'number' &&
-            <span className="rounded-xs border border-line bg-surface-subtle px-1 text-2xs text-fg-muted tnum">
-                {t.count}
-              </span>
-            }
+            {/* The count is a plain muted figure in the label's weight, not a
+                chip: the underline already marks the tab. Issue #18. */}
+            {typeof t.count === 'number' && <span className="text-fg-muted tnum">{t.count}</span>}
           </button>);
 
       })}

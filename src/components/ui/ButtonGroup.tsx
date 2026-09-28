@@ -5,6 +5,11 @@ export interface ButtonGroupOption {
   value: string;
   label: string;
   icon?: React.ReactNode;
+  /** A figure after the label, in the label's weight and the muted ink, as
+   *  `Tabs` carry one (PLU-097 DS-25, issue #18). On the selected segment it
+   *  steps up to secondary ink, since muted on the pressed fill is 4.12:1.
+   *  Leave it off while the count is still loading rather than showing 0. */
+  count?: number;
 }
 
 export interface ButtonGroupProps {
@@ -45,6 +50,9 @@ export function ButtonGroup({ options, value, onChange, label, size = 'md', clas
             
             {opt.icon}
             {opt.label}
+            {typeof opt.count === 'number' &&
+            <span className={cn('tnum', selected ? 'text-fg-secondary' : 'text-fg-muted')}>{opt.count}</span>
+            }
           </button>);
 
       })}
