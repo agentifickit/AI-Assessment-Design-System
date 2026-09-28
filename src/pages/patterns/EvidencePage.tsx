@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PageHeader } from '../../components/docs/PageHeader';
 import { DocSection } from '../../components/docs/DocSection';
 import { Example } from '../../components/docs/Example';
@@ -12,12 +12,14 @@ import { ReviewerDecision } from '../../components/evidence/ReviewerDecision';
 import { LimitationBlock } from '../../components/evidence/LimitationBlock';
 import { EvidenceStateBadge } from '../../components/evidence/EvidenceStateBadge';
 import { Alert } from '../../components/ui/Alert';
+import { Checkbox } from '../../components/ui/Checkbox';
 import { evidenceStates } from '../../data/evidenceStates';
 import { moments } from '../../data/reviewContent';
 
 const m = moments[1];
 
 export function EvidencePage() {
+  const [acknowledged, setAcknowledged] = useState(false);
   return (
     <>
       <PageHeader
@@ -153,7 +155,10 @@ export function EvidencePage() {
         </div>
       </DocSection>
 
-      <DocSection title="Limitations">
+      <DocSection
+        title="Limitations"
+        description="Two components, split by what the reader does next. A limitation that annotates a finding on a report is a LimitationBlock: it sits with the finding, at the finding's weight, so it cannot be skimmed past. A limitation the reader must acknowledge before continuing, such as areas a scenario does not measure on the assessment-creation wizard, is an Alert in the warning tone, followed by the checkbox that acknowledges it. Both say what the limitation does not indicate. Approved with PLU-092 v1.11 (D-29), issue #2.">
+        
         <Example label="LimitationBlock, capture failure" tone="surface">
           <LimitationBlock
             state="incomplete"
@@ -166,6 +171,31 @@ export function EvidencePage() {
           className="mt-4"
           doText={<>State the fault as ours, give the window, and say explicitly what it does not imply. “Evidence not captured — a connection interruption at 13:38 prevented capture. This does not indicate how the candidate performed.”</>}
           dontText={<>Hiding the gap, scoring it as zero, or writing it as a candidate property: “No evidence of context-setting”, “Candidate did not demonstrate Description”, or a blank cell with no explanation.</>} />
+        
+
+        <Example label="Alert, warning: a limitation acknowledged before continuing" note="The wizard's coverage step" className="mt-4" tone="surface">
+          <div className="flex max-w-[640px] flex-col gap-3">
+            <Alert tone="warning" title="Two areas aren't measured in this scenario">
+              <p>It doesn't stage them, so no candidate gets a chance to show them. Every report from this assessment says so.</p>
+              <p className="mt-1 text-xs">
+                <span className="font-medium">This does not indicate:</span>{' '}
+                <span className="text-fg-muted">anything about the candidate. These areas are never scored low.</span>
+              </p>
+            </Alert>
+            <Checkbox
+              id="evidence-limitation-acknowledged"
+              checked={acknowledged}
+              onChange={(e) => setAcknowledged(e.currentTarget.checked)}
+              label="I understand that two areas will be reported as not measured for every candidate in this assessment." />
+            
+          </div>
+        </Example>
+        <SpecList
+          className="mt-4"
+          entries={[
+          { term: 'LimitationBlock', detail: 'Annotates a finding on a report or in review: dashed border-strong outline, the evidence-state badge, the reason, and the "does not indicate" line under a hairline.' },
+          { term: 'Alert, warning', detail: 'Blocks a step until the reader acknowledges it: warning fill and border, the alert-triangle glyph, a title that states the limitation, the reason, and the "does not indicate" line. The acknowledgement is a Checkbox under it, and the forward control stays disabled until it is checked.' }]
+          } />
         
       </DocSection>
     </>);

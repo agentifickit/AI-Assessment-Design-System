@@ -9,10 +9,13 @@ export interface Crumb {
 
 export interface BreadcrumbsProps {
   items: Crumb[];
+  /** 'slash' is the console top bar's `<parent> / <title>` row (issue #2,
+   *  rule 3, D-34). 'chevron' is the default, used by the candidate shell. */
+  separator?: 'chevron' | 'slash';
   className?: string;
 }
 
-export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
+export function Breadcrumbs({ items, separator = 'chevron', className }: BreadcrumbsProps) {
   return (
     <nav aria-label="Breadcrumb" className={cn('min-w-0', className)}>
       <ol className="flex min-w-0 items-center gap-1.5 text-xs">
@@ -35,7 +38,11 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
                   {c.label}
                 </a>
               }
-              {!last && <ChevronRightIcon className="h-3 w-3 shrink-0 text-fg-disabled" aria-hidden="true" />}
+              {!last && (
+              separator === 'slash' ?
+              <span className="shrink-0 text-fg-disabled" aria-hidden="true">/</span> :
+              <ChevronRightIcon className="h-3 w-3 shrink-0 text-fg-disabled" aria-hidden="true" />)
+              }
             </li>);
 
         })}

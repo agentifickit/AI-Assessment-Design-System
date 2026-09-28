@@ -16,7 +16,7 @@ const styles = [
 { name: 'label', spec: '12 / 16, 500', sample: 'Assessment window', cls: 'text-xs font-medium' },
 { name: 'label-sm', spec: '11 / 16, 500, 0.02em', sample: 'EVIDENCE COMPLETENESS', cls: 'text-2xs font-medium tracking-wide' },
 { name: 'caption', spec: '11 / 16, 400', sample: 'Captured 14:02:11, event 4a91', cls: 'text-2xs' },
-{ name: 'caption-lg', spec: '12 / 18, 400', sample: 'Hi, Neha left on Friday and her patch is now yours.', cls: 'text-xs leading-[18px]' },
+{ name: 'caption-lg', spec: '12 / 18, 400', sample: 'Hi, Neha left on Friday and her patch is now yours.', cls: 'text-caption-lg' },
 { name: 'micro', spec: '10 / 16, 500, 0.02em', sample: 'Email', cls: 'text-10 font-medium tracking-wide text-fg-muted' },
 { name: 'badge', spec: '9 / 12, 600', sample: '3', cls: 'text-9 font-semibold' },
 { name: 'status', spec: '10 / 16, mono 500, 0.08em', sample: 'CONNECTION STABLE', cls: 'font-mono text-10 font-medium tracking-[0.08em]' },

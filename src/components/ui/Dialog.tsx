@@ -22,7 +22,9 @@ export interface DialogProps {
   width?: 'sm' | 'md' | 'lg';
 }
 
-const widths = { sm: 'max-w-md', md: 'max-w-xl', lg: 'max-w-3xl' } as const;
+/* 420 / 560 / 720, as the Dialog guideline states. Issue #18: the component
+   had drifted to Tailwind's 448 / 576 / 768. */
+const widths = { sm: 'max-w-[420px]', md: 'max-w-[560px]', lg: 'max-w-[720px]' } as const;
 
 const FOCUSABLE = [
 'a[href]',
@@ -145,6 +147,12 @@ export function Dialog({
 
   if (!open || typeof document === 'undefined') return null;
 
+  /* One surface, no hairlines and no footer bar (issue #18, after the approved
+     PLU-092 and PLU-097 dialogs): the title in heading-2, the body in the flow,
+     the actions 16px below it. The panel never grows past the viewport less
+     96px; the body scrolls inside it. */
+  const bodyOnly = !children && !footer;
+
   return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" data-ledger-overlay="">
       <div
@@ -161,15 +169,15 @@ export function Dialog({
         aria-describedby={description ? descId : undefined}
         tabIndex={-1}
         className={cn(
-          'relative flex w-full flex-col overflow-hidden rounded-xl border bg-surface-raised shadow-dialog',
+          'relative flex max-h-[calc(100vh-96px)] w-full flex-col overflow-hidden rounded-xl border bg-surface-raised shadow-dialog',
           'transition-[opacity,transform] duration-180 ease-enter',
           critical ? 'border-danger-border' : 'border-line',
           widths[width]
         )}>
         
-        <header className="flex items-start justify-between gap-4 border-b border-line-subtle px-5 py-3.5">
+        <header className={cn('flex shrink-0 items-start justify-between gap-4 px-5 pt-5', bodyOnly && 'pb-5')}>
           <div className="min-w-0">
-            <h2 id={titleId} className="text-sm font-semibold text-fg-primary">
+            <h2 id={titleId} className="text-lg font-semibold text-fg-primary">
               {title}
             </h2>
             {description &&
@@ -179,14 +187,21 @@ export function Dialog({
             }
           </div>
           {!holds &&
-          <IconButton label="Close dialog" size="sm" icon={<XIcon className="h-4 w-4" />} onClick={onClose} />
+          <IconButton
+            label="Close dialog"
+            size="sm"
+            className="-mr-1 mt-0.5 shrink-0"
+            icon={<XIcon className="h-4 w-4" />}
+            onClick={onClose} />
           }
         </header>
 
-        {children && <div className="scroll-panel max-h-[60vh] overflow-y-auto px-5 py-4">{children}</div>}
+        {children &&
+        <div className={cn('scroll-panel min-h-0 flex-1 overflow-y-auto px-5 pt-4', !footer && 'pb-5')}>{children}</div>
+        }
 
         {footer &&
-        <footer className="flex flex-wrap items-center justify-end gap-2 border-t border-line-subtle bg-surface-subtle px-5 py-3">
+        <footer className="flex shrink-0 flex-wrap items-center justify-end gap-2 px-5 pb-5 pt-4">
             {critical &&
           <p className="mr-auto text-2xs text-fg-muted">
                 Choose an option to continue. This dialog cannot be dismissed with Escape.
