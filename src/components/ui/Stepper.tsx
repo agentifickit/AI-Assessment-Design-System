@@ -34,7 +34,8 @@ function connectorFill(i: number, current: number, progress: number[]): number {
   return Number.isFinite(value) ? Math.min(1, Math.max(0, value)) : 0;
 }
 
-/** No "Step 1 of 4" caption — the markers already say it, and the list is announced as an ordered list. */
+/** No "Step 1 of 4" caption — the markers already say it, and the list is announced as an ordered list.
+ *  That holds across the page too: no eyebrow or heading repeats the count (issue #2). */
 export function Stepper({ steps, current, label, progress, connectorWidth = 16, className }: StepperProps) {
   return (
     <nav aria-label={label} className={cn('min-w-0', className)}>

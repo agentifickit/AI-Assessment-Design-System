@@ -44,7 +44,9 @@ export const navGroups: NavGroup[] = [
   { label: 'Progress and levels', to: '/patterns/progress' },
   { label: 'Candidate shell', to: '/patterns/candidate-shell' },
   { label: 'Workspace content', to: '/patterns/workspace-content' },
-  { label: 'Menus and popovers', to: '/patterns/menus' }]
+  { label: 'Menus and popovers', to: '/patterns/menus' },
+  { label: 'Console shell', to: '/patterns/console-shell' },
+  { label: 'Intake and sharing', to: '/patterns/intake' }]
 
 },
 {

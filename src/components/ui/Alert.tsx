@@ -22,6 +22,12 @@ const toneMap: Record<AlertTone, {cls: string;Icon: React.ElementType;}> = {
   neutral: { cls: 'border-line bg-surface-subtle text-fg-secondary', Icon: InfoIcon }
 };
 
+/** A message about the page or the task, never about a candidate's work.
+ *  A limitation the reader must acknowledge before continuing (a scenario
+ *  that does not measure some areas) is an Alert in the warning tone with a
+ *  "This does not indicate:" line, followed by the acknowledging Checkbox.
+ *  A limitation that annotates a finding stays a LimitationBlock. PLU-092
+ *  D-29, issue #2. */
 export function Alert({ tone = 'info', title, children, actions, className, live }: AlertProps) {
   const { cls, Icon } = toneMap[tone];
   return (

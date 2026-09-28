@@ -24,6 +24,8 @@ import { ProgressPage } from './pages/patterns/ProgressPage';
 import { CandidateShellPage } from './pages/patterns/CandidateShellPage';
 import { WorkspaceContentPage } from './pages/patterns/WorkspaceContentPage';
 import { MenusPage } from './pages/patterns/MenusPage';
+import { ConsoleShellPage } from './pages/patterns/ConsoleShellPage';
+import { IntakePage } from './pages/patterns/IntakePage';
 
 import { WorkspaceScreen } from './pages/screens/WorkspaceScreen';
 import { ReviewerScreen } from './pages/screens/ReviewerScreen';
@@ -70,6 +72,8 @@ export function App({ theme = 'light', density = 'default' }: AppProps) {
             <Route path="/patterns/candidate-shell" element={<CandidateShellPage />} />
             <Route path="/patterns/workspace-content" element={<WorkspaceContentPage />} />
             <Route path="/patterns/menus" element={<MenusPage />} />
+            <Route path="/patterns/console-shell" element={<ConsoleShellPage />} />
+            <Route path="/patterns/intake" element={<IntakePage />} />
 
             <Route path="/screens/workspace" element={<WorkspaceScreen />} />
             <Route path="/screens/reviewer" element={<ReviewerScreen />} />

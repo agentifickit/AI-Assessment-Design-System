@@ -12,7 +12,9 @@ export interface LimitationBlockProps {
   className?: string;
 }
 
-/** Layer 5 of the evidence model. Same visual weight as a finding so it cannot be skimmed past. */
+/** Layer 5 of the evidence model. Same visual weight as a finding so it cannot be skimmed past.
+ *  For limitations that annotate a finding. One the reader must acknowledge
+ *  before continuing is an Alert in the warning tone (PLU-092 D-29, issue #2). */
 export function LimitationBlock({ state, title, reason, doesNotImply, className }: LimitationBlockProps) {
   return (
     <div className={cn('rounded-md border border-dashed border-line-strong bg-transparent p-3', className)}>

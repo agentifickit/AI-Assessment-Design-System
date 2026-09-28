@@ -19,6 +19,8 @@ export const manifest = {
     scr_plu124: { name: "Candidate shell", route: "/patterns/candidate-shell", position: { "x": 5760, "y": 4180 } },
     scr_ds3743: { name: "Workspace content", route: "/patterns/workspace-content", position: { "x": 7160, "y": 4180 } },
     scr_ds3500: { name: "Menus and popovers", route: "/patterns/menus", position: { "x": 8560, "y": 4180 } },
+    scr_iss002: { name: "Console shell", route: "/patterns/console-shell", position: { "x": 9960, "y": 4180 } },
+    scr_iss018: { name: "Intake and sharing", route: "/patterns/intake", position: { "x": 11360, "y": 4180 } },
     scr_m4u65e: { name: "Candidate workspace", route: "/screens/workspace", position: { "x": 160, "y": 8140 } },
     scr_0ex7x7: { name: "Reviewer evidence", route: "/screens/reviewer", position: { "x": 1560, "y": 8140 } },
     scr_h32qfy: { name: "Candidate report", route: "/screens/report", position: { "x": 2960, "y": 8140 } },
@@ -32,7 +34,7 @@ export const manifest = {
   sections: {
     sec_4tj9iw: { name: "Introduction", x: 0, y: 0, width: 4320, height: 1180 },
     sec_v7oji7: { name: "Foundations", x: 0, y: 1980, width: 12720, height: 1180 },
-    sec_ildla8: { name: "Patterns", x: 0, y: 3960, width: 9920, height: 1180 },
+    sec_ildla8: { name: "Patterns", x: 0, y: 3960, width: 12720, height: 1180 },
     sec_jq7uz3: { name: "Standards", x: 0, y: 5940, width: 5720, height: 1180 },
     sec_ejt32x: { name: "Application screens", x: 0, y: 7920, width: 7120, height: 1180 }
   },
@@ -60,7 +62,9 @@ export const manifest = {
     { kind: "screen", id: "scr_plu120" },
     { kind: "screen", id: "scr_plu124" },
     { kind: "screen", id: "scr_ds3743" },
-    { kind: "screen", id: "scr_ds3500" }]
+    { kind: "screen", id: "scr_ds3500" },
+    { kind: "screen", id: "scr_iss002" },
+    { kind: "screen", id: "scr_iss018" }]
   },
   { kind: "section", id: "sec_jq7uz3", children: [
     { kind: "screen", id: "scr_1em0v2" },
