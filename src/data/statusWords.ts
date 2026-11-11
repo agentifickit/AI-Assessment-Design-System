@@ -19,7 +19,8 @@ export type StatusWordId =
 'scored' |
 'scoring-failed' |
 'incomplete-attempt' |
-'not-verified';
+'not-verified' |
+'report-rejected';
 
 export interface StatusWord {
   id: StatusWordId;
@@ -122,6 +123,14 @@ export const statusWords: StatusWord[] = [
   glyph: 'dot',
   adminOnly: false,
   meaning: 'A Plural reviewer checked the report and did not release it. The admin queue files these under Rejected.'
+},
+{
+  id: 'report-rejected',
+  label: 'Report rejected',
+  tone: 'neutral',
+  glyph: 'dot',
+  adminOnly: false,
+  meaning: 'In lists, a report a Plural reviewer checked and did not release. Decision Log, 2026-11-05. The badge on the report itself keeps Rejected.'
 }];
 
 
